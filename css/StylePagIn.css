@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+body{
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+}
+*{padding: 0;
+margin: 0;}
+.cajamadre{
+width: 100%;
+height: 400px;
+display: flex;
+flex-direction: row;
+gap: 3px;
+background-color: #db4b4c;
+}
+/* #inic{
+    width: 4%;
+    height: 9%;
+}
+#elec{
+    width: 11%;
+    height: 9%;
+    
+}
+.ini{
+    color: #db4b4c;
+    text-align: center;
+    background-color: #ffff;
+}
+#iniciars{
+    position: absolute;
+    top: 0.5%;
+    right: 7.5%;
+    width: 7%;
+    height: 4%;
+  
+    
+}
+#crearc{
+    position: absolute;
+    top: 0.5%;
+    right: 0.3%;
+    width: 7%;
+    height: 4%;
+    
+
+}
+.iniciarc{
+    color: #000;
+    text-align: center;
+    border-radius: 14px;
+    background-color: #ffff;
+} */
+.topro{
+    position:absolute;
+    bottom: 80%;
+    left: 20%;
+    font-size:500%;
+    font-weight: 800;
+    color: #ffff;
+
+}
+.topro1{
+    position: absolute;
+    bottom: 70%;
+    left: 23.5%;
+    font-size: 500%;
+    font-weight:800;
+    color: #ffff;
+}
+#top1 {
+    position: absolute;
+    margin: auto;
+    bottom: 62%;
+    left: 22%;
+    width: 9%;
+    height: 6%;
+
+}
+#top2{
+    position: absolute;
+    bottom: 62%;
+    left: 33%;
+    width: 16%;
+    height: 6%;
+
+}
+#top3{
+    position: absolute;
+    bottom: 62%;
+    left: 51%;
+    width: 8%;
+    height: 6%;
+   
+}
+.tops{
+    font-size:150%;
+    color:#db4b4c;
+    text-align: center;
+    border-radius: 140px;
+    background-color: #ffff;
+}
+#licu{
+    position: absolute;
+   
+    height: 25%;
+    left: 60%;
+    bottom: 65%;
+}
+#batimano{
+    position:absolute;
+    height: 25%;
+    left: 68%;
+    bottom: 65%;
+}
+#plancha{
+    position: absolute;
+    height: 25%;
+    left: 63%;
+    bottom: 50%;
+}

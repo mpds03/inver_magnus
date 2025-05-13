@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+body {
+    font-family: 'Poppins';
+    font-size: 10px;
+    font-style: bold;
+}
+* {padding: 0;
+    margin: 0;
+}
+
+#cajamadre{
+    width: 100%;
+    height: 400px;/*barra roja del inicio*/
+    background-color: #db4b4c;
+    }
+
+#regis{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: start;
+}
+
+
+#lic {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: end;
+}
+
+#titulo1{ /*se supone que esto es del titulo grande del top productos mas vendidos*/
+  position: flex;
+  font-family: 'Franklin Gothic Medium';
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;/*esto sirve para hacer que baje mas el texto pero afecta al momento de ser responsivo*/
+  font-size: 700%;
+}
+
+#bati-container{/*el container de los botones articulos mas vendidos*/
+  position:relative;
+  /*height: 200px;*/ /* Ajusta la altura según sea necesario */
+}
+
+#bati {/*el container dentro del container de los botones articulos mas vendidos*/
+  height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: end;
+}
+
+#licu {
+  position: absolute;
+  height: 28%;
+  left: 65%;
+  bottom: 65%;
+}
+
+#batimano {
+  position: absolute;
+  height: 28%;
+  left: 75%;
+  bottom: 68%;
+}
+
+#plancha {
+  position: absolute;
+  height: 28%;
+  left: 72%;
+  bottom: 50%;
+}
+
+.estructura {
+  height: 320px;
+  object-fit: cover;
+}.stars {
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+  }
+  
+  .stars span {
+    transition: color 0.3s;
+  }
+  
+  .stars span:hover,
+  .stars span:hover ~ span {
+    color: #db4b4c;
+  }
+  
+  .stars.clicked span {
+    color: #db4b4c;
+  }
+/*estrellas de calificacion*/
+.estructura{
+    height: 320px;
+    object-fit: cover;
+}
