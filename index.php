@@ -4,11 +4,13 @@
     require_once './controller/clientecontroller.php';
     require_once './controller/TipDocumController.php';
     require_once './controller/categoriacontroller.php';
+    require_once './controller/CompraDirectaController.php';
 
-    $ProductoController= new ProductoController(); //Insertar, Actualizar, Eliminar, Listar productos
+    $ProductoController = new ProductoController(); //Insertar, Actualizar, Eliminar, Listar productos
     $CategoriaController = new CategoriaController();
     $clientecontroller = new clientecontroller();
-    $TipDocumController= new TipDocumController();
+    $TipDocumController = new TipDocumController();
+    $CompraDirectaController = new CompraDirectaController();
 
     $action = $_GET['action'] ?? 'InverBoard';
 
@@ -80,6 +82,16 @@ case 'insertUser':
     //     case 'inverBoard':
     //         include './views/InverBoard.php';
     //         break;
+
+    //todo lo de compra directa:
+    case 'HacerCompra':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $idcompra=$CompraDirectaController->HacerCompra();
+            include './views/CompraDirecta.php';
+        }
+        break;
+
+
 
         default:
             include './views/InverBoard.php';

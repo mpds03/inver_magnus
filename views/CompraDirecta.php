@@ -6,8 +6,8 @@
     <title>Compra de producto</title>
 </head>
 <body>
-    <h1>Buscar compra por ID de compra</h1>
-    <form action="index.php?action=compra" method="GET" enctype="multipart/form-data">
+    <h1>Comprar producto</h1>
+    <form action="index.php?action=HacerCompra" method="POST" enctype="multipart/form-data">
         <input type="text" name="action" value="compra" required>
         <label for="codigo">Codigo</label>
 
