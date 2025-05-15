@@ -7,10 +7,10 @@ class ProductoModel{
         $this->conn= $db;
 
     }
-    public function InsertProducto($IdCategoria,$descripcion, $precio, $foto, $nombre){
-        $query = "INSERT INTO ". $this->table . "(IdCategoria,descripcion, precio, foto, nombre) VALUES (?,?,?,?,?)";
+    public function InsertProducto($IdCategoria,$descripcion, $precio, $foto, $nombre,$cantidad){
+        $query = "INSERT INTO ". $this->table . "(IdCategoria,descripcion, precio, foto, nombre, cantidad) VALUES (?,?,?,?,?,?)";
         $stmt= $this->conn->prepare($query);
-        $stmt->execute([$IdCategoria, $descripcion, $precio, $foto, $nombre]);
+        $stmt->execute([$IdCategoria, $descripcion, $precio, $foto, $nombre, $cantidad]);
     }
     public function getNextCodigo() {
         $query = "SELECT MAX(codigo) AS ultimo_codigo FROM " . $this->table;
@@ -32,11 +32,11 @@ class ProductoModel{
         $stmt->execute(['%' . $codigo . '%']);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function Actualizar($IdCategoria, $descripcion,$precio,$foto,$nombre,$codigo){
-        $query = "UPDATE " . $this->table . " SET IdCategoria=?, descripcion=?, precio=?, foto=?, nombre=? 
+    public function Actualizar($IdCategoria, $descripcion,$precio,$foto,$nombre, $cantidad, $codigo){
+        $query = "UPDATE " . $this->table . " SET IdCategoria=?, descripcion=?, precio=?, foto=?, nombre=?, cantidad=? 
          WHERE codigo=?";
         $stmt = $this->conn->prepare($query);
-        return $stmt->execute([$IdCategoria,$descripcion,$precio,$foto,$nombre,$codigo]);
+        return $stmt->execute([$IdCategoria,$descripcion,$precio,$foto,$nombre, $cantidad, $codigo]);
     }
 
     public function Eliminar($codigo){

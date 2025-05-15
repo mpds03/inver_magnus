@@ -32,6 +32,28 @@
             </div>
         </div>
         
+    <form action="index.php?action=insertproducto" method="GET">
+    <button  type="submit" name="action" value="insertproducto">Insertar Productos</button>
+    </form>
+
+
+    <form action="index.php?action=listProducto" method="GET">
+    <button type="submit" name="action" value="listProducto">Consultar Productos</button>
+    </form>
+    
+
+    <form action="index.php?action=listproductoporcodigo" method="GET">
+    <button type="submit" name="action" value="listproductoporcodigo">Actualizar Productos</button>
+    </form>
+
+     <form action="index.php?action=delete" method="GET">
+    <button type="submit" name="action" value="delete">Eliminar Productos</button>
+    </form>
+    
+    <form action="index.php?action=insertUser" method="GET">
+    <button type="submmit" name="action" value="insertUser">Insertar Usuario</button>
+    </form>
+        
         <div class="col-md-5 p-1">
             <div class="row">
             <form class="d-flex" role="search">

@@ -26,6 +26,7 @@
                 <th>Categoria</th>
                 <th>Descripcion</th>
                 <th>Foto</th>
+                <th>Cantidad del producto</th>
                 <th>Precio</th>
             </tr>
         </thead>
@@ -37,6 +38,7 @@
             <td><?=$Producto['IdCategoria'];?></td>
             <td><?=$Producto['descripcion'];?></td>
             <td><img src="photo/<?=$Producto['foto'];?>" width="100" alt="Foto"></td>
+            <td><?=$Producto['cantidad'];?></td>
             <td><?=$Producto['precio'];?></td>
             </tr>
             <?php endforeach; ?>

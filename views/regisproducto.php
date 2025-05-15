@@ -38,6 +38,12 @@
                     <label for="imagen" class="form-label">Imagen</label>
                     <input type="file" class="form-control" id="" name="foto">
                 </div>
+
+                 <div class="mb-3">
+                    <label for="cantidad" class="form-label">Cantidad del producto</label>
+                    <input type="number" class="form-control" id="cantidad" name="cantidad">
+                </div>
+                
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Precio</label>
                     <input type="number" class="form-control" id="nombre" name="precio">

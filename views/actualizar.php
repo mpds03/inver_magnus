@@ -42,6 +42,12 @@
                     </div>
                 <label for="">Nueva foto (Opcional)</label>
                 <input type="file" name="foto" id="">
+
+                <div class="mb-3">
+                    <label for="cantidad" class="form-label">Cantidad del producto</label>
+                    <input type="number" class="form-control" id="cantidad" name="cantidad" step="0.01" value="<?= $Producto['cantidad']; ?>">
+                </div>
+
                     <div class="mb-3">
                         <label for="precio" class="form-label">Precio</label>
                         <input type="number" class="form-control" id="precio" name="precio" step="0.01" value="<?= $Producto['precio']; ?>">

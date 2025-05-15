@@ -24,8 +24,9 @@ class ProductoController{
             $target_file = $target_dir . basename($foto);
             move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
             $nombre = $_POST['nombre'];
+            $cantidad = $_POST['cantidad'];
 
-            $this->ProductoModel->InsertProducto($IdCategoria,$descripcion, $precio, $foto, $nombre);
+            $this->ProductoModel->InsertProducto($IdCategoria,$descripcion, $precio, $foto, $nombre, $cantidad);
             header("Location: index.php?action=InverBoard");
         }
     }
@@ -57,9 +58,10 @@ class ProductoController{
                 $foto = $_POST['foto_actual'];
             }
             $nombre = $_POST['nombre'];
+            $cantidad= $_POST['cantidad'];
             $codigo = $_POST['codigo'];
 
-            $this->ProductoModel->Actualizar($IdCategoria,$descripcion, $precio, $foto, $nombre, $codigo);
+            $this->ProductoModel->Actualizar($IdCategoria,$descripcion, $precio, $foto, $nombre, $cantidad, $codigo);
         }
     }
 
