@@ -5,7 +5,7 @@
     require_once './controller/TipDocumController.php';
     require_once './controller/categoriacontroller.php';
     require_once './controller/CompraDirectaController.php';
-
+//index
     $ProductoController = new ProductoController(); //Insertar, Actualizar, Eliminar, Listar productos
     $CategoriaController = new CategoriaController();
     $clientecontroller = new clientecontroller();
