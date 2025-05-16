@@ -130,6 +130,7 @@ case 'insertUser':
 
 
         default:
+        $Productos= $ProductoController->listProducto();
             include './views/InverBoard.php';
             break;
     }
