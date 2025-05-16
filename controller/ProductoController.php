@@ -69,5 +69,10 @@ class ProductoController{
         $codigo=$_GET['codigo'] ?? '';
         $datos= $this->ProductoModel->Eliminar($codigo);
         return $this->ProductoModel->Eliminar($codigo);
+
+    //PRUEBA DE MUESTRA DE PRODUCTOS CREADOS:
+    public function getProducto() {
+        $productos = $this->ProductoModel->getProducto();
+        include './views/InverBoard.php'; // vista principal (inverboard)
     }
 }
