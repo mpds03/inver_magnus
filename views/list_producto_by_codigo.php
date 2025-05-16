@@ -8,8 +8,8 @@
 
 <body>
     <h1>Buscar Producto por codigo</h1>
-    <form action="index.php?action=buscar" method="get">
-        <input type="hidden" name="action" value="buscar">
+    <form action="index.php?action=buscarProducto" method="get">
+        <input type="hidden" name="action" value="buscarProducto">
         <label for="">Codigo</label>
         <input type="text" name="codigo" required>
         <input type="submit" value="Buscar">

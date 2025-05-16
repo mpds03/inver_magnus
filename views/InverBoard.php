@@ -46,13 +46,27 @@
     <button type="submit" name="action" value="listproductoporcodigo">Actualizar Productos</button>
     </form>
 
-     <form action="index.php?action=delete" method="GET">
-    <button type="submit" name="action" value="delete">Eliminar Productos</button>
+     <form action="index.php?action=deleteProducto" method="GET">
+    <button type="submit" name="action" value="deleteProducto">Eliminar Productos</button>
     </form>
-    
+
+    <label for="">Usuarios</label>
     <form action="index.php?action=insertUser" method="GET">
     <button type="submmit" name="action" value="insertUser">Insertar Usuario</button>
     </form>
+
+    <form action="index.php?action=listUsers" method="GET">
+            <button type="submit" name="action" value="listUsers">Consultar Usuario</button>
+        </form>
+        <form action="index.php?action=searchUserByNumDocum" method="GET">
+            <button type="submit" name="action" value="searchUserByNumDocum">Consultar </button>
+        </form>
+        <form action="index.php?action=openForm" method="GET">
+            <button type="submit" name="action" value="openForm"> actualizar usuario</button>
+        </form>
+        <form action="index.php?action=openFormDelete" method="GET">
+            <button type="submit" name="action" value="openFormDelete"> eliminar</button>
+        </form>
         
         <div class="col-md-5 p-1">
             <div class="row">

@@ -37,28 +37,29 @@
                     include './views/list_producto_by_codigo.php';
                     break;
                         
-                        case 'buscar':
+                        case 'buscarProducto':
                             $Productos= $ProductoController->ProductoByCodigo();
                             $Categorias = $CategoriaController->listCategoria();
-                            include './views/actualizar.php';
+                            include './views/actualizarProducto.php';
                             break;
 
-            case 'actualizar':
+            case 'actualizarProducto':
                 $Productos=$ProductoController->Actualizar();
                 
                 include './views/InverBoard.php';
                 break;
 
-                case 'delete':
+                case 'deleteProducto':
                     $Productos = $ProductoController->ProductoByCodigo();
                     include './views/delete_producto_by_codigo.php';
                     break;
-        case 'eliminar':
+        case 'eliminarProducto':
             $Productos= $ProductoController->Eliminar();
             include './views/InverBoard.php';
             break;
 //Hasta aca llega todo lo de productos
 
+// Todo lo que tiene que ver con usuario
 case 'insertUser':
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $cliente=$clientecontroller->insertUser();
@@ -68,6 +69,41 @@ case 'insertUser':
         include './views/registro.php';
     }
     break;
+
+    case 'listUsers':
+        $clientes=$clientecontroller->listUsers();
+        include './views/list_users.php';
+            // if ($_SESSION["rol"] == "admin") {
+            //     $users = $userController->listUsers();
+            //     include './views/list_users.php';
+            // }
+        break;
+    case 'searchUserByNumDocum':
+        $clientes=$clientecontroller->UserByNumDocum();
+        include './views/list_NumDocum.php';
+        break;
+    case 'openForm':
+        $clientes=$clientecontroller->listUsers();
+        include './views/list_By_NumDocum.php';
+        break;
+    case 'searchClienteXNumDocum':
+        $clientes=$clientecontroller->UserByNumDocum();
+        $docums = $TipDocumController->listTipDocum();
+        include './views/update_cliente.php';
+        break;
+    case 'actualizarUser':
+        $clientes=$clientecontroller->actualizar();
+        include './views/InverBoard.php';
+        break;
+    case 'openFormDelete':
+        $clientes=$clientecontroller->listUsers();
+        include './views/delete_NumDocum.php';
+        break;
+    case 'eliminarUser':
+        $clientes=$clientecontroller->eliminar();
+        include './views/InverBoard.php';
+        break;
+    
 
     // case 'login':
     //     if ($_SERVER["REQUEST_METHOD"] == "POST") {

@@ -12,7 +12,7 @@
         <div class="container mb-3">
             <div class="card shadow p-4">
                 <h2 class="text-center mb-4">Actualizar el  Producto</h2>
-                <form action="index.php?action=actualizar" method="POST" enctype="multipart/form-data">
+                <form action="index.php?action=actualizarProducto" method="POST" enctype="multipart/form-data">
                     <?php foreach ($Productos as $Producto): ?>
                     <div class="mb-3">
                         <input type="hidden" name="codigo" value="<?= $Producto['codigo']; ?>">

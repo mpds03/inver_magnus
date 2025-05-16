@@ -8,8 +8,8 @@
 
 <body>
     <h1>Eliminar Producto por codigo</h1>
-    <form action="index.php?action=eliminar" method="get">
-        <input type="hidden" name="action" value="eliminar">
+    <form action="index.php?action=eliminarProducto" method="get">
+        <input type="hidden" name="action" value="eliminarProducto">
         <label for="">Codigo</label>
         <input type="text" name="codigo" required>
         <input type="submit" value="Eliminar">
