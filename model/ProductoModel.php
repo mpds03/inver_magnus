@@ -8,7 +8,7 @@ class ProductoModel{
 
     }
     public function InsertProducto($IdCategoria,$descripcion, $precio, $foto, $nombre,$cantidad){
-        $query = "INSERT INTO ". $this->table . "(IdCategoria,descripcion, precio, foto, nombre, cantidad) VALUES (?,?,?,?,?,?)";
+        $query = "INSERT INTO ". $this->table . "(IdCategoria, descripcion, precio, foto, nombre, cantidad) VALUES (?,?,?,?,?,?)";
         $stmt= $this->conn->prepare($query);
         $stmt->execute([$IdCategoria, $descripcion, $precio, $foto, $nombre, $cantidad]);
     }

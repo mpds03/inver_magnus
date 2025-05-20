@@ -17,6 +17,7 @@
                     <div class="mb-3">
                         <input type="hidden" name="codigo" value="<?= $Producto['codigo']; ?>">
                     </div>
+                    <?php endforeach; ?><!--Arreglado este foreach uwu-->
                     <div class="mb-3">
                 <label for="" class="form-label">Categoria Del Producto</label>
                         <select class="form-style  form-select " name="IdCategoria" id="sel" required>
@@ -52,7 +53,7 @@
                         <label for="precio" class="form-label">Precio</label>
                         <input type="number" class="form-control" id="precio" name="precio" step="0.01" value="<?= $Producto['precio']; ?>">
                     </div>
-                    <?php endforeach; ?>
+                    
                     <div class="text-center">
                     <button type="submit" name="action" value="actualizar" class="btn btn-outline-danger">Actualizar</button>
                     </div>
