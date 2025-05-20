@@ -41,5 +41,5 @@ class ClienteModel{
         return $stmt->execute([$numero_documento]);
     }
 }
-// parte hecha del video
+// parte hecha del video 
 ?>
