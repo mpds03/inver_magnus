@@ -26,7 +26,7 @@ class ProductoController{
             $nombre = $_POST['nombre'];
             $cantidad = $_POST['cantidad'];
 
-            $this->ProductoModel->InsertProducto($IdCategoria,$descripcion, $precio, $foto, $nombre, $cantidad);
+           $productos = $this->ProductoModel->InsertProducto($IdCategoria,$descripcion, $precio, $foto, $nombre, $cantidad);
             header("Location: index.php?action=InverBoard");
         }
     }
