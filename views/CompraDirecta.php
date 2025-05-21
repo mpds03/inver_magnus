@@ -8,11 +8,9 @@
 <body>
     <h1>Comprar producto</h1>
     <form action="index.php?action=HacerCompra" method="POST" enctype="multipart/form-data">
-        <input type="text" name="action" value="compra" required>
-        <label for="codigo">Codigo</label>
-
-        <input type="text" name="codigo" required>
-        <input type="submit" value="Comprar">
+        <input type="hidden" name="" value="<?php echo $producto['codigo']; ?>">
+        <input type="hidden" name="cantidad" value="<?php echo $producto['cantidad']; ?>">
+        <input type="submit" class="btn btn-danger" value="Comprar">
     </form>
 
     

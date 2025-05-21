@@ -87,18 +87,20 @@
 
 
             <!-- CARDS -->
-            <div class="row row-cols-1 row-cols-md-5 g-4 mx-5 mt-3">
+            <div class="row row-cols-1 row-cols-md-5 mt-3">
 
                 <!--CARD CONECTADA A LA DATABASE-->
                 <?php foreach ($Productos as $producto): ?>
                     <div class="col">
                         <div class="card h-100 text-center">
-                            <img src="photo/<?= $producto['foto'] ?>" class="card-img-top estructura" alt="Imagen del producto">
+                            <img src="/photo/?= $producto['foto'] ?>" class="card-img-top estructura" alt="Imagen del producto">
+
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $producto['nombre']; ?></h5>
                                 <p class="card-text"><?php echo $producto['descripcion']; ?></p>
                                 <p class="card-text"><?php echo $producto['precio'] ?></p>
                                 <a href="#" class="btn btn-danger">Mirar</a>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -151,6 +153,7 @@
     </div> <!-- fin de row de caja madre-->
     </div> <!-- fin de caja madre-->
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/Bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
