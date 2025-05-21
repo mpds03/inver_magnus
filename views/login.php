@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/ejemp.css">
+    <link rel="stylesheet" href="/css/ejemp.css">
     <link rel="shortcut icon" href="images/icon.ico">
 </head>
 <body>
@@ -30,9 +30,12 @@
                                                     <input type="password" name="contraseña" class="form-style" placeholder="Contraseña" required>
                                                     <i class="input-icon uil uil-lock-alt"></i>
                                                 </div>
-                                                <button type="submit" class="btn mt-4">Iniciar sesión</button>
+                                                <button type="submit" class="btn btn-outline-danger mt-4">Iniciar sesión</button>
                                             </form>
-                                            <p class="mb-0 mt-4 text-center"><a href="olvidocontra.html" class="link">¿Olvidó su contraseña?</a></p>
+                                            <form class="text-center p-3" action="index.php?action=InverBoard" method="post" enctype="multipart/form-data">
+                                            <button type="submit"name="action" value="InverBoard" class="btn btn-outline-danger">Cancelar</button>
+                                            </form>
+                                            <p class="mb-0 mt-4 text-center"><a href="" class="link">¿Olvidó su contraseña?</a></p>
                                         </div>
                                     </div>
                                 </div> <!-- Fin de card-front -->

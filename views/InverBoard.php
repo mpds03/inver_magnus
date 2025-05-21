@@ -17,7 +17,9 @@
                 <div class="d-flex">
                     <nav class="navbar-expand">
                         <ul class="navbar-nav">
-                            <a href="#"><button type="submit" class="btn btn-light text-danger h-100 ">Inicio</button></a>
+                            <form action="index.php?action=InverBoard" method="post" enctype="multipart/form-data">
+                            <a href=""><button type="submit" value="InverBoard" class="btn btn-light text-danger h-100 ">Inicio</button></a>
+                            </form>
                             <li class="nav-item dropdown">
                                 <button class="nav-link dropdown-toggle btn btn-light text-dark ms-1" href="#" role="button" data-bs-toggle="dropdown" aria-expand="false">Electrodomesticos</button>
                                 <ul class="dropdown-menu">
