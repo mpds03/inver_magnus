@@ -96,7 +96,7 @@
                 <?php foreach ($Productos as $producto): ?>
                     <div class="col">
                         <div class="card h-100 text-center">
-                            <img src="/photo/?= $producto['foto'] ?>" class="card-img-top estructura" alt="Imagen del producto">
+                            <img src="photo/<?= $producto['foto'] ?>" class="card-img-top estructura" alt="Imagen del producto">
 
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $producto['nombre']; ?></h5>
