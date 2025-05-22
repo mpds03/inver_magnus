@@ -92,10 +92,11 @@
             <div class="row row-cols-1 row-cols-md-5 mt-3">
 
                 <!--CARD CONECTADA A LA DATABASE-->
+                <?php if (!empty($Productos) && is_array($Productos)): ?>
                 <?php foreach ($Productos as $producto): ?>
                     <div class="col">
                         <div class="card h-100 text-center">
-                            <img src="photo/<?= $producto['foto'] ?>" class="card-img-top estructura" alt="Imagen del producto">
+                            <img src="/photo/?= $producto['foto'] ?>" class="card-img-top estructura" alt="Imagen del producto">
 
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $producto['nombre']; ?></h5>
@@ -107,6 +108,9 @@
                         </div>
                     </div>
                 <?php endforeach; ?>
+                <?php else: ?>
+                     <p class="text-center">No se porque sale esto aaa</p>
+                <?php endif; ?>
                 <!--CARD CONECTADA A LA DATABASE-->
 
             </div><!--fin del div de row de cards-->
