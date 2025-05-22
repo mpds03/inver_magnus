@@ -29,6 +29,8 @@
                 <th>Foto</th>
                 <th>Cantidad Del producto</th>
                 <th>Precio</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
                 
             </tr>
         </thead>
