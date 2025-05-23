@@ -44,7 +44,7 @@
 
         case 'actualizarProducto':
             $Productos = $ProductoController->Actualizar();
-
+            $Productos = $ProductoController->listProducto();
             include './views/InverBoard.php';
             break;
 
