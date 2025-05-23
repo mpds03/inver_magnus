@@ -58,10 +58,11 @@
     <div class="row">
         <!--cajita del lado izquierdo-->
         <div class="col-md-6 p-4 bg-light rounded shadow"><!--"Section"-->
+            <?php foreach ($Productos as $producto): ?>
             <p class="text-uppercase fw-bold text-center text-secondary">Electrodoméstico</p>
             <h2 class="text-center"><?php echo $producto['nombre']; ?></h2>
             <img src= "photo/<?= $producto['foto'] ?>" alt="Imagen producto" class="img-fluid d-block mx-auto">
-
+            
              <!-- Botones Descripción/Detalles -->
             <div class="text-start mt-3">
                 <input class="desc-btn d-none" type="radio" id="desc-1" name="desc-btn" checked>
@@ -88,6 +89,7 @@
             <div class="text-center mt-4">
                 <button class="btn btn-danger">Añadir al carrito</button>
             </div>
+            <?php endforeach; ?>
         </div>
 
         <!--Hola, cajita del lado derecho-->
