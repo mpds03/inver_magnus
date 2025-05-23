@@ -102,7 +102,8 @@
                                 <h5 class="card-title"><?php echo $producto['nombre']; ?></h5>
                                 <p class="card-text"><?php echo $producto['descripcion']; ?></p>
                                 <p class="card-text"><?php echo $producto['precio'] ?></p>
-                                <a href="#" class="btn btn-danger">Mirar</a>
+                                <a href="index.php?action=productinfo&codigo=<?= $producto['codigo'] ?>" class="btn btn-danger">Mirar</a>
+
                                 </form>
                             </div>
                         </div>

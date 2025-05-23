@@ -40,7 +40,7 @@
             $Productos = $ProductoController->ProductoByCodigo();
             $Categorias = $CategoriaController->listCategoria();
             include './views/actualizarProducto.php';
-            break;
+            break;//Este es el que me lleva al producto buscado por codigo
 
         case 'actualizarProducto':
             $Productos = $ProductoController->Actualizar();
@@ -116,6 +116,14 @@
         //     case 'inverBoard':
         //         include './views/InverBoard.php';
         //         break;
+
+        //caso de vista productinfo:
+        case 'productinfo':
+            $Productos = $ProductoController->ProductoByCodigo();
+            $Categorias = $CategoriaController->listCategoria();
+            include './views/productinfo.php';
+            break;
+
 
         //todo lo de compra directa:
         case 'HacerCompra':

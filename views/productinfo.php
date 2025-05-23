@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalle producto</title>
     <link rel="shortcut icon" href="/images/logo.jpeg" type="image/x-icon">
-    <link rel="stylesheet" href="/Bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/productinfo.css">
+    <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/productinfo.css">
 </head>
 <body>
     <div class="container-fluid" id="cajamadre">
@@ -15,8 +15,9 @@
                 <div class="d-flex">
             <nav class="navbar-expand">
                     <ul class="navbar-nav">
-                       <a href="#"><button type="submit" class="btn btn-light text-danger h-100 ">Inicio</button></a>  
+                       <a href="index.php?action=InverBoard"><button type="submit" value="InverBoard" class="btn btn-light text-danger h-100 ">Inicio</button></a>  
                       <li class="nav-item dropdown">
+
                         <button class="nav-link dropdown-toggle btn btn-light text-dark ms-1" href="#" role="button" data-bs-toggle="dropdown" aria-expand="false">Electrodomesticos</button>
                         <ul class="dropdown-menu">
                           <li><a class="dropdown-item" href="#">Cuidado del hogar</a></li>
@@ -44,7 +45,7 @@
         <div id="regis" class="col-md-4 p-1">
             <a href="ejem.html"><button type="submit" class="btn btn-light h-100" >Iniciar sesión</button></a>
  
-             <a href="ejem.html"><button type="submit" class="btn btn-light ms-1 text-danger h-100">Registrarse</button></a>
+             <a href="index.php?action=insertUser"><button type="submit" value="insertUser" class="btn btn-light ms-1 text-danger h-100">Registrarse</button></a>
          </div>
 
     </div>
@@ -58,7 +59,7 @@
         <!--cajita del lado izquierdo-->
         <div class="col-md-6 p-4 bg-light rounded shadow"><!--"Section"-->
             <p class="text-uppercase fw-bold text-center text-secondary">Electrodoméstico</p>
-            <h2 class="text-center">Licuadora increible suprema tremenda</h2>
+            <h2 class="text-center"><?php echo $producto['nombre']; ?></h2>
             <img src= "photo/<?= $producto['foto'] ?>" alt="Imagen producto" class="img-fluid d-block mx-auto">
 
              <!-- Botones Descripción/Detalles -->
@@ -72,7 +73,7 @@
 
             <!-- Contenido de la descripción -->
             <div class="mt-3">
-                <p>bla bla bla</p>
+                <p><?php echo $producto['descripcion']; ?></p>
             </div>
 
             <!-- Contenido de los detalles -->
@@ -132,7 +133,7 @@
 
 </div>
 
-      
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/Bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

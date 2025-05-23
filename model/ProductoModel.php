@@ -32,6 +32,7 @@ class ProductoModel{
         $stmt->execute(['%' . $codigo . '%']);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
     public function Actualizar($IdCategoria, $descripcion,$precio,$foto,$nombre, $cantidad, $codigo){
         $query = "UPDATE " . $this->table . " SET IdCategoria=?, descripcion=?, precio=?, foto=?, nombre=?, cantidad=? 
          WHERE codigo=?";
