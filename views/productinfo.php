@@ -59,7 +59,7 @@
         <div class="col-md-6 p-4 bg-light rounded shadow"><!--"Section"-->
             <p class="text-uppercase fw-bold text-center text-secondary">Electrodoméstico</p>
             <h2 class="text-center">Licuadora increible suprema tremenda</h2>
-            <img src="/photo/licuadora1.png" alt="Licuadora" class="img-fluid d-block mx-auto">
+            <img src= "photo/<?= $producto['foto'] ?>" alt="Imagen producto" class="img-fluid d-block mx-auto">
 
              <!-- Botones Descripción/Detalles -->
             <div class="text-start mt-3">
