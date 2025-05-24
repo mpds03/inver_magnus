@@ -158,18 +158,21 @@
                 <button type="submmit" name="action" value="insertUser">Insertar Usuario</button>
             </form>
 
-            <form action="index.php?action=listUsers" method="GET">
-                <button type="submit" name="action" value="listUsers">Consultar Usuario</button>
-            </form>
-            <form action="index.php?action=searchUserByNumDocum" method="GET">
-                <button type="submit" name="action" value="searchUserByNumDocum">Consultar </button>
-            </form>
-            <form action="index.php?action=openForm" method="GET">
-                <button type="submit" name="action" value="openForm"> actualizar usuario</button>
-            </form>
-            <form action="index.php?action=openFormDelete" method="GET">
-                <button type="submit" name="action" value="openFormDelete"> eliminar</button>
-            </form>
+    <form action="index.php?action=listUsers" method="GET">
+            <button type="submit" name="action" value="listUsers">Consultar Usuario</button>
+        </form>
+        <form action="index.php?action=searchUserByNumDocum" method="GET">
+            <button type="submit" name="action" value="searchUserByNumDocum">Consultar </button>
+        </form>
+        <form action="index.php?action=openForm" method="GET">
+            <button type="submit" name="action" value="openForm"> actualizar usuario</button>
+        </form>
+        <form action="index.php?action=openFormDelete" method="GET">
+            <button type="submit" name="action" value="openFormDelete"> eliminar</button>
+        </form>
+          <form action="index.php?action=login" method="GET">
+            <button type="submit" name="action" value="login">login</button>
+        </form>
 
         </div>
     </div>

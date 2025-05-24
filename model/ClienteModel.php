@@ -40,6 +40,14 @@ class ClienteModel{
         $stmt = $this->conn->prepare($query);
         return $stmt->execute([$numero_documento]);
     }
+
+    public function getUserByDocumento($numero_documento) {
+       $query = "SELECT * FROM " . $this->table ." WHERE numero_documento = :numero_documento";
+        $stmt = $this->conn->prepare($query);
+         $stmt->bindParam(':numero_documento', $numero_documento);
+         $stmt->execute();
+         return $stmt->fetch(PDO::FETCH_ASSOC);
+     }
 }
 // parte hecha del video 
 ?>

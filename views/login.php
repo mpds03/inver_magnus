@@ -21,6 +21,8 @@
                                     <div class="center-wrap">
                                         <div class="section text-center">
                                             <h4 class="mb-4 pb-3">Iniciar sesión</h4>
+                                           
+                                            <!-- Formulario de login -->
                                             <form action="index.php?action=login" method="POST">
                                                 <div class="form-group">
                                                     <input type="text" name="numero_documento" class="form-style" placeholder="Número de Documento" required>
@@ -32,10 +34,17 @@
                                                 </div>
                                                 <button type="submit" class="btn btn-outline-danger mt-4">Iniciar sesión</button>
                                             </form>
-                                            <form class="text-center p-3" action="index.php?action=InverBoard" method="post" enctype="multipart/form-data">
-                                            <button type="submit"name="action" value="InverBoard" class="btn btn-outline-danger">Cancelar</button>
+ 
+                                            <!-- Botón de cancelar -->
+                                            <form class="text-center p-3" action="index.php?action=InverBoard" method="post">
+                                                <button type="submit" class="btn btn-outline-danger">Cancelar</button>
                                             </form>
-                                            <p class="mb-0 mt-4 text-center"><a href="" class="link">¿Olvidó su contraseña?</a></p>
+ 
+                                            <!-- Enlace a recuperación de contraseña -->
+                                            <p class="mb-0 mt-4 text-center">
+                                                <a href="#" class="link">¿Olvidó su contraseña?</a>
+                                            </p>
+ 
                                         </div>
                                     </div>
                                 </div> <!-- Fin de card-front -->
