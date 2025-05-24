@@ -73,48 +73,30 @@
 
                         <!-- Botones Descripción/Detalles -->
                         <div class="text-start mt-3">
-                            <input class="desc-btn d-none" type="radio" id="desc-1" name="desc-btn" checked>
-                            <label for="desc-1" class="btn btn-danger">Descripción</label>
-
-                            <input class="desc-btn d-none" type="radio" id="desc-2" name="desc-btn">
-                            <label for="desc-2" class="btn btn-danger">Detalles</label>
-                        </div>
-
-                        <!-- Contenido de la descripción -->
-                        <div class="mt-3">
+                            <h5 class="text-danger">Descripción</h5>
                             <p><?php echo $producto['descripcion']; ?></p>
-                        </div>
 
-                        <!-- Contenido de los detalles -->
-                        <div class="row text-center mt-3">
                             <div class="col-6">
-                                <p><span>xx</span> cm<br>Altura</p>
-                            </div>
-                            <div class="col-6">
-                                <p><span>xx</span> cm<br>Ancho</p>
-                            </div>
-                            <div class="col-6">
-                                <p><span>xx</span> L<br>Capacidad</p>
-                            </div>
-                            <div class="col-6">
-                                <p><span>xx</span> kg<br>Peso</p>
+                                
                             </div>
                         </div>
 
                         <!-- Botón Añadir al carrito -->
                         <div class="text-center mt-4">
+                            <button class="btn btn-danger">Comprar</button>
                             <button class="btn btn-danger">Añadir al carrito</button>
                         </div>
-                    <?php endforeach; ?>
+                    
                 </div>
 
                 <!--Hola, cajita del lado derecho-->
                 <div class="col-md-6 p-4 bg-white rounded shadow"><!--"Section2"-->
-
-                    <h1 class="text-start">$300.000</h1>
+                    <h1 class="text-start">$<?= $producto ['precio']?></h1>
+                    <?php endforeach; ?><!--aca termina el foreach de conexion base de datos-->
                     <h5 class="text-start">Opiniones del producto</h5>
 
                     <!--Estrellas-->
+                    <p class="text-start">Calificación:</p>
                     <div class="stars text-start mt-2" id="stars">
                         <span data-value="1">★</span>
                         <span data-value="2">★</span>
@@ -122,7 +104,6 @@
                         <span data-value="4">★</span>
                         <span data-value="5">★</span>
                     </div>
-                    <p class="text-start">Calificación:</p>
                     <!--Estrellas-->
 
                     <!--Comentarios de usuarios-->
