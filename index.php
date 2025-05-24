@@ -132,6 +132,10 @@
                 include './views/CompraDirecta.php';
             }
             break;
+         case 'login':
+        $cliente=$clientecontroller->login(); // Método que valida el acceso
+        include './views/login.php';
+        break;
 
 
 

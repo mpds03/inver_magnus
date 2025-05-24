@@ -152,7 +152,9 @@
         <form action="index.php?action=openFormDelete" method="GET">
             <button type="submit" name="action" value="openFormDelete"> eliminar</button>
         </form>
-
+          <form action="index.php?action=login" method="GET">
+            <button type="submit" name="action" value="login">login</button>
+        </form>
         </div>
     </div>
     </div> <!-- CARDS -->

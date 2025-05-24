@@ -116,6 +116,29 @@ class clientecontroller {
     return $this->ClienteModel->eliminar($numero_documento);
    }
 
+    public function login() {
+     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+         $numero_documento = $_POST['numero_documento'];
+         $contraseña = $_POST['contraseña'];
+ 
+         $cliente = $this->ClienteModel->getUserByDocumento($numero_documento);
+ 
+         if ($cliente && password_verify($contraseña, $cliente['contraseña'])) {
+             session_start();
+             $_SESSION['cliente'] = $cliente;
+             header("Location: index.php?action=InverBoard");
+         } else {
+             echo "<script>alert('Número de documento o contraseña incorrectos'); window.history.back();</script>";
+         }
+     }
+ }
+    public function logout() {
+        session_start();
+        session_destroy();
+        header("Location: index.php?action=login");
+    }
+
+
 }
 
 ?>
