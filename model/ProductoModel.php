@@ -25,8 +25,7 @@ class ProductoModel{
         $stmt= $this->conn->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function ProductoByCodigo($codigo)
-    {
+    public function ProductoByCodigo($codigo){
         $query = "SELECT * FROM " . $this->table . " WHERE codigo LIKE ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute(['%' . $codigo . '%']);
@@ -45,6 +44,11 @@ class ProductoModel{
         $stmt= $this->conn->prepare($query);
         $stmt->execute([$codigo]);
     }
-    
+         public function BarraBusqueda($nombre){
+        $query = "SELECT * FROM " . $this->table . " WHERE nombre Like ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(['%' . $nombre . '%']);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     }
  
