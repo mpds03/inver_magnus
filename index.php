@@ -1,4 +1,4 @@
-    <?php
+<?php
 
     require_once './controller/ProductoController.php';
     require_once './controller/clientecontroller.php';
@@ -56,6 +56,12 @@
             $Productos = $ProductoController->Eliminar();
             include './views/InverBoard.php';
             break;
+
+        case 'barraBusqueda':
+            $Productos = $ProductoController->BarraBusqueda();
+            $Categorias = $CategoriaController->listCategoria();
+            include './views/barraBusqueda.php';
+            break;//Este es el que me lleva al producto buscado por codigo
         //Hasta aca llega todo lo de productos
 
         // Todo lo que tiene que ver con usuario

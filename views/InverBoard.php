@@ -44,8 +44,9 @@
 
             <div class="col-md-5 p-1">
                 <div class="row">
-                    <form class="d-flex" role="search">
-                        <input class="form-control mx-5 me-2" type="search" placeholder="..." aria-label="Search">
+                    <form action="index.php?action=barraBusqueda" method="get" class="d-flex" >
+                        <input type="hidden" name="action" value="barraBusqueda">
+                        <input class="form-control mx-5 me-2" name="nombre" type="text" placeholder="Buscar Productos">
                         <button class="btn btn-outline-light me-5" type="submit">Buscar</button>
                     </form>
                 </div>

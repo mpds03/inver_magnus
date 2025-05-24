@@ -75,4 +75,9 @@ class ProductoController{
         $productos = $this->ProductoModel->getProducto();
         include './views/InverBoard.php'; // vista principal (inverboard)
     }
+
+    public function BarraBusqueda(){
+        $nombre = $_GET['nombre'] ?? '';
+        return $this->ProductoModel->BarraBusqueda($nombre);
+    }
 }
