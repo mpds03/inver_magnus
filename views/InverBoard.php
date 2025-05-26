@@ -54,7 +54,7 @@
 
             <!--iniciar sesion, registrarse-->
             <div id="regis" class="col-md-4 p-1">
-                <form action="index.php?action=login" method="GET">
+                 <form action="index.php?action=login" method="GET">
                 <button type="submit" name="action" value="login" class="btn btn-light h-100">Iniciar sesión</button>
                 </form>
                 <form action="index.php?action=insertUser" method="GET">
