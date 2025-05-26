@@ -54,7 +54,9 @@
 
             <!--iniciar sesion, registrarse-->
             <div id="regis" class="col-md-4 p-1">
-                <a href="ejem.html"><button type="submit" class="btn btn-light h-100">Iniciar sesión</button></a>
+                 <form action="index.php?action=login" method="GET">
+                <button type="submit" name="action" value="login" class="btn btn-light h-100">Iniciar sesión</button>
+                </form>
                 <form action="index.php?action=insertUser" method="GET">
                     <button type="submit" name="action" value="insertUser" class="btn btn-light ms-1 text-danger h-100">Registrarse</button>
                 </form>
