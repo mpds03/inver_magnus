@@ -36,12 +36,12 @@ class ProductoController{
     }
     public function listProducto()
     {
-        return $this->ProductoModel->getProducto();
+        return $this->ProductoModel->getProductoWithCategoria();
     }
     public function ProductoByCodigo()
     {
         $codigo = $_GET['codigo'] ?? '';
-        return $this->ProductoModel->ProductoByCodigo($codigo);
+        return $this->ProductoModel->ProductoByCodigoWithCategoria($codigo);
     }
     public function Actualizar()
     {
@@ -78,6 +78,6 @@ class ProductoController{
 
     public function BarraBusqueda(){
         $nombre = $_GET['nombre'] ?? '';
-        return $this->ProductoModel->BarraBusqueda($nombre);
+        return $this->ProductoModel->BarraBusquedaWithCategoria($nombre);
     }
 }

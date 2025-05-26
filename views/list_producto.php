@@ -12,8 +12,8 @@
     <div class="container mt-5">
     <h1>Lista de Productos</h1>
 
-    <form action="index.php?action=#" method="get">
-        <input type="hidden" name="action" value="#">
+    <form action="index.php?action=listproductoporcodigo" method="get">
+        <input type="hidden" name="action" value="listproductoporcodigo">
         <label for="">Codigo</label>
         <input type="text" name="codigo" required>
         <input type="submit" class="btn btn-outline-danger" value="Buscar">
@@ -39,7 +39,7 @@
                 <tr>
             <td><?=$Producto['codigo'];?></td>
             <td><?=$Producto['nombre'];?></td>
-            <td><?=$Producto['IdCategoria'];?></td>
+            <td><?=$Producto['categoria_nombre'];?></td>
             <td><?=$Producto['descripcion'];?></td>
             <td><img src="photo/<?=$Producto['foto'];?>" width="100" alt="Foto"></td>
             <td><?=$Producto['cantidad'];?></td>
@@ -47,6 +47,7 @@
             <td><!--Editar producto-->
                 <form action="index.php?action=buscarProducto" method="get">
                     <input type="hidden" name="action" value="buscarProducto">
+                    <input type="hidden" name="codigo" value="<?=$Producto['codigo'];?>">
                     <input type="submit" class="btn btn-secondary" value="Actualizar">
                 </form>
             </td>

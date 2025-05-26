@@ -54,7 +54,9 @@
             break;
         case 'eliminarProducto':
             $Productos = $ProductoController->Eliminar();
+            $Productos = $ProductoController->listProducto();
             include './views/InverBoard.php';
+            
             break;
 
         case 'barraBusqueda':

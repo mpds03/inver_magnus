@@ -50,5 +50,29 @@ class ProductoModel{
         $stmt->execute(['%' . $nombre . '%']);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+        // Obtener productos con categoría
+        public function getProductoWithCategoria(){
+        $query = "SELECT p.*, c.nombre AS categoria_nombre FROM " . $this->table . " p
+                  LEFT JOIN categoria c ON p.IdCategoria = c.IdCategoria";
+        $stmt = $this->conn->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
- 
+
+    public function ProductoByCodigoWithCategoria($codigo){
+        $query = "SELECT p.*, c.nombre AS categoria_nombre FROM " . $this->table . " p
+                  LEFT JOIN categoria c ON p.IdCategoria = c.IdCategoria
+                  WHERE p.codigo LIKE ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(['%' . $codigo . '%']);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function BarraBusquedaWithCategoria($nombre){
+        $query = "SELECT p.*, c.nombre AS categoria_nombre FROM " . $this->table . " p
+                  LEFT JOIN categoria c ON p.IdCategoria = c.IdCategoria
+                  WHERE p.nombre LIKE ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(['%' . $nombre . '%']);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    }
