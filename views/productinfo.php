@@ -69,7 +69,7 @@
                 <!--cajita del lado izquierdo-->
                 <div class="col-md-6 p-4 bg-light rounded shadow"><!--"Section"-->
                     <?php foreach ($Productos as $producto): ?>
-                        <p class="text-uppercase fw-bold text-center text-secondary"><?php echo $producto['IdCategoria']; ?></p><!--toca seguir modificando pero aja-->
+                        <p class="text-uppercase fw-bold text-center text-secondary"><?php echo $producto['categoria_nombre']; ?></p></p><!--toca seguir modificando pero aja-->
 
                         <h2 class="text-center"><?php echo $producto['nombre']; ?></h2>
                         <img src="photo/<?= $producto['foto'] ?>" alt="Imagen producto" class="img-fluid d-block mx-auto">

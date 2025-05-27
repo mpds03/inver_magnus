@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="es">
     <head>
         <meta charset="UTF-8">
@@ -21,9 +21,12 @@
                     <div class="mb-3">
                 <label for="" class="form-label">Categoria Del Producto</label>
                         <select class="form-style  form-select " name="IdCategoria" id="sel" required>
-                            <option value="" disabled selected>Tipo De Categoria</option>
+                            <option value="" disabled>Tipo De Categoria</option>
                             <?php foreach ($Categorias as $Categoria):?>
-                                <option value="<?= $Categoria['IdCategoria']; ?>"><?=$Categoria['nombre'];?></option>
+                                <option value="<?= $Categoria['IdCategoria']; ?>"
+                                    <?php if ($Categoria['IdCategoria'] == $Producto['IdCategoria']) echo 'selected'; ?>>
+                                    <?=$Categoria['nombre'];?>
+                                </option>
                                 <?php endforeach?>
                           </select>
                           </div>
@@ -59,8 +62,8 @@
                     </div>
                     </form>
                     <div class="d-flex justify-content-center p-3">
-                    <form action="index.php?action=InverBoard" method="post" enctype="multipart/form-data">
-                        <button type="submit"name="action" value="InverBoard" class="btn btn-outline-danger">Cancelar</button>
+                    <form action="index.php?action=listProducto" method="post" enctype="multipart/form-data">
+                        <button type="submit"name="action" value="listProducto" class="btn btn-outline-danger">Cancelar</button>
                         </form>
 
                         
