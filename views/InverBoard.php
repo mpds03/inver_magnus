@@ -40,7 +40,7 @@
 
             <div class="col-md-5 p-1">
                 <div class="row">
-                    <form action="index.php?action=barraBusqueda" method="get" class="d-flex" >
+                    <form action="index.php?action=barraBusqueda" method="get" class="d-flex">
                         <input type="hidden" name="action" value="barraBusqueda">
                         <input class="form-control mx-5 me-2" name="nombre" type="text" placeholder="Buscar Productos">
                         <button class="btn btn-outline-light me-5" type="submit">Buscar</button>
@@ -50,8 +50,8 @@
 
             <!--iniciar sesion, registrarse-->
             <div id="regis" class="col-md-4 p-1">
-                 <form action="index.php?action=login" method="GET">
-                <button type="submit" name="action" value="login" class="btn btn-light h-100">Iniciar sesión</button>
+                <form action="index.php?action=login" method="GET">
+                    <button type="submit" name="action" value="login" class="btn btn-light h-100">Iniciar sesión</button>
                 </form>
                 <form action="index.php?action=insertUser" method="GET">
                     <button type="submit" name="action" value="insertUser" class="btn btn-light ms-1 text-danger h-100">Registrarse</button>
@@ -114,7 +114,7 @@
                 <?php endif; ?>
                 <!--CARD CONECTADA A LA DATABASE-->
 
-            </div><!--fin del div de row de cards-->    
+            </div><!--fin del div de row de cards-->
 
 
             <!--footer-->
@@ -135,43 +135,46 @@
 
             <label for="">Productos</label>
             <form action="index.php?action=insertproducto" method="GET">
-                <button type="submit" name="action" value="insertproducto">Insertar Productos</button>
+                <button class="btn btn-danger" type="submit" name="action" value="insertproducto">Insertar Productos</button>
             </form>
 
 
             <form action="index.php?action=listProducto" method="GET">
-                <button type="submit" name="action" value="listProducto">Consultar Productos</button>
+                <button class="btn btn-danger" type="submit" name="action" value="listProducto">Consultar Productos</button>
             </form>
 
 
             <form action="index.php?action=listproductoporcodigo" method="GET">
-                <button type="submit" name="action" value="listproductoporcodigo">Actualizar Productos</button>
+                <button class="btn btn-danger" type="submit" name="action" value="listproductoporcodigo">Actualizar Productos</button>
             </form>
 
             <form action="index.php?action=deleteProducto" method="GET">
-                <button type="submit" name="action" value="deleteProducto">Eliminar Productos</button>
+                <button class="btn btn-danger" class="btn btn-danger" type="submit" name="action" value="deleteProducto">Eliminar Productos</button>
             </form>
 
             <label for="">Usuarios</label>
             <form action="index.php?action=insertUser" method="GET">
-                <button type="submmit" name="action" value="insertUser">Insertar Usuario</button>
+                <button class="btn btn-outline-danger" type="submmit" name="action" value="insertUser">Insertar Usuario</button>
             </form>
 
-    <form action="index.php?action=listUsers" method="GET">
-            <button type="submit" name="action" value="listUsers">Consultar Usuario</button>
-        </form>
-        <form action="index.php?action=searchUserByNumDocum" method="GET">
-            <button type="submit" name="action" value="searchUserByNumDocum">Consultar </button>
-        </form>
-        <form action="index.php?action=openForm" method="GET">
-            <button type="submit" name="action" value="openForm"> actualizar usuario</button>
-        </form>
-        <form action="index.php?action=openFormDelete" method="GET">
-            <button type="submit" name="action" value="openFormDelete"> eliminar</button>
-        </form>
-          <form action="index.php?action=login" method="GET">
-            <button type="submit" name="action" value="login">login</button>
-        </form>
+            <form action="index.php?action=listUsers" method="GET">
+                <button class="btn btn-outline-danger" type="submit" name="action" value="listUsers">Consultar Usuarios</button>
+            </form>
+            <form action="index.php?action=searchUserByNumDocum" method="GET">
+                <button class="btn btn-outline-danger" type="submit" name="action" value="searchUserByNumDocum">Consultar usuario por ID</button>
+            </form>
+            <form action="index.php?action=openForm" method="GET">
+                <button class="btn btn-outline-danger" type="submit" name="action" value="openForm">Actualizar usuario</button>
+            </form>
+            <form action="index.php?action=openFormDelete" method="GET">
+                <button class="btn btn-outline-danger" type="submit" name="action" value="openFormDelete">Eliminar usuario</button>
+            </form>
+            <form action="index.php?action=login" method="GET">
+                <button class="btn btn-outline-danger" type="submit" name="action" value="login">Inicio sesión usuario</button>
+            </form>
+            <form action="index.php?action=AdminVista" method="GET">
+                <button class="btn btn-danger" type="submit" name="action" value="AdminVista">Admin</button>
+            </form>
 
         </div>
     </div>
