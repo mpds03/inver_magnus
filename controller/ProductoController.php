@@ -80,4 +80,9 @@ class ProductoController{
         $nombre = $_GET['nombre'] ?? '';
         return $this->ProductoModel->BarraBusquedaWithCategoria($nombre);
     }
+
+    // Método para filtrar productos por categoría
+    public function ProductoByCategoria($IdCategoria) {
+        return $this->ProductoModel->getProductoByCategoria($IdCategoria);
+    }
 }

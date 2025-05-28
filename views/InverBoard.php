@@ -21,22 +21,18 @@
                                 <a href=""><button type="submit" value="InverBoard" class="btn btn-light text-danger h-100 ">Inicio</button></a>
                             </form>
                             <li class="nav-item dropdown">
-                                <button class="nav-link dropdown-toggle btn btn-light text-dark ms-1" href="#" role="button" data-bs-toggle="dropdown" aria-expand="false">Electrodomesticos</button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Cuidado del hogar</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Cocina</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Accesorios para electrodomesticos</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Cuidado personal</a></li>
-                                </ul>
+                                <!-- Menú dinámico de categorías -->
+                                <form method="get" action="index.php?action=verCategoria">
+                                    <input type="hidden" name="action" value="verCategoria">
+                                    <select name="IdCategoria" class="form-select ms-1 w-75" onchange="this.form.submit()">
+                                        <option value="">Categorías</option>
+                                        <option value="1">Cuidado del hogar</option>
+                                        <option value="2">Cocina</option>
+                                        <option value="3">Accesorios para electrodomesticos</option>
+                                        <option value="4">Cuidado personal</option>
+                                    </select>
+                                </form>
+                                <!-- Fin menú dinámico de categorías -->
                             </li>
                     </nav>
                 </div>

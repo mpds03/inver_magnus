@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,18 +7,15 @@
     <link rel="shortcut icon" href="/images/logo.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/productinfo.css">
-    <link rel="" href="js/productinfo.js">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"><!--esto no se pa que es-->
 </head>
-
 <body>
     <div class="container-fluid" id="cajamadre">
         <div class="row">
             <div class="col-md-3 p-1">
                 <div class="d-flex">
-                    <nav class="navbar-expand">
-                        <ul class="navbar-nav">
-                              <form action="index.php?action=InverBoard" method="post" enctype="multipart/form-data">
+            <nav class="navbar-expand">
+                    <ul class="navbar-nav">
+                      <form action="index.php?action=InverBoard" method="post" enctype="multipart/form-data">
                                 <a href=""><button type="submit" value="InverBoard" class="btn btn-light text-danger h-100 ">Inicio</button></a>
                             </form>
                             <li class="nav-item dropdown">
@@ -36,106 +32,63 @@
                                 </form>
                                 <!-- Fin menú dinámico de categorías -->
                             </li>
-                    </nav>
-                </div>
+              </nav>
             </div>
+        </div>
 
-            <div class="col-md-5 p-1">
-                <div class="row">
-                     <form action="index.php?action=barraBusqueda" method="get" class="d-flex" >
+        <div class="col-md-5 p-1">
+            <div class="row">
+                    <form action="index.php?action=barraBusqueda" method="get" class="d-flex" >
                         <input type="hidden" name="action" value="barraBusqueda">
                         <input class="form-control mx-5 me-2" name="nombre" type="text" placeholder="Buscar Productos">
                         <button class="btn btn-outline-light me-5" type="submit">Buscar</button>
                     </form>
                 </div>
-            </div>
-
-            <div id="regis" class="col-md-4 p-1">
-              <form action="index.php?action=login" method="GET">
+        </div>
+        
+        <div id="regis" class="col-md-4 p-1">
+            <form action="index.php?action=login" method="GET">
                 <button type="submit" name="action" value="login" class="btn btn-light h-100">Iniciar sesión</button>
                 </form>
                 <form action="index.php?action=insertUser" method="GET">
                     <button type="submit" name="action" value="insertUser" class="btn btn-light ms-1 text-danger h-100">Registrarse</button>
                 </form>
-            </div>
-
-        </div>
+         </div>
 
     </div>
+ 
+</div>
 
-    <div class="container-fluid" id="detallesproducto">
-        <!--AQUI VA LOS DETALLES DEL PRODUCTO Y ESO-->
-        <div class="container-fluid">
-            <div class="row">
-                <!--cajita del lado izquierdo-->
-                <div class="col-md-6 p-4 bg-light rounded shadow"><!--"Section"-->
-                    <?php foreach ($Productos as $producto): ?>
-                        <p class="text-uppercase fw-bold text-center text-secondary"><?php echo $producto['categoria_nombre']; ?></p></p><!--toca seguir modificando pero aja-->
+            <!-- CARDS -->
+            <div class="row row-cols-1 row-cols-md-5 mt-3">
 
-                        <h2 class="text-center"><?php echo $producto['nombre']; ?></h2>
-                        <img src="photo/<?= $producto['foto'] ?>" alt="Imagen producto" class="img-fluid d-block mx-auto">
+                <!--CARD CONECTADA A LA DATABASE-->
+                <?php if (!empty($Productos) && is_array($Productos)): ?>
+                <?php foreach ($Productos as $producto): ?>
+                    <div class="col">
+                        <div class="card h-100 text-center">
+                            <img src="photo/<?= $producto['foto'] ?>" class="card-img-top estructura" alt="Imagen del producto">
 
-                        <!-- Botones Descripción/Detalles -->
-                        <div class="text-start mt-3">
-                            <h5 class="text-danger">Descripción</h5>
-                            <p><?php echo $producto['descripcion']; ?></p>
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $producto['nombre']; ?></h5>
+                                <p class="card-text text-muted"><?php echo $producto['categoria_nombre']; ?></p>
+                                <p class="card-text"><?php echo $producto['descripcion']; ?></p>
+                                <p class="card-text"><?php echo $producto['precio'] ?></p>
+                                <a href="index.php?action=productinfo&codigo=<?= $producto['codigo'] ?>" class="btn btn-danger">Mirar</a>
 
-                            <div class="col-6">
-
+                                </form>
                             </div>
                         </div>
+                    </div>
+                <?php endforeach; ?>
+                <?php else: ?>
+                     <p class="text-center">No se encontraron productos con ese nombre.</p>
+                <?php endif; ?>
+                <!--CARD CONECTADA A LA DATABASE-->
 
-                        <!-- Botón Añadir al carrito -->
-                        <div class="text-center mt-4">
-                            <button class="btn btn-danger">Comprar</button>
-                            <button class="btn btn-danger">Añadir al carrito</button>
-                        </div>
+            </div><!--fin del div de row de cards-->
 
-                </div>
-
-                <!--Hola, cajita del lado derecho-->
-                <div class="col-md-6 p-4 bg-white rounded shadow"><!--"Section2"-->
-                    <h1 class="text-start">$<?= $producto['precio'] ?></h1>
-                <?php endforeach; ?><!--aca termina el foreach de conexion base de datos-->
-                <h5 class="text-start">Opiniones del producto</h5>
-
-                <!--Estrellas-->
-                <p class="text-start">Calificación:</p>
-                <div class="stars text-start mt-2" id="stars">
-                    <span data-value="1">★</span>
-                    <span data-value="2">★</span>
-                    <span data-value="3">★</span>
-                    <span data-value="4">★</span>
-                    <span data-value="5">★</span>
-                </div>
-                <!--Estrellas-->
-
-                <!--Comentarios de usuarios-->
-                <div class="mb-3">
-                    <label for="formularioreseña" class="form-label">Correo electrónico: </label>
-                    <input type="text" class="form-control" placeholder="ejemplocorreo@gmail.com">
-                </div>
-                <div class="mb-3">
-                    <textarea class="form-control" placeholder="Escribe tu opinión" required></textarea>
-                </div>
-                <div>
-                    <button id="botonenviar" type="submit" class="btn btn-danger">Enviar</button>
-                </div>
-
-                <div id="commentsection" class="mt-3">
-                    <p>Comentarios:</p>
-                    <ul id="commentlist"></ul>
-                </div>
-                <!--Comentarios de usuarios-->
-
-                </div>
-                <!--Hola, cajita del lado derecho-->
-            </div>
-        </div>
-
-    </div>
-
-    <!--footer-->
+              <!--footer-->
     <div class="container-fluid footer bg-secondary">
         <div class="row">
             <div class="col-12 p-3 mt-2 text-center">
@@ -151,8 +104,8 @@
     </div>
     <!--footer-->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/Bootstrap/js/bootstrap.bundle.min.js"></script>
-</body>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/Bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

@@ -75,4 +75,14 @@ class ProductoModel{
         $stmt->execute(['%' . $nombre . '%']);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    // Método para filtrar productos por categoría
+    public function getProductoByCategoria($IdCategoria){
+        $query = "SELECT p.*, c.nombre AS categoria_nombre FROM " . $this->table . " p
+                  LEFT JOIN categoria c ON p.IdCategoria = c.IdCategoria
+                  WHERE p.IdCategoria = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$IdCategoria]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     }

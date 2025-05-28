@@ -132,6 +132,17 @@
             include './views/productinfo.php';
             break;
 
+        // Mostrar productos por categoría en categorias.php
+        case 'verCategoria':
+            $IdCategoria = $_GET['IdCategoria'] ?? '';
+            $Productos = [];
+            if ($IdCategoria !== '') {
+                $Productos = $ProductoController->ProductoByCategoria($IdCategoria);
+            }
+            $Categorias = $CategoriaController->listCategoria();
+            include './views/categorias.php';
+            break;
+
 
         //todo lo de compra directa:
         case 'HacerCompra':

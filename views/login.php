@@ -42,7 +42,7 @@
  
                                             <!-- Enlace a recuperación de contraseña -->
                                             <p class="mb-0 mt-4 text-center">
-                                                <a href="#" class="link">¿Olvidó su contraseña?</a>
+                                                <button class="btn btn-link">¿Olvidó su contraseña?</button>
                                             </p>
  
                                         </div>
