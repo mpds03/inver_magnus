@@ -143,6 +143,16 @@
             include './views/categorias.php';
             break;
 
+            // mostrar vista de administrador:
+        case 'AdminVista':
+           // if ($_SESSION["rol"] == "admin") {
+              //  $Productos = $ProductoController->listProducto();
+                include './views/AdminVista.php';
+            //} else {
+               // header("Location: index.php?action=InverBoard");
+           // }
+            break;
+
 
         //todo lo de compra directa:
         case 'HacerCompra':
