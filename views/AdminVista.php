@@ -7,7 +7,7 @@
     <title>Administrador</title>
     <link rel="shortcut icon" href="/images/logo.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/AdminVista.css">
+    <link rel="stylesheet" href="css/productinfo.css">
     <link rel="" href="js/productinfo.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
