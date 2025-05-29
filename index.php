@@ -99,6 +99,7 @@
             break;
         case 'actualizarUser':
             $clientes = $clientecontroller->actualizar();
+            $clientes = $clientecontroller->listUsers();
             include './views/InverBoard.php';
             break;
         case 'openFormDelete':
@@ -151,7 +152,7 @@
             //} else {
                // header("Location: index.php?action=InverBoard");
            // }
-            break;
+            break;//tengo comentado lo de el if porque aun no hacemos lo de inicio de sesion completo uwu
 
 
         //todo lo de compra directa:

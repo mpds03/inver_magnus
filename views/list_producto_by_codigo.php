@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container mt-5">
-    <h1>Lista de Productos</h1>
+    <h1>Lista de Productos</h1> 
 
     <!-- <form action="index.php?action=listproductoporcodigo" method="get">
         <input type="hidden" name="action" value="listproductoporcodigo">
