@@ -54,8 +54,8 @@
                 </div>
 
                 </form>
-                <form class="text-center p-3" action="index.php?action=InverBoard" method="post" enctype="multipart/form-data">
-                    <button type="submit"name="action" value="InverBoard" class="btn btn-outline-danger">Cancelar</button>
+                <form class="text-center p-3" action="index.php?action=listProducto" method="post" enctype="multipart/form-data">
+                    <button type="submit"name="action" value="listProducto" class="btn btn-outline-danger">Cancelar</button>
                     </form>
         </div>
     </div>
