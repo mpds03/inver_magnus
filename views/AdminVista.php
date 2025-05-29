@@ -7,9 +7,9 @@
     <title>Administrador</title>
     <link rel="shortcut icon" href="/images/logo.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/productinfo.css">
+    <link rel="stylesheet" href="css/AdminVista.css">
     <link rel="" href="js/productinfo.js">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"><!--esto no se pa que es-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
@@ -61,26 +61,22 @@
             </div>
             <!--iniciar sesion, registrarse-->
 
-            <!--Botones del admin-->
+            
+
+        </div>
+
+    </div>
+    <!--Botones del admin-->
             <div class="col-md-3 p-1">
                 <label for="">Productos</label>
                 <form action="index.php?action=insertproducto" method="GET">
                     <button class="btn btn-danger" type="submit" name="action" value="insertproducto">Insertar Productos</button>
                 </form>
 
-
                 <form action="index.php?action=listProducto" method="GET">
                     <button class="btn btn-danger" type="submit" name="action" value="listProducto">Consultar Productos</button>
                 </form>
 
-
-                <form action="index.php?action=listproductoporcodigo" method="GET">
-                    <button class="btn btn-danger" type="submit" name="action" value="listproductoporcodigo">Actualizar Productos</button>
-                </form>
-
-                <form action="index.php?action=deleteProducto" method="GET">
-                    <button class="btn btn-danger" class="btn btn-danger" type="submit" name="action" value="deleteProducto">Eliminar Productos</button>
-                </form>
 
                 <label for="">Usuarios</label>
                 <form action="index.php?action=insertUser" method="GET">
@@ -104,15 +100,6 @@
                 </form>
             </div>
             <!--Botones del admin-->
-
-
-
-            </div><!--fin del div de row de cards-->
-
-        </div>
-    </div>
-    </div> <!-- CARDS -->
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
