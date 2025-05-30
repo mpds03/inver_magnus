@@ -1,8 +1,5 @@
 <?php
 session_start();
-
-// No verifiques si está logueado aquí, así cualquier usuario puede ver el producto.
-// Si necesitas el nombre solo si está logueado:
 $nombre = isset($_SESSION['cliente']) ? htmlspecialchars($_SESSION['cliente']['nombres']) : '';
 ?>
 <!DOCTYPE html>
