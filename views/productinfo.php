@@ -1,14 +1,9 @@
 <?php
 session_start();
 
-// Verificar si está logueado
-if (!isset($_SESSION['cliente'])) {
-    header("Location: index.php?action=login");
-    exit;
-}
-
-$nombre = htmlspecialchars($_SESSION['cliente']['nombres']);
-
+// No verifiques si está logueado aquí, así cualquier usuario puede ver el producto.
+// Si necesitas el nombre solo si está logueado:
+$nombre = isset($_SESSION['cliente']) ? htmlspecialchars($_SESSION['cliente']['nombres']) : '';
 ?>
 <!DOCTYPE html>
 <html lang="es">
