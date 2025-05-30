@@ -55,4 +55,12 @@ class CarritoController {
         header("Location: index.php?action=verCarrito");
         exit;
     }
+
+    public function obtenerCarritoPorDocumento($numero_documento) {
+        return $this->model->obtenerCarrito($numero_documento);
+    }
+
+    public function obtenerProductosPorCarrito($idcarrito) {
+        return $this->model->obtenerProductos($idcarrito);
+    }
 }

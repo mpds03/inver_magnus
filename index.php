@@ -176,13 +176,24 @@ switch ($action) {
 
     // --- FACTURA ---
     case 'generarFactura':
-        // Aquí deberías obtener los productos del carrito y el número de documento del usuario
         session_start();
         $numero_documento = $_SESSION['cliente']['numero_documento'] ?? null;
-        // Supón que tienes una función para obtener los productos del carrito
-        $productos = []; // Debes obtener los productos reales del carrito aquí
-        $FacturaController->generar($productos, $numero_documento);
-        // Puedes redirigir o mostrar una vista de factura
+
+        // Obtener el carrito y los productos del carrito usando métodos públicos
+        $carrito = $CarritoController->obtenerCarritoPorDocumento($numero_documento);
+        $productos = [];
+        if ($carrito) {
+            $productos = $CarritoController->obtenerProductosPorCarrito($carrito['idcarrito']);
+        }
+
+        // Generar la factura (debes modificar tu FacturaController para que retorne los datos)
+        $facturaData = $FacturaController->generar($productos, $numero_documento);
+
+        // $facturaData debe ser un array con ['factura' => ..., 'detalles' => ...]
+        $factura = $facturaData['factura'];
+        $detalles = $facturaData['detalles'];
+
+        include './views/factura.php';
         break;
 
     //NO TOCAR:
