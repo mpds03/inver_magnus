@@ -2,25 +2,21 @@
 require_once './model/FacturaModel.php';
 require_once './config/database.php';
 
-class FacturaController{
+class FacturaController {
     private $db;
-    private $FacturaModel;
-
-    public function __construct(){
+    private $model;
+    public function __construct() {
         $database = new Database();
         $this->db = $database->getConnection();
-        $this->FacturaModel = new FacturaModel($this->db);
+        $this->model = new FacturaModel($this->db);
     }
-
-    public function insertFactura(){
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $idfactura = $_POST['idfactura'];
-            $fecha = $_POST['fecha'];
-            $numero_documento = $_POST['numero_documento'];
-            $total = $_POST['total'];
-
-            $this->FacturaModel->insertFactura($idfactura, $fecha, $numero_documento, $total);
-            header("Location: index.php?action=carrito");
+    public function generar($productos, $numero_documento) {
+        $total = 0;
+        foreach ($productos as $p) $total += $p['cantidad'] * $p['precio_unitario'];
+        $idFactura = $this->model->crearFactura($numero_documento, $total);
+        foreach ($productos as $p) {
+            $this->model->agregarDetalle($idFactura, $p['codigo'], $p['cantidad'], $p['precio_unitario'], $p['cantidad'] * $p['precio_unitario']);
         }
+        return $idFactura;
     }
 }

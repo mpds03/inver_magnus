@@ -10,19 +10,9 @@ class CompraDirectaModel
         $this->conn = $db;
     }
 
-    public function HacerCompra($numero_documento, $dirección)
-    {
-        $query = "INSERT INTO " . $this->table . "(numero_documento, dirección) VALUES (?,?)";
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute([$numero_documento, $dirección]);
+    public function crearCompra($numero_documento, $direccion) {
+        $stmt = $this->conn->prepare("INSERT INTO compra (numero_documento, direccion) VALUES (?, ?)");
+        $stmt->execute([$numero_documento, $direccion]);
         return $this->conn->lastInsertId();
-    }
-
-    public function agregarDetalleCompra($iddetalle, $idfactura, $codigo, $cantidad, $precio_unitario, $total_detalle)
-    {
-        $query = "INSERT INTO" . $this->table2 . "(IdDetalle, IdFactura, codigo, cantidad, precio_unitario, total_detalle) VALUES (?,?,?,?,?)";
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute([$iddetalle, $idfactura, $codigo, $cantidad, $precio_unitario, $total_detalle]);
-        //return $this->conn->lastInsertId();
     }
 }

@@ -109,14 +109,22 @@ $nombre = htmlspecialchars($_SESSION['cliente']['nombres']);
 
                         <!-- Botnes compra directa y añadir al carrito -->
                         <div class="text-center mt-4">
-                            <button class="btn btn-danger">Comprar</button>
-                            
-                    <!--añadir al carrito:-->
-                            <form action="index.php?action=palCarrito" method="post">
-                                <input type="hidden" name="codigo" value="<?= $producto['codigo'] ?>">
-                                <button class="btn btn-danger">Añadir al carrito</button>
-                            </form>
-                        </div>
+    <!-- Formulario de compra directa -->
+    <form action="index.php?action=compraDirecta" method="post" class="d-inline">
+        <input type="hidden" name="codigo" value="<?= $producto['codigo'] ?>">
+        <input type="hidden" name="precio" value="<?= $producto['precio'] ?>">
+        <input type="number" name="cantidad" value="1" min="1" max="<?= $producto['cantidad'] ?>" class="form-control d-inline w-auto" style="width:80px;display:inline-block;" required>
+        <input type="text" name="direccion" placeholder="Dirección de envío" class="form-control d-inline w-auto" style="width:180px;display:inline-block;" required>
+        <button type="submit" class="btn btn-danger">Comprar ahora</button>
+    </form>
+    <!-- Formulario para añadir al carrito -->
+    <form action="index.php?action=agregarCarrito" method="post" class="d-inline ms-2">
+        <input type="hidden" name="codigo" value="<?= $producto['codigo'] ?>">
+        <input type="hidden" name="precioUnitario" value="<?= $producto['precio'] ?>">
+        <input type="number" name="cantidad" value="1" min="1" max="<?= $producto['cantidad'] ?>" class="form-control d-inline w-auto" style="width:80px;display:inline-block;" required>
+        <button type="submit" class="btn btn-outline-danger">Añadir al carrito</button>
+    </form>
+</div>
 
                 </div>
 

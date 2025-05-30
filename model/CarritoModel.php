@@ -22,4 +22,23 @@ class CarritoModel
         $stmt = $this->conn->prepare($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function obtenerCarrito($numero_documento) {
+        $stmt = $this->db->prepare("SELECT * FROM carrito WHERE numero_documento = ?");
+        $stmt->execute([$numero_documento]);
+        return $stmt->fetch();
+    }
+    public function crearCarrito($numero_documento) {
+        $stmt = $this->db->prepare("INSERT INTO carrito (numero_documento) VALUES (?)");
+        $stmt->execute([$numero_documento]);
+        return $this->db->lastInsertId();
+    }
+    public function agregarProducto($idcarrito, $codigo, $cantidad, $precioUnitario) {
+        $stmt = $this->db->prepare("INSERT INTO detalle_carrito (idcarrito, codigo, cantidad, precioUnitario) VALUES (?, ?, ?, ?)");
+        $stmt->execute([$idcarrito, $codigo, $cantidad, $precioUnitario]);
+    }
+    public function obtenerProductos($idcarrito) {
+        $stmt = $this->db->prepare("SELECT * FROM detalle_carrito WHERE idcarrito = ?");
+        $stmt->execute([$idcarrito]);
+        return $stmt->fetchAll();
+    }
 }

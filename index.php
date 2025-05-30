@@ -5,12 +5,16 @@ require_once './controller/clientecontroller.php';
 require_once './controller/TipDocumController.php';
 require_once './controller/categoriacontroller.php';
 require_once './controller/CompraDirectaController.php';
+require_once './controller/CarritoController.php'; // <-- NUEVO
+require_once './controller/FacturaController.php'; // <-- NUEVO
 
 $ProductoController = new ProductoController(); //Insertar, Actualizar, Eliminar, Listar productos
 $CategoriaController = new CategoriaController();
 $clientecontroller = new clientecontroller();
 $TipDocumController = new TipDocumController();
 $CompraDirectaController = new CompraDirectaController();
+$CarritoController = new CarritoController(); // <-- NUEVO
+$FacturaController = new FacturaController(); // <-- NUEVO
 
 $action = $_GET['action'] ?? 'InverBoard';
 
@@ -149,20 +153,34 @@ switch ($action) {
         include './views/InverBoard.php';
         break;
 
+    // --- COMPRA DIRECTA ---
+    case 'compraDirecta':
+        // Muestra el formulario o procesa la compra directa
+        $CompraDirectaController->comprar();
+        break;
+
+    // --- CARRITO DE COMPRAS ---
+    case 'agregarCarrito':
+        // Agrega producto al carrito
+        $CarritoController->agregar();
+        break;
     case 'verCarrito':
-        if ($_GET['action'] == 'palCarrito') {
-            $controller->palCarrito();
-        } elseif ($_GET['action'] == 'verCarrito') {
-            $controller->verCarrito();
-        } elseif ($_GET['action'] == 'confirmarCompra') {
-            $controller->confirmarCompra();
-        } else {
-            header("Location: index.php?action=InverBoard");
-        }
+        // Muestra el carrito del usuario
+        $CarritoController->ver();
+        break;
 
+    // --- FACTURA ---
+    case 'generarFactura':
+        // Aquí deberías obtener los productos del carrito y el número de documento del usuario
+        session_start();
+        $numero_documento = $_SESSION['cliente']['numero_documento'] ?? null;
+        // Supón que tienes una función para obtener los productos del carrito
+        $productos = []; // Debes obtener los productos reales del carrito aquí
+        $FacturaController->generar($productos, $numero_documento);
+        // Puedes redirigir o mostrar una vista de factura
+        break;
 
-
-        //NO TOCAR:
+    //NO TOCAR:
     default:
         $Productos = $ProductoController->listProducto();
         include './views/InverBoard.php';
