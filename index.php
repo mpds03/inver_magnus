@@ -160,13 +160,18 @@ switch ($action) {
         break;
 
     // --- CARRITO DE COMPRAS ---
-    case 'agregarCarrito':
-        // Agrega producto al carrito
-        $CarritoController->agregar();
-        break;
     case 'verCarrito':
         // Muestra el carrito del usuario
         $CarritoController->ver();
+        break;
+    case 'agregarCarrito':
+        $CarritoController->agregar();
+        break;
+    case 'eliminarDelCarrito':
+        $CarritoController->eliminarProducto();
+        break;
+    case 'vaciarCarrito':
+        $CarritoController->vaciar();
         break;
 
     // --- FACTURA ---

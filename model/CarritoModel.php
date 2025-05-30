@@ -2,43 +2,43 @@
 class CarritoModel
 {
     private $conn;
-    private $table = 'Carrito';
+    private $table = 'carrito';
 
     public function __construct($db)
     {
         $this->conn = $db;
     }
 
-    public function InsertCarrito($idcarrito, $numero_documento)
-    {
-        $query = "INSERT INTO " . $this->table . "(idcarrito, numero_documento) VALUES (?,?)";
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute([$idcarrito, $numero_documento]);
+    public function obtenerCarrito($numero_documento) {
+        $stmt = $this->conn->prepare("SELECT * FROM carrito WHERE numero_documento = ?");
+        $stmt->execute([$numero_documento]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function getCompra()
-    {
-        $query = "SELECT * FROM " . $this->table;
-        $stmt = $this->conn->prepare($query);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-    public function obtenerCarrito($numero_documento) {
-        $stmt = $this->db->prepare("SELECT * FROM carrito WHERE numero_documento = ?");
-        $stmt->execute([$numero_documento]);
-        return $stmt->fetch();
-    }
     public function crearCarrito($numero_documento) {
-        $stmt = $this->db->prepare("INSERT INTO carrito (numero_documento) VALUES (?)");
+        $stmt = $this->conn->prepare("INSERT INTO carrito (numero_documento) VALUES (?)");
         $stmt->execute([$numero_documento]);
-        return $this->db->lastInsertId();
+        return $this->conn->lastInsertId();
     }
+
     public function agregarProducto($idcarrito, $codigo, $cantidad, $precioUnitario) {
-        $stmt = $this->db->prepare("INSERT INTO detalle_carrito (idcarrito, codigo, cantidad, precioUnitario) VALUES (?, ?, ?, ?)");
+        $stmt = $this->conn->prepare("INSERT INTO detalle_carrito (idcarrito, codigo, cantidad, precioUnitario) VALUES (?, ?, ?, ?)");
         $stmt->execute([$idcarrito, $codigo, $cantidad, $precioUnitario]);
     }
+
     public function obtenerProductos($idcarrito) {
-        $stmt = $this->db->prepare("SELECT * FROM detalle_carrito WHERE idcarrito = ?");
+        $stmt = $this->conn->prepare("SELECT * FROM detalle_carrito WHERE idcarrito = ?");
         $stmt->execute([$idcarrito]);
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function eliminarProducto($idDetalleCarrito) {
+        $stmt = $this->conn->prepare("DELETE FROM detalle_carrito WHERE idDetalleCarrito = ?");
+        $stmt->execute([$idDetalleCarrito]);
+    }
+
+    public function vaciarCarrito($idcarrito) {
+        $stmt = $this->conn->prepare("DELETE FROM detalle_carrito WHERE idcarrito = ?");
+        $stmt->execute([$idcarrito]);
     }
 }
