@@ -138,10 +138,16 @@ class clientecontroller {
      }
  }
     public function logout() {
+    if (session_status() === PHP_SESSION_NONE) {
         session_start();
-        session_destroy();
-        header("Location: index.php?action=login");
     }
+    
+    session_unset(); // Limpia todas las variables de sesión
+    session_destroy(); // Destruye la sesión
+
+    header("Location: index.php?action=Inverboard");
+    exit;
+}
 
 
 }

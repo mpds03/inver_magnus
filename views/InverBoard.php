@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+// Verificar si está logueado
+if (!isset($_SESSION['cliente'])) {
+    header("Location: index.php?action=login");
+    exit;
+}
+
+$nombre = htmlspecialchars($_SESSION['cliente']['nombres']);
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,6 +22,9 @@
 </head>
 
 <body>
+      <h1>Bienvenid@, <?php echo $nombre; ?> 👋</h1>
+      <form action="index.php?action=logout" method="post"><button>Cerrar sesión</button></form>
+
     <div class="container-fluid" id="cajamadre">
         <div class="row">
             <div class="col-md-3 p-1">
