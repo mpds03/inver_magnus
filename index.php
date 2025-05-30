@@ -167,6 +167,12 @@
         break;
 
 
+    case 'logout':
+    $cliente=$clientecontroller->logout();
+    include './views/InverBoard.php';
+    break;
+
+
 
         default:
             $Productos = $ProductoController->listProducto();
