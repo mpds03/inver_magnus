@@ -1,16 +1,3 @@
-<?php
- session_start();
-
- //Verificar si está logueado
-if (!isset($_SESSION['cliente'])) {
-    header("Location: index.php?action=login");
-    exit;
-}
-
-$nombre = htmlspecialchars($_SESSION['cliente']['nombres']);
-$apellidos = htmlspecialchars($_SESSION['cliente']['apellidos']);
-$numero_documento = htmlspecialchars($_SESSION['cliente']['numero_documento']);
-?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -24,7 +11,19 @@ $numero_documento = htmlspecialchars($_SESSION['cliente']['numero_documento']);
 </head>
 
 <body>
-      <p>Bienvenid@, <?php echo $nombre," ", $apellidos; ?> 👋</p>
+
+<?php
+ session_start();
+if (isset($_SESSION['cliente'])): ?>
+<?php
+$nombre = htmlspecialchars($_SESSION['cliente']['nombres']);
+$apellidos = htmlspecialchars($_SESSION['cliente']['apellidos']);
+$numero_documento = htmlspecialchars($_SESSION['cliente']['numero_documento']);
+?>
+<div class="container-fluid bg-danger text-light text-center p-3">
+<h4>Bienvenid@, <?php echo $nombre," ", $apellidos; ?> 👋</h4>
+</div>
+<?php endif; ?>
 
     <div class="container-fluid" id="cajamadre">
         <div class="row">

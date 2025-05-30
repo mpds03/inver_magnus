@@ -14,15 +14,23 @@ class CompraDirectaController{
 
     //aca se supone que va el resto y eso asasjas
     public function HacerCompra(){
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $numero_documento = $_POST['numero_documento']; //doc del usuario
-            $direccion = $_POST['direccion']; //direccion del usuario
+        session_start();
+        // Solo permite comprar si el usuario está logueado
+        if (!isset($_SESSION['cliente'])) {
+            echo 'Debes iniciar sesión para comprar.';
+            return;
+        }
 
-            //insertar compra:
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Obtiene los datos del usuario desde la sesión
+            $numero_documento = $_SESSION['cliente']['numero_documento'];
+            $direccion = $_SESSION['cliente']['direccion']; // Debe estar en la sesión
+
+            // Inserta la compra
             $idCompra = $this->CompraDirectaModel->HacerCompra($numero_documento, $direccion);
-            
-            //verificar existencia de detalles en el POST
-            if(isset($_POST['detalle_factura'])&& is_Array($_POST['detalle_factura'])){
+
+            // Verifica y agrega los detalles de la compra
+            if(isset($_POST['detalle_factura']) && is_array($_POST['detalle_factura'])){
                 foreach ($_POST['detalle_factura'] as $detalle){
                     $iddetalle = $detalle['IdDetalle'];
                     $idfactura = $detalle['IdFactura'];
@@ -34,11 +42,10 @@ class CompraDirectaController{
                     $this->CompraDirectaModel->agregarDetalleCompra($iddetalle, $idfactura, $codigo, $cantidad, $precio_unitario, $total_detalle);
                 }
             }
-            echo 'Compra hecha con exito :)';
+            // Redirige para evitar el reenvío del formulario
+            header("Location: index.php?action=InverBoard&mensaje=compra_exitosa");
+            exit;
         }
-
-    //public function 
-
     }
     
     
