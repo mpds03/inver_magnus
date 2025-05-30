@@ -99,6 +99,7 @@
             break;
         case 'actualizarUser':
             $clientes = $clientecontroller->actualizar();
+            $clientes = $clientecontroller->listUsers();
             include './views/InverBoard.php';
             break;
         case 'openFormDelete':
@@ -109,21 +110,6 @@
             $clientes = $clientecontroller->eliminar();
             include './views/InverBoard.php';
             break;
-
-
-        // case 'login':
-        //     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        //         $cliente = $clientecontroller->Login();
-        //     }else {
-        //       $cliente= $clientecontroller->Login();
-        //       $docums = $TipDocumController->listTipDocum();
-        //       include './views/iniciosesion.php';
-        //     }
-        //     break;
-
-        //     case 'inverBoard':
-        //         include './views/InverBoard.php';
-        //         break;
 
         //caso de vista productinfo:
         case 'productinfo':
@@ -151,7 +137,7 @@
             //} else {
                // header("Location: index.php?action=InverBoard");
            // }
-            break;
+            break;//tengo comentado lo de el if porque aun no hacemos lo de inicio de sesion completo uwu
 
 
         //todo lo de compra directa:
@@ -174,6 +160,8 @@
 
 
 
+        
+//NO TOCAR:
         default:
             $Productos = $ProductoController->listProducto();
             include './views/InverBoard.php';

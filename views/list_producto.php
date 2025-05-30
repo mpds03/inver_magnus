@@ -11,14 +11,18 @@
 <body>
     <div class="container mt-5">
     <h1>Lista de Productos</h1>
+    <div class="d-flex justify-content-between">
 
-    <form action="index.php?action=listproductoporcodigo" method="get">
+    <form class="d-flex mb-3" action="index.php?action=listproductoporcodigo" method="get">
         <input type="hidden" name="action" value="listproductoporcodigo">
-        <label for="">Codigo</label>
-        <input type="text" name="codigo" required>
-        <input type="submit" class="btn btn-outline-danger" value="Buscar">
+        <input type="text" class="form-control form-control-md me-1" name="codigo" placeholder="Buscar Por Codigo" required>
+        <input type="submit" class="btn btn-danger " value="Buscar">
     </form>
 
+    <form action="index.php?action=insertproducto" method="GET">
+                <button type="submit" class="btn btn-danger mb-3" name="action" value="insertproducto">Insertar Productos</button>
+            </form>
+</div>
     <table border="1" mb="10px" mt="10px" class="table table-striped">
         <thead>
             <tr>
