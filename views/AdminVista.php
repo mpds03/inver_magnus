@@ -69,9 +69,7 @@
     <!--Botones del admin-->
             <div class="col-md-3 p-1">
                 <label for="">Productos</label>
-                <form action="index.php?action=insertproducto" method="GET">
-                    <button class="btn btn-danger" type="submit" name="action" value="insertproducto">Insertar Productos</button>
-                </form>
+                
 
                 <form action="index.php?action=listProducto" method="GET">
                     <button class="btn btn-danger" type="submit" name="action" value="listProducto">Consultar Productos</button>

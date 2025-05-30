@@ -111,21 +111,6 @@
             include './views/InverBoard.php';
             break;
 
-
-        // case 'login':
-        //     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        //         $cliente = $clientecontroller->Login();
-        //     }else {
-        //       $cliente= $clientecontroller->Login();
-        //       $docums = $TipDocumController->listTipDocum();
-        //       include './views/iniciosesion.php';
-        //     }
-        //     break;
-
-        //     case 'inverBoard':
-        //         include './views/InverBoard.php';
-        //         break;
-
         //caso de vista productinfo:
         case 'productinfo':
             $Productos = $ProductoController->ProductoByCodigo();
@@ -169,6 +154,8 @@
 
 
 
+        
+//NO TOCAR:
         default:
             $Productos = $ProductoController->listProducto();
             include './views/InverBoard.php';

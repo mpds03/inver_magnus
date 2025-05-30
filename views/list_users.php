@@ -10,21 +10,21 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container mt-5">
         <h1>Lista de Usuarios</h1>
-        <!--form de busqueda de usuario:-->
-        <form action="index.php?action=searchUserByNumDocum" method="GET">
-            <input type="hidden" name="action" value="searchUserByNumDocum">
-            <label for="">Buscar por documento:</label>
-            <input type="text" name="numero_documento">
-            <input type="submit" value="Buscar" class="btn btn-danger">
-        </form>
+        <div class="d-flex justify-content-between">
+            <!--form de busqueda de usuario:-->
+            <form class="d-flex mb-3" action="index.php?action=searchUserByNumDocum" method="GET">
+                <input type="hidden" name="action" value="searchUserByNumDocum">
+                <input type="text" class="form-control form-control-md me-1" name="numero_documento" placeholder="Buscar por documento" required>
+                <input type="submit" class="btn btn-danger" value="Buscar">
+            </form>
 
-        <form action="index.php?action=insertUser" method="GET">
-            <button class="btn btn-danger" type="submmit" name="action" value="insertUser">Insertar Usuario</button>
-        </form>
-        <!--form de busqueda de usuario-->
-
+            <form action="index.php?action=insertUser" method="GET">
+                <button class="btn btn-danger" type="submmit" name="action" value="insertUser">Insertar Usuario</button>
+            </form>
+            <!--form de busqueda de usuario-->
+        </div><!--fin container mt-5-->
         <table border="1" mb="10px" mt="10px" class="table table-striped">
             <thead>
                 <tr>
@@ -33,8 +33,10 @@
                     <th>Nombres</th>
                     <th>Apellidos</th>
                     <th>Teléfono</th>
-                    <th>contraseña</th>
-                    <th>email</th>
+                    <th>Contraseña</th>
+                    <th>Correo electrónico</th>
+                    <th>Actualizar</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
