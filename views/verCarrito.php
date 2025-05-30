@@ -1,16 +1,11 @@
-<?php
- session_start();
+<?php session_start(); ?>
+<ul>
+<?php foreach ($carrito as $codigo => $cantidad): ?>
+    <li>Producto: <?= htmlspecialchars($codigo) ?> | Cantidad: <?= $cantidad ?></li>
+<?php endforeach; ?>
+</ul>
 
- //Verificar si está logueado
-if (!isset($_SESSION['cliente'])) {
-    header("Location: index.php?action=login");
-    exit;
-}
 
-$nombre = htmlspecialchars($_SESSION['cliente']['nombres']);
-$apellidos = htmlspecialchars($_SESSION['cliente']['apellidos']);
-$numero_documento = htmlspecialchars($_SESSION['cliente']['numero_documento']);
-?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -20,11 +15,12 @@ $numero_documento = htmlspecialchars($_SESSION['cliente']['numero_documento']);
     <title>Inicio</title>
     <link rel="shortcut icon" href="images/logo.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/inverboard.css">
+    <link rel="stylesheet" href="css/productinfo.css">
 </head>
 
 <body>
-      <p>Bienvenid@, <?php echo $nombre," ", $apellidos; ?> 👋</p>
+      <h1>Bienvenid@, <?php echo $nombre; ?> 👋</h1>
+      <form action="index.php?action=logout" method="post"><button>Cerrar sesión</button></form>
 
     <div class="container-fluid" id="cajamadre">
         <div class="row">
@@ -63,65 +59,21 @@ $numero_documento = htmlspecialchars($_SESSION['cliente']['numero_documento']);
                 </div>
             </div>
 
-           <!--iniciar sesion, registrarse o cerrar sesión-->
-<div id="regis" class="col-md-4 p-1 d-flex justify-content-end">
-    <?php if (isset($_SESSION['rol']) && ($_SESSION['rol'] === 0 || $_SESSION['rol'] === 1)): ?>
-        <form action="index.php" method="GET" class="me-2">
-            <input type="hidden" name="action" value="searchClienteXNumDocum">
-            <input type="hidden" name="numero_documento" value="<?= $numero_documento ?>">
-            <button type="submit" class="btn btn-light text-danger h-100">
-                Actualizar Datos
-            </button>
-        </form>
-        <form action="index.php?action=logout" method="POST">
-            <button type="submit" class="btn btn-light text-danger h-100 ">
-                Cerrar sesión (<?= $_SESSION['rol'] === 1 ? 'Admin' : 'Usuario' ?>)
-            </button>
-        </form>
-    <?php else: ?>
-        <form action="index.php?action=login" method="GET">
-            <button type="submit" name="action" value="login" class="btn btn-light h-100">Iniciar sesión</button>
-        </form>
-        <form action="index.php?action=insertUser" method="GET">
-            <button type="submit" name="action" value="insertUser" class="btn btn-light ms-1 text-danger h-100">Registrarse</button>
-        </form>
-    <?php endif; ?>
-</div>
-<!--fin de control de sesión-->
-
-
-            <div class="col-md-5 p-1" id="cajamadre">
-                <div class="row">
-                    <!--titulo1 de top articulos mas vendidos-->
-                    <div class="text-center" id="titulo1">
-                        <div class="text-light ">
-                            <p>TOP 3 PRODUCTOS <br>
-                                MAS VENDIDOS</p>
-                        </div>
-                        <div class="col-md-3 p-1">
-                            <img id="licu" class="img-fluid" src="/photo/licubatiplancha.png" alt="">
-                        </div>
-                    </div>
-
-
-                    <!--Lista de productos mas vendidos:-->
-                    <div class="position-relative" id="bati-container">
-                        <div id="bati" class="d-flex flex-row align-items-center">
-                            <button class="btn btn-light text-danger my-5 ">Licuadoras</button>
-                            <button class="btn btn-light text-danger my-5">Batidora de mano</button>
-                            <button class="btn btn-light text-danger my-5">Plachas</button>
-                        </div>
-                    </div>
-                    <!--Lista de productos mas vendidos.-->
-
-                </div>
+            <!--iniciar sesion, registrarse-->
+            <div id="regis" class="col-md-4 p-1">
+                <form action="index.php?action=login" method="GET">
+                    <button type="submit" name="action" value="login" class="btn btn-light h-100">Iniciar sesión</button>
+                </form>
+                <form action="index.php?action=insertUser" method="GET">
+                    <button type="submit" name="action" value="insertUser" class="btn btn-light ms-1 text-danger h-100">Registrarse</button>
+                </form>
             </div>
+            <!--iniciar sesion, registrarse-->
+            
 
 
-            <!-- CARDS -->
+            <!-- contenedor de los productos del carrito -->
             <div class="row row-cols-1 row-cols-md-5 mt-3">
-
-                <!--CARD CONECTADA A LA DATABASE-->
                 <?php if (!empty($Productos) && is_array($Productos)): ?>
                     <?php foreach ($Productos as $producto): ?>
                         <div class="col">
@@ -134,7 +86,9 @@ $numero_documento = htmlspecialchars($_SESSION['cliente']['numero_documento']);
                                     <p class="card-text"><?php echo $producto['descripcion']; ?></p>
                                     <p class="card-text"><?php echo $producto['precio'] ?></p>
                                     <a href="index.php?action=productinfo&codigo=<?= $producto['codigo'] ?>" class="btn btn-danger">Mirar</a>
-
+<form action="index.php?action=confirmarCompra" method="post">
+    <button type="submit">Confirmar Compra</button>
+</form>
                                     </form>
                                 </div>
                             </div>
@@ -143,9 +97,8 @@ $numero_documento = htmlspecialchars($_SESSION['cliente']['numero_documento']);
                 <?php else: ?>
                     <p class="text-center">Producto actualizado con exito</p>
                 <?php endif; ?>
-                <!--CARD CONECTADA A LA DATABASE-->
-
-            </div><!--fin del div de row de cards-->
+            </div>
+            <!-- contenedor de los productos del carrito -->
 
 
             <!--footer-->
@@ -163,50 +116,7 @@ $numero_documento = htmlspecialchars($_SESSION['cliente']['numero_documento']);
                 </div>
             </div>
             <!--footer-->
-
-            <label for="">Productos</label>
-            <form action="index.php?action=insertproducto" method="GET">
-                <button class="btn btn-danger" type="submit" name="action" value="insertproducto">Insertar Productos</button>
-            </form>
-
-
-            <form action="index.php?action=listProducto" method="GET">
-                <button class="btn btn-danger" type="submit" name="action" value="listProducto">Consultar Productos</button>
-            </form>
-
-
-            <form action="index.php?action=listproductoporcodigo" method="GET">
-                <button class="btn btn-danger" type="submit" name="action" value="listproductoporcodigo">Actualizar Productos</button>
-            </form>
-
-            <form action="index.php?action=deleteProducto" method="GET">
-                <button class="btn btn-danger" class="btn btn-danger" type="submit" name="action" value="deleteProducto">Eliminar Productos</button>
-            </form>
-
-            <label for="">Usuarios</label>
-            <form action="index.php?action=insertUser" method="GET">
-                <button class="btn btn-outline-danger" type="submmit" name="action" value="insertUser">Insertar Usuario</button>
-            </form>
-
-            <form action="index.php?action=listUsers" method="GET">
-                <button class="btn btn-outline-danger" type="submit" name="action" value="listUsers">Consultar Usuarios</button>
-            </form>
-            <form action="index.php?action=searchUserByNumDocum" method="GET">
-                <button class="btn btn-outline-danger" type="submit" name="action" value="searchUserByNumDocum">Consultar usuario por ID</button>
-            </form>
-            <form action="index.php?action=openForm" method="GET">
-                <button class="btn btn-outline-danger" type="submit" name="action" value="openForm">Actualizar usuario</button>
-            </form>
-            <form action="index.php?action=openFormDelete" method="GET">
-                <button class="btn btn-outline-danger" type="submit" name="action" value="openFormDelete">Eliminar usuario</button>
-            </form>
-            <form action="index.php?action=login" method="GET">
-                <button class="btn btn-outline-danger" type="submit" name="action" value="login">Inicio sesión usuario</button>
-            </form>
-            <form action="index.php?action=AdminVista" method="GET">
-                <button class="btn btn-danger" type="submit" name="action" value="AdminVista">Admin</button>
-            </form>
-
+            
         </div>
     </div>
     </div> <!-- CARDS -->

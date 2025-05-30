@@ -21,7 +21,7 @@ $nombre = htmlspecialchars($_SESSION['cliente']['nombres']);
     <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/productinfo.css">
     <link rel="" href="js/productinfo.js">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"><!--esto no se pa que es-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"><!--uwu-->
 </head>
 
 <body>
@@ -107,10 +107,15 @@ $nombre = htmlspecialchars($_SESSION['cliente']['nombres']);
                             </div>
                         </div>
 
-                        <!-- Botón Añadir al carrito -->
+                        <!-- Botnes compra directa y añadir al carrito -->
                         <div class="text-center mt-4">
                             <button class="btn btn-danger">Comprar</button>
-                            <button class="btn btn-danger">Añadir al carrito</button>
+                            
+                    <!--añadir al carrito:-->
+                            <form action="index.php?action=palCarrito" method="post">
+                                <input type="hidden" name="codigo" value="<?= $producto['codigo'] ?>">
+                                <button class="btn btn-danger">Añadir al carrito</button>
+                            </form>
                         </div>
 
                 </div>

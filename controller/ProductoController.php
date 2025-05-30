@@ -85,4 +85,6 @@ class ProductoController{
     public function ProductoByCategoria($IdCategoria) {
         return $this->ProductoModel->getProductoByCategoria($IdCategoria);
     }
+
+    
 }
