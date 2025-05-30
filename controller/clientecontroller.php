@@ -102,17 +102,58 @@ class clientecontroller {
 
     public function actualizar(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            
             $IdDocum = $_POST['IdDocum'];
             $nombres = $_POST['nombres'];
             $apellidos = $_POST['apellidos'];
             $telefono = $_POST['telefono'];
             $contraseña = $_POST['contraseña'];
-            $email= $_POST['email'];
+            $email = $_POST['email'];
             $numero_documento = $_POST['numero_documento'];
 
-            $this->ClienteModel->actualizar($IdDocum, $nombres, $apellidos, 
-            $telefono, $contraseña, $email, $numero_documento);    
+            // Validación según tipo de documento
+            switch ($IdDocum) {
+                case '1': // CC
+                    if (!preg_match('/^\d{7,10}$/', $numero_documento)) {
+                        echo "<script>alert('La cédula de ciudadanía debe tener entre 7 y 10 dígitos.'); window.history.back();</script>";
+                        exit;
+                    }
+                    break;
+                case '2': // RC
+                    if (!preg_match('/^\d{10}$/', $numero_documento)) {
+                        echo "<script>alert('El registro civil debe tener exactamente 10 dígitos.'); window.history.back();</script>";
+                        exit;
+                    }
+                    break;
+                case '3': // CE
+                    if (!preg_match('/^[A-Za-z0-9]{6,12}$/', $numero_documento)) {
+                        echo "<script>alert('La cédula de extranjería debe tener entre 6 y 12 caracteres alfanuméricos.'); window.history.back();</script>";
+                        exit;
+                    }
+                    break;
+                default:
+                    echo "<script>alert('Tipo de documento no reconocido.'); window.history.back();</script>";
+                    exit;
+            }
+
+            // Validación de teléfono
+            if (!preg_match('/^\d{10}$/', $telefono)) {
+                echo "<script>alert('El número de teléfono debe tener exactamente 10 dígitos.'); window.history.back();</script>";
+                exit;
+            }
+
+            // Validación de contraseña segura
+            if (!$this->validarContraseña($contraseña)) {
+                echo "<script>alert('La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un símbolo especial.'); window.history.back();</script>";
+                exit;
+            }
+
+            // Encriptar la contraseña antes de actualizar
+            $contraseñaHash = password_hash($contraseña, PASSWORD_BCRYPT);
+
+            $this->ClienteModel->actualizar($IdDocum, $nombres, $apellidos, $telefono, $contraseñaHash, $email, $numero_documento);
+
+            echo "<script>alert('Usuario actualizado correctamente'); window.location.href='index.php?action=InverBoard';</script>";
+            exit;
         }
     }
    public function eliminar(){
