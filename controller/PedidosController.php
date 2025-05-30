@@ -15,12 +15,22 @@ class PedidosController {
         $facturaModel = new FacturaModel($this->db);
         $compraDirectaModel = new CompraDirectaModel($this->db);
 
-        // Pedidos de carrito (facturas)
-        $stmt = $this->db->query("SELECT * FROM factura ORDER BY fecha DESC");
+        $where = '';
+        $params = [];
+
+        if (!empty($_GET['buscar_documento'])) {
+            $where = 'WHERE numero_documento = ?';
+            $params[] = $_GET['buscar_documento'];
+        }
+
+        // Facturas
+        $stmt = $this->db->prepare("SELECT * FROM factura $where ORDER BY fecha DESC");
+        $stmt->execute($params);
         $facturas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Pedidos de compra directa
-        $stmt2 = $this->db->query("SELECT * FROM compra ORDER BY idCompra DESC");
+        // Compras directas
+        $stmt2 = $this->db->prepare("SELECT * FROM compra $where ORDER BY IdCompra DESC");
+        $stmt2->execute($params);
         $comprasDirectas = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
         include './views/admin_pedidos.php';

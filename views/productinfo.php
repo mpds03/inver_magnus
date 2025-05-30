@@ -130,7 +130,7 @@ $nombre = htmlspecialchars($_SESSION['cliente']['nombres']);
 
                 <!--Hola, cajita del lado derecho-->
                 <div class="col-md-6 p-4 bg-white rounded shadow"><!--"Section2"-->
-                    <h1 class="text-start">$<?= $producto['precio'] ?></h1>
+                    <h1 class="text-start">$<?= number_format($producto['precio'], 0, '', '.') ?></h1>
                 <?php endforeach; ?><!--aca termina el foreach de conexion base de datos-->
                 <h5 class="text-start">Opiniones del producto</h5>
 

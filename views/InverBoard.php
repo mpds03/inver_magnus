@@ -140,8 +140,8 @@ if (isset($_SESSION['cliente'])):
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $producto['nombre']; ?></h5>
                                 <p class="card-text text-muted"><?php echo $producto['categoria_nombre']; ?></p>
-                                <p class="card-text"><?php echo $producto['descripcion']; ?></p>
-                                <p class="card-text"><?php echo $producto['precio'] ?></p>
+                                
+                                <h4 class="card-text"><?php echo $producto['precio'] ?></h4>
                                 <!-- Botón para ver más información del producto -->
                                 <a href="index.php?action=productinfo&codigo=<?= $producto['codigo'] ?>" class="btn btn-danger">Mirar</a>
                             </div>
@@ -170,45 +170,56 @@ if (isset($_SESSION['cliente'])):
         <!-- Fin footer -->
 
         <!-- Botones de administración de productos y usuarios -->
-        <label for="">Productos</label>
-        <form action="index.php?action=insertproducto" method="GET">
-            <button class="btn btn-danger" type="submit" name="action" value="insertproducto">Insertar Productos</button>
-        </form>
-        <form action="index.php?action=listProducto" method="GET">
-            <button class="btn btn-danger" type="submit" name="action" value="listProducto">Consultar Productos</button>
-        </form>
-        <form action="index.php?action=listproductoporcodigo" method="GET">
-            <button class="btn btn-danger" type="submit" name="action" value="listproductoporcodigo">Actualizar Productos</button>
-        </form>
-        <form action="index.php?action=deleteProducto" method="GET">
-            <button class="btn btn-danger" type="submit" name="action" value="deleteProducto">Eliminar Productos</button>
-        </form>
-
-        <label for="">Usuarios</label>
-        <form action="index.php?action=insertUser" method="GET">
-            <button class="btn btn-outline-danger" type="submmit" name="action" value="insertUser">Insertar Usuario</button>
-        </form>
-        <form action="index.php?action=listUsers" method="GET">
-            <button class="btn btn-outline-danger" type="submit" name="action" value="listUsers">Consultar Usuarios</button>
-        </form>
-        <form action="index.php?action=searchUserByNumDocum" method="GET">
-            <button class="btn btn-outline-danger" type="submit" name="action" value="searchUserByNumDocum">Consultar usuario por ID</button>
-        </form>
-        <form action="index.php?action=openForm" method="GET">
-            <button class="btn btn-outline-danger" type="submit" name="action" value="openForm">Actualizar usuario</button>
-        </form>
-        <form action="index.php?action=openFormDelete" method="GET">
-            <button class="btn btn-outline-danger" type="submit" name="action" value="openFormDelete">Eliminar usuario</button>
-        </form>
-        <form action="index.php?action=login" method="GET">
-            <button class="btn btn-outline-danger" type="submit" name="action" value="login">Inicio sesión usuario</button>
-        </form>
-        <form action="index.php?action=AdminVista" method="GET">
-            <button class="btn btn-danger" type="submit" name="action" value="AdminVista">Admin</button>
-        </form>
+        <div class="container my-4">
+    <div class="row">
+        <!-- Productos -->
+        <div class="col-12 col-md-6 mb-4">
+            <label class="fw-bold mb-2">Productos</label>
+            <div class="d-grid gap-2">
+                <form action="index.php?action=insertproducto" method="GET">
+                    <button class="btn btn-danger w-100 mb-2" type="submit" name="action" value="insertproducto">Insertar Productos</button>
+                </form>
+                <form action="index.php?action=listProducto" method="GET">
+                    <button class="btn btn-danger w-100 mb-2" type="submit" name="action" value="listProducto">Consultar Productos</button>
+                </form>
+                <form action="index.php?action=listproductoporcodigo" method="GET">
+                    <button class="btn btn-danger w-100 mb-2" type="submit" name="action" value="listproductoporcodigo">Actualizar Productos</button>
+                </form>
+                <form action="index.php?action=deleteProducto" method="GET">
+                    <button class="btn btn-danger w-100" type="submit" name="action" value="deleteProducto">Eliminar Productos</button>
+                </form>
+            </div>
+        </div>
+        <!-- Usuarios -->
+        <div class="col-12 col-md-6 mb-4">
+            <label class="fw-bold mb-2">Usuarios</label>
+            <div class="d-grid gap-2">
+                <form action="index.php?action=insertUser" method="GET">
+                    <button class="btn btn-outline-danger w-100 mb-2" type="submit" name="action" value="insertUser">Insertar Usuario</button>
+                </form>
+                <form action="index.php?action=listUsers" method="GET">
+                    <button class="btn btn-outline-danger w-100 mb-2" type="submit" name="action" value="listUsers">Consultar Usuarios</button>
+                </form>
+                <form action="index.php?action=searchUserByNumDocum" method="GET">
+                    <button class="btn btn-outline-danger w-100 mb-2" type="submit" name="action" value="searchUserByNumDocum">Consultar usuario por ID</button>
+                </form>
+                <form action="index.php?action=openForm" method="GET">
+                    <button class="btn btn-outline-danger w-100 mb-2" type="submit" name="action" value="openForm">Actualizar usuario</button>
+                </form>
+                <form action="index.php?action=openFormDelete" method="GET">
+                    <button class="btn btn-outline-danger w-100 mb-2" type="submit" name="action" value="openFormDelete">Eliminar usuario</button>
+                </form>
+                <form action="index.php?action=login" method="GET">
+                    <button class="btn btn-outline-danger w-100 mb-2" type="submit" name="action" value="login">Inicio sesión usuario</button>
+                </form>
+                <form action="index.php?action=AdminVista" method="GET">
+                    <button class="btn btn-danger w-100" type="submit" name="action" value="AdminVista">Admin</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
-</div> <!-- CARDS -->
+    </div> <!-- CARDS -->
 
 </div> <!-- fin de row de caja madre-->
 </div> <!-- fin de caja madre-->

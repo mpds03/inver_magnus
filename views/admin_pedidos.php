@@ -8,8 +8,14 @@
     <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
 </head>
 <body>
-<div class="container mt-4">
-    <h2>Pedidos realizados (Carrito / Factura)</h2>
+<div class="container mt-5">
+    <h1 class="text-center">Pedidos</h1>
+    <h2>Pedidos realizados (Carrito)</h2>
+    <form method="get" action="index.php" class="mb-4 d-flex justify-content-end">
+        <input type="hidden" name="action" value="adminPedidos">
+        <input type="text" name="buscar_documento" class="form-control w-auto me-2" placeholder="Buscar por documento" value="<?= isset($_GET['buscar_documento']) ? htmlspecialchars($_GET['buscar_documento']) : '' ?>">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
     <table class="table table-bordered">
         <thead>
             <tr>
