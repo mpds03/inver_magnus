@@ -41,7 +41,7 @@
                 <?php foreach ($clientes as $cliente): ?>
                     <tr>
                         <td><?= $cliente['numero_documento']; ?></td>
-                        <td><?= $cliente['IdDocum']; ?></td>
+                        <td><?= $cliente['tipo_doc_nombre']; ?></td>
                         <td><?= $cliente['nombres']; ?></td>
                         <td><?= $cliente['apellidos']; ?></td>
                         <td><?= $cliente['telefono']; ?></td>

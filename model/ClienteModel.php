@@ -48,6 +48,14 @@ class ClienteModel{
          $stmt->execute();
          return $stmt->fetch(PDO::FETCH_ASSOC);
      }
+     public function getTipoDocNombre($id) {
+        $tiposDoc = [
+            1 => 'Cédula de Ciudadanía',
+            2 => 'Registro Civil',
+            3 => 'Cédula de Extranjería'
+        ];
+        return isset($tiposDoc[$id]) ? $tiposDoc[$id] : $id;
+    }
 }
 // parte hecha del video 
 ?>

@@ -87,7 +87,12 @@ class clientecontroller {
     }
     public function listUsers()
     {
-        return $this->ClienteModel->getUsers();
+        $clientes = $this->ClienteModel->getUsers();
+        // Mapear el nombre del tipo de documento aquí
+        foreach ($clientes as &$cliente) {
+            $cliente['tipo_doc_nombre'] = $this->ClienteModel->getTipoDocNombre($cliente['IdDocum']);
+        }
+        return $clientes;
     }
     public function UserByNumDocum()
     {
