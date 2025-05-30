@@ -141,7 +141,7 @@ if (isset($_SESSION['cliente'])):
                                 <h5 class="card-title"><?php echo $producto['nombre']; ?></h5>
                                 <p class="card-text text-muted"><?php echo $producto['categoria_nombre']; ?></p>
                                 
-                                <h4 class="card-text"><?php echo $producto['precio'] ?></h4>
+                                <h4 class="card-text">$<?= number_format($producto['precio'], 0, '', '.') ?></h4>
                                 <!-- Botón para ver más información del producto -->
                                 <a href="index.php?action=productinfo&codigo=<?= $producto['codigo'] ?>" class="btn btn-danger">Mirar</a>
                             </div>
