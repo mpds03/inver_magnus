@@ -131,6 +131,7 @@ class clientecontroller {
          if ($cliente && password_verify($contraseña, $cliente['contraseña'])) {
              session_start();
              $_SESSION['cliente'] = $cliente;
+             $_SESSION['rol'] = $cliente['rol'];
              header("Location: index.php?action=InverBoard");
          } else {
              echo "<script>alert('Número de documento o contraseña incorrectos'); window.history.back();</script>";

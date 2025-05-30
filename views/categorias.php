@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+// Verificar si está logueado
+if (!isset($_SESSION['cliente'])) {
+    header("Location: index.php?action=login");
+    exit;
+}
+
+$nombre = htmlspecialchars($_SESSION['cliente']['nombres']);
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -46,14 +57,24 @@
                 </div>
         </div>
         
-        <div id="regis" class="col-md-4 p-1">
-            <form action="index.php?action=login" method="GET">
-                <button type="submit" name="action" value="login" class="btn btn-light h-100">Iniciar sesión</button>
-                </form>
-                <form action="index.php?action=insertUser" method="GET">
-                    <button type="submit" name="action" value="insertUser" class="btn btn-light ms-1 text-danger h-100">Registrarse</button>
-                </form>
-         </div>
+        <!--iniciar sesion, registrarse o cerrar sesión-->
+<div id="regis" class="col-md-4 p-1 d-flex justify-content-end">
+    <?php if (isset($_SESSION['rol']) && ($_SESSION['rol'] === 0 || $_SESSION['rol'] === 1)): ?>
+        <form action="index.php?action=logout" method="POST">
+            <button type="submit" class="btn btn-light text-danger h-100">
+                Cerrar sesión (<?= $_SESSION['rol'] === 1 ? 'Admin' : 'Usuario' ?>)
+            </button>
+        </form>
+    <?php else: ?>
+        <form action="index.php?action=login" method="GET">
+            <button type="submit" name="action" value="login" class="btn btn-light h-100">Iniciar sesión</button>
+        </form>
+        <form action="index.php?action=insertUser" method="GET">
+            <button type="submit" name="action" value="insertUser" class="btn btn-light ms-1 text-danger h-100">Registrarse</button>
+        </form>
+    <?php endif; ?>
+</div>
+<!--fin de control de sesión-->
 
     </div>
  
