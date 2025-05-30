@@ -96,6 +96,9 @@
                 <form action="index.php?action=login" method="GET">
                     <button class="btn btn-outline-danger" type="submit" name="action" value="login">Inicio sesión usuario</button>
                 </form>
+                <form action="index.php?action=adminPedidos" method="GET">
+                    <button class="btn btn-danger" type="submit" name="action" value="adminPedidos">Ver Pedidos</button>
+                </form>
             </div>
             <!--Botones del admin-->
 

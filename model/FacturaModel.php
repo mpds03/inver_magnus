@@ -19,4 +19,16 @@ class FacturaModel
         $stmt = $this->conn->prepare("INSERT INTO detalle_factura (IdFactura, codigo, cantidad, precio_unitario, total_detalle) VALUES (?, ?, ?, ?, ?)");
         $stmt->execute([$idFactura, $codigo, $cantidad, $precio_unitario, $total_detalle]);
     }
+    public function actualizarEstado($idFactura, $nuevo_estado) {
+        $stmt = $this->conn->prepare("UPDATE factura SET estado = ? WHERE IdFactura = ?");
+        $stmt->execute([$nuevo_estado, $idFactura]);
+    }
+    public function eliminarFactura($idFactura) {
+        // Elimina los detalles primero
+        $stmt = $this->conn->prepare("DELETE FROM detalle_factura WHERE IdFactura = ?");
+        $stmt->execute([$idFactura]);
+        // Luego elimina la factura
+        $stmt = $this->conn->prepare("DELETE FROM factura WHERE IdFactura = ?");
+        $stmt->execute([$idFactura]);
+    }
 }

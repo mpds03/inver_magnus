@@ -15,4 +15,14 @@ class CompraDirectaModel
         $stmt->execute([$numero_documento, $direccion]);
         return $this->conn->lastInsertId();
     }
+
+    public function actualizarEstado($idCompra, $nuevo_estado) {
+        $stmt = $this->conn->prepare("UPDATE compra SET estado = ? WHERE IdCompra = ?");
+        $stmt->execute([$nuevo_estado, $idCompra]);
+    }
+
+    public function eliminarCompra($idCompra) {
+        $stmt = $this->conn->prepare("DELETE FROM compra WHERE IdCompra = ?");
+        $stmt->execute([$idCompra]);
+    }
 }

@@ -7,6 +7,7 @@ require_once './controller/categoriacontroller.php';
 require_once './controller/CompraDirectaController.php';
 require_once './controller/CarritoController.php'; // <-- NUEVO
 require_once './controller/FacturaController.php'; // <-- NUEVO
+require_once './controller/PedidosController.php';
 
 $ProductoController = new ProductoController(); //Insertar, Actualizar, Eliminar, Listar productos
 $CategoriaController = new CategoriaController();
@@ -15,6 +16,7 @@ $TipDocumController = new TipDocumController();
 $CompraDirectaController = new CompraDirectaController();
 $CarritoController = new CarritoController(); // <-- NUEVO
 $FacturaController = new FacturaController(); // <-- NUEVO
+$PedidosController = new PedidosController();
 
 $action = $_GET['action'] ?? 'InverBoard';
 
@@ -195,6 +197,51 @@ switch ($action) {
 
         include './views/factura.php';
         break;
+
+    // --- PEDIDOS ---
+    case 'adminPedidos':
+        $PedidosController->listarPedidos();
+        break;
+    case 'actualizarEstadoFactura':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['IdFactura'];
+            $nuevo_estado = $_POST['nuevo_estado'];
+            require_once './model/FacturaModel.php';
+            $facturaModel = new FacturaModel((new Database())->getConnection());
+            $facturaModel->actualizarEstado($id, $nuevo_estado);
+        }
+        header('Location: index.php?action=adminPedidos');
+        exit;
+
+    case 'actualizarEstadoCompra':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['IdCompra'];
+            $nuevo_estado = $_POST['nuevo_estado'];
+            require_once './model/CompraDirectaModel.php';
+            $compraModel = new CompraDirectaModel((new Database())->getConnection());
+            $compraModel->actualizarEstado($id, $nuevo_estado);
+        }
+        header('Location: index.php?action=adminPedidos');
+        exit;
+    case 'eliminarFactura':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['IdFactura'];
+            require_once './model/FacturaModel.php';
+            $facturaModel = new FacturaModel((new Database())->getConnection());
+            $facturaModel->eliminarFactura($id);
+        }
+        header('Location: index.php?action=adminPedidos');
+        exit;
+
+    case 'eliminarCompra':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['IdCompra'];
+            require_once './model/CompraDirectaModel.php';
+            $compraModel = new CompraDirectaModel((new Database())->getConnection());
+            $compraModel->eliminarCompra($id);
+        }
+        header('Location: index.php?action=adminPedidos');
+        exit;
 
     //NO TOCAR:
     default:

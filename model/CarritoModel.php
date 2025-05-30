@@ -27,7 +27,13 @@ class CarritoModel
     }
 
     public function obtenerProductos($idcarrito) {
-        $stmt = $this->conn->prepare("SELECT * FROM detalle_carrito WHERE idcarrito = ?");
+        $stmt = $this->conn->prepare("
+            SELECT dc.idDetalleCarrito, dc.codigo, dc.cantidad, dc.precioUnitario, 
+                   p.nombre, p.descripcion, p.foto
+            FROM detalle_carrito dc
+            JOIN producto p ON dc.codigo = p.codigo
+            WHERE dc.idcarrito = ?
+        ");
         $stmt->execute([$idcarrito]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
