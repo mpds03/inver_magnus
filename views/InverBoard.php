@@ -25,6 +25,10 @@ $numero_documento = htmlspecialchars($_SESSION['cliente']['numero_documento']);
 </div>
 <?php endif; ?>
 
+<?php if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'compra_exitosa'): ?>
+    <div class="alert alert-success text-center">¡Compra hecha con éxito!</div>
+<?php endif; ?>
+
     <div class="container-fluid" id="cajamadre">
         <div class="row">
             <div class="col-md-3 p-1">
