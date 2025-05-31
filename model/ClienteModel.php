@@ -56,6 +56,18 @@ class ClienteModel{
         ];
         return isset($tiposDoc[$id]) ? $tiposDoc[$id] : $id;
     }
+    public function getUserByEmail($email) {
+        $query = "SELECT * FROM " . $this->table . " WHERE email = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$email]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function actualizarContraseñaPorEmail($email, $hash) {
+        $query = "UPDATE " . $this->table . " SET contraseña=? WHERE email=?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$hash, $email]);
+    }
 }
 // parte hecha del video 
 ?>

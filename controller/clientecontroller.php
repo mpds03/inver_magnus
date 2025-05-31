@@ -191,6 +191,62 @@ class clientecontroller {
     exit;
 }
 
+public function enviarCodigoRecuperacion() {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $email = $_POST['email'];
+        $cliente = $this->ClienteModel->getUserByEmail($email);
+        if ($cliente) {
+            $codigo = rand(100000, 999999);
+            session_start();
+            $_SESSION['codigo_recuperacion'] = $codigo;
+            $_SESSION['email_recuperacion'] = $email;
+
+            // Mostrar el código en un alert para pruebas locales
+            echo "<script>alert('Tu código de recuperación es: $codigo'); window.location.href='index.php?action=verificarCodigo';</script>";
+            exit;
+
+            // En producción, aquí iría el envío real de correo
+            // mail($email, "Código de recuperación", "Tu código es: $codigo");
+        } else {
+            echo "<script>alert('Correo no registrado.'); window.history.back();</script>";
+        }
+    }
+}
+
+public function verificarCodigo() {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        session_start();
+        $codigo = $_POST['codigo'];
+        if ($codigo == $_SESSION['codigo_recuperacion']) {
+            echo "<script>window.location.href='index.php?action=cambiarContraseña';</script>";
+        } else {
+            echo "<script>alert('Código incorrecto.'); window.history.back();</script>";
+        }
+    }
+}
+
+public function cambiarContraseña() {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        session_start();
+        $email = $_SESSION['email_recuperacion'];
+        $nueva = $_POST['nueva_contraseña'];
+        $confirmar = $_POST['confirmar_contraseña'];
+
+        if ($nueva !== $confirmar) {
+            echo "<script>alert('Las contraseñas no coinciden.'); window.history.back();</script>";
+            exit;
+        }
+        if (!$this->validarContraseña($nueva)) {
+            echo "<script>alert('La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un símbolo especial.'); window.history.back();</script>";
+            exit;
+        }
+        $hash = password_hash($nueva, PASSWORD_BCRYPT);
+        $this->ClienteModel->actualizarContraseñaPorEmail($email, $hash);
+
+        unset($_SESSION['codigo_recuperacion'], $_SESSION['email_recuperacion']);
+        echo "<script>alert('Contraseña actualizada.'); window.location.href='index.php?action=login';</script>";
+    }
+}
 
 }
 
