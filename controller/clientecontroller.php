@@ -2,6 +2,7 @@
 
 require_once './model/ClienteModel.php';
 require_once './config/database.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 class clientecontroller {
     private $db;
@@ -201,12 +202,34 @@ public function enviarCodigoRecuperacion() {
             $_SESSION['codigo_recuperacion'] = $codigo;
             $_SESSION['email_recuperacion'] = $email;
 
-            // Mostrar el código en un alert para pruebas locales
-            echo "<script>alert('Tu código de recuperación es: $codigo'); window.location.href='index.php?action=verificarCodigo';</script>";
-            exit;
+            // Incluir autoload de Composer
+           
+            $mail = new PHPMailer\PHPMailer\PHPMailer(true);
 
-            // En producción, aquí iría el envío real de correo
-            // mail($email, "Código de recuperación", "Tu código es: $codigo");
+            try {
+                // Configuración SMTP (ejemplo con Gmail)
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'kendruick.o2o@gmail.com'; // Cambia esto
+                $mail->Password = 'byoo ionb hocn eaiz'; // Cambia esto
+                $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
+                $mail->Port = 587;
+
+                // Remitente y destinatario
+                $mail->setFrom('kendruick.o2o@gmail.com', 'recuperacion_php');
+                $mail->addAddress($email);
+
+                // Contenido
+                $mail->isHTML(true);
+                $mail->Subject = 'Código de recuperación';
+                $mail->Body    = "Tu código de recuperación es: <b>$codigo</b>";
+
+                $mail->send();
+                echo "<script>alert('Código enviado a tu correo.'); window.location.href='index.php?action=verificarCodigo';</script>";
+            } catch (Exception $e) {
+                echo "<script>alert('No se pudo enviar el correo. Error: {$mail->ErrorInfo}'); window.history.back();</script>";
+            }
         } else {
             echo "<script>alert('Correo no registrado.'); window.history.back();</script>";
         }
