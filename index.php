@@ -199,8 +199,8 @@ switch ($action) {
         $detalles = $facturaData['detalles'];
 
         include './views/factura.php';
-        break; 
-        
+        break;
+
     // --- PEDIDOS ---
     case 'adminPedidos':
         $PedidosController->listarPedidos();
@@ -246,20 +246,20 @@ switch ($action) {
         header('Location: index.php?action=adminPedidos');
         exit;
 
-        case 'comentarProducto':
-            session_start();
-            if (!isset($_SESSION['cliente'])) {
-                header("Location: index.php?action=login");
-                exit;
-            }
-            $numero_documento = $_SESSION['cliente']['numero_documento'];
-            $codigo = $_POST['codigo'];
-            $comentario = $_POST['comentario'];
-            // Aquí deberías guardar el comentario en la base de datos
-            $ProductoController->guardarComentario($codigo, $numero_documento, $comentario);
-            header("Location: index.php?action=productinfo&codigo=$codigo");
+    case 'comentarProducto':
+        session_start();
+        if (!isset($_SESSION['cliente'])) {
+            header("Location: index.php?action=login");
             exit;
-    // --- RECUPERACION DE CONTRASEÑA ---
+        }
+        $numero_documento = $_SESSION['cliente']['numero_documento'];
+        $codigo = $_POST['codigo'];
+        $comentario = $_POST['comentario'];
+        // Aquí deberías guardar el comentario en la base de datos
+        $ProductoController->guardarComentario($codigo, $numero_documento, $comentario);
+        header("Location: index.php?action=productinfo&codigo=$codigo");
+        exit;
+        // --- RECUPERACION DE CONTRASEÑA ---
     case 'recuperarContraseña':
         include './views/recuperar_contraseña.php';
         break;

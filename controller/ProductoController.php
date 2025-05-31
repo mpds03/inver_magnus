@@ -2,7 +2,8 @@
 require_once './model/ProductoModel.php';
 require_once './config/database.php';
 
-class ProductoController{
+class ProductoController
+{
     private $db;
     private $ProductoModel;
 
@@ -16,7 +17,7 @@ class ProductoController{
     public function InsertProducto()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $IdCategoria =$_POST['IdCategoria'];
+            $IdCategoria = $_POST['IdCategoria'];
             $descripcion = $_POST['descripcion'];
             $precio = $_POST['precio'];
             $foto = $_FILES['foto']['name'];
@@ -26,7 +27,7 @@ class ProductoController{
             $nombre = $_POST['nombre'];
             $cantidad = $_POST['cantidad'];
 
-           $productos = $this->ProductoModel->InsertProducto($IdCategoria,$descripcion, $precio, $foto, $nombre, $cantidad);
+            $productos = $this->ProductoModel->InsertProducto($IdCategoria, $descripcion, $precio, $foto, $nombre, $cantidad);
             header("Location: index.php?action=InverBoard");
         }
     }
@@ -46,7 +47,7 @@ class ProductoController{
     public function Actualizar()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $IdCategoria =$_POST['IdCategoria'];
+            $IdCategoria = $_POST['IdCategoria'];
             $descripcion = $_POST['descripcion'];
             $precio = $_POST['precio'];
             $foto = $_FILES['foto']['name'] ? $_FILES['foto']['name'] : null;
@@ -58,41 +59,47 @@ class ProductoController{
                 $foto = $_POST['foto_actual'];
             }
             $nombre = $_POST['nombre'];
-            $cantidad= $_POST['cantidad'];
+            $cantidad = $_POST['cantidad'];
             $codigo = $_POST['codigo'];
 
-            $this->ProductoModel->Actualizar($IdCategoria,$descripcion, $precio, $foto, $nombre, $cantidad, $codigo);
+            $this->ProductoModel->Actualizar($IdCategoria, $descripcion, $precio, $foto, $nombre, $cantidad, $codigo);
         }
     }
 
-    public function Eliminar(){
-        $codigo=$_GET['codigo'] ?? '';
-        $datos= $this->ProductoModel->Eliminar($codigo);
+    public function Eliminar()
+    {
+        $codigo = $_GET['codigo'] ?? '';
+        $datos = $this->ProductoModel->Eliminar($codigo);
         return $this->ProductoModel->Eliminar($codigo);
     }
     //PRUEBA DE MUESTRA DE PRODUCTOS CREADOS:
-    public function getProducto() {
+    public function getProducto()
+    {
         $productos = $this->ProductoModel->getProducto();
         include './views/InverBoard.php'; // vista principal (inverboard)
     }
 
-    public function BarraBusqueda(){
+    public function BarraBusqueda()
+    {
         $nombre = $_GET['nombre'] ?? '';
         return $this->ProductoModel->BarraBusquedaWithCategoria($nombre);
     }
 
     // Método para filtrar productos por categoría
-    public function ProductoByCategoria($IdCategoria) {
+    public function ProductoByCategoria($IdCategoria)
+    {
         return $this->ProductoModel->getProductoByCategoria($IdCategoria);
     }
 
-    public function obtenerComentarios($codigo) {
+    public function obtenerComentarios($codigo)
+    {
         require_once './model/ComentarioModel.php';
         $comentarioModel = new ComentarioModel($this->db);
         return $comentarioModel->obtenerComentariosPorProducto($codigo);
     }
-    
-    public function guardarComentario($codigo, $numero_documento, $comentario) {
+
+    public function guardarComentario($codigo, $numero_documento, $comentario)
+    {
         require_once './model/ComentarioModel.php';
         $comentarioModel = new ComentarioModel($this->db);
         $comentarioModel->insertarComentario($codigo, $numero_documento, $comentario);
