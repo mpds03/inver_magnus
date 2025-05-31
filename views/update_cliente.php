@@ -20,67 +20,58 @@
                 <div class="card-front">
                   <div class="center-wrap">
                     <div class="section text-center">
-                      <h4 class="mb-4  ">Actualizar Datos</h4>
-                                            <form action="index.php?action=actualizarUser" method="POST">
+                      <h4 class="mb-4">Actualizar Datos</h4>
+                      <form action="index.php?action=actualizarUser" method="POST">
+                        <?php
+                        // Solo mostrar el primer usuario encontrado (el logueado)
+                        if (!empty($clientes) && is_array($clientes)):
+                          $cliente = $clientes[0];
+                        ?>
+                          <input type="hidden" name="numero_documento" value="<?= $cliente['numero_documento']; ?>">
 
-                                            <?php foreach($clientes as $cliente):  ?>
-                                                 <input type="hidden" name="numero_documento" value="<?= $cliente['numero_documento']; ?>">
-
-                                                <div class="form-group">
-                                                    <i class="input-icon uil uil-user"></i>
-                                            <select name="IdDocum" id="IdDocum" class="form-style" required>
-                                                <?php foreach ($docums as $docum): ?>
-                                                    <option value="<?= htmlspecialchars($docum['IdDocum'], ENT_QUOTES, 'UTF-8'); ?>"
-                                                        <?= ($docum['IdDocum'] == $cliente['IdDocum']) ? 'selected' : ''; ?>>
-                                                        <?= htmlspecialchars($docum['TipoDocum'], ENT_QUOTES, 'UTF-8'); ?>
-                                                    </option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                                </div>
-                                                <!-- <div class="form-group">
-                                                    <input type="text" name="numero_documento" class="form-style" value="
-                                                     placeholder="Número de documento" required>
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div> -->
-                                                <div class="form-group">
-                                                    <input type="text" name="nombres" class="form-style" value="<?= $cliente['nombres']; ?>" 
-                                                    placeholder="Nombres" required>
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" name="apellidos" class="form-style" value="<?= $cliente['apellidos']; ?>"
-                                                     placeholder="Apellidos" required>
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="number" name="telefono" class="form-style" value="<?= $cliente['telefono']; ?>" 
-                                                    placeholder="Teléfono" required>
-                                                    <i class="input-icon uil uil-phone"></i>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="password" name="contraseña" class="form-style" value="<?= $cliente['contraseña']; ?>"
-                                                    placeholder="Contraseña" required>
-                                                    <i class="input-icon uil uil-lock-alt"></i>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="email" name="email" class="form-style" value="<?= $cliente['email']; ?>"
-                                                    placeholder="Correo electrónico" required>
-                                                    <i class="input-icon uil uil-at"></i>
-                                                </div>
-                                                <input type="submit" class="btn btn-outline-danger" value="Guardar">
-                                                <?php endforeach; ?>
-                                            </form>
-                                        </div>
-                                          <form class="text-center p-3" action="index.php?action=InverBoard" method="post" enctype="multipart/form-data">
-                    <button type="submit"name="action" value="InverBoard" class="btn btn-outline-danger">Cancelar</button>
-                    </form>
-                                    </div>
-                                </div> <!-- Fin de card-back -->
-                            </div>
-                        </div>
+                          <div class="form-group">
+                            <i class="input-icon uil uil-user"></i>
+                            <select name="IdDocum" id="IdDocum" class="form-style" required>
+                              <?php foreach ($docums as $docum): ?>
+                                <option value="<?= htmlspecialchars($docum['IdDocum'], ENT_QUOTES, 'UTF-8'); ?>"
+                                  <?= ($docum['IdDocum'] == $cliente['IdDocum']) ? 'selected' : ''; ?>>
+                                  <?= htmlspecialchars($docum['TipoDocum'], ENT_QUOTES, 'UTF-8'); ?>
+                                </option>
+                              <?php endforeach; ?>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <input type="text" name="nombres" class="form-style" value="<?= $cliente['nombres']; ?>" placeholder="Nombres" required>
+                            <i class="input-icon uil uil-user"></i>
+                          </div>
+                          <div class="form-group">
+                            <input type="text" name="apellidos" class="form-style" value="<?= $cliente['apellidos']; ?>" placeholder="Apellidos" required>
+                            <i class="input-icon uil uil-user"></i>
+                          </div>
+                          <div class="form-group">
+                            <input type="number" name="telefono" class="form-style" value="<?= $cliente['telefono']; ?>" placeholder="Teléfono" required>
+                            <i class="input-icon uil uil-phone"></i>
+                          </div>
+                          <div class="form-group">
+                            <input type="password" name="contraseña" class="form-style" value="<?= $cliente['contraseña']; ?>" placeholder="Contraseña" required>
+                            <i class="input-icon uil uil-lock-alt"></i>
+                          </div>
+                          <div class="form-group">
+                            <input type="email" name="email" class="form-style" value="<?= $cliente['email']; ?>" placeholder="Correo electrónico" required>
+                            <i class="input-icon uil uil-at"></i>
+                          </div>
+                          <input type="submit" class="btn btn-outline-danger" value="Guardar">
+                        <?php endif; ?>
+                      </form>
+                      <form class="text-center p-3" action="index.php?action=InverBoard" method="post" enctype="multipart/form-data">
+                        <button type="submit"name="action" value="InverBoard" class="btn btn-outline-danger">Cancelar</button>
+                      </form>
                     </div>
+                  </div> <!-- Fin de card-back -->
                 </div>
+              </div>
             </div>
+          </div>
         </div>
     </div>  
 </body>

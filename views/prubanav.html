@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Detalle producto</title>
   <link rel="shortcut icon" href="/images/logo.jpeg" type="image/x-icon" />
-  <link rel="stylesheet" href="/inver_magnus/Bootstrap/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="/inver_magnus/css/productinfo.css" />
+  <link rel="stylesheet" href="/Bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/productinfo.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 
@@ -17,10 +17,9 @@
       <!-- Botón Hamburguesa y Categorías -->
       <div class="col-md-3 d-flex align-items-center gap-2">
         <!-- Botón Hamburguesa para abrir Offcanvas -->
-        <button class="btn btn-light me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral" aria-controls="menuLateral" aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
-        </button>
-
+         <form action="action="index.php?action="InverBoard">
+        <button class="btn btn-light" value="InverBoard" type="button">Inicio</button>
+          </form>
         <!-- Categorías -->
         <form method="get" action="index.php?action=verCategoria">
           <input type="hidden" name="action" value="verCategoria" />
@@ -43,43 +42,28 @@
         </form>
       </div>
 
-      <!-- Botones de sesión -->
-      <div class="col-md-4 p-1 d-flex justify-content-end">
-        <form action="index.php?action=login" method="GET" class="me-2">
-          <button type="submit" name="action" value="login" class="btn btn-light">Iniciar sesión</button>
-        </form>
-        <form action="index.php?action=insertUser" method="GET">
-          <button type="submit" name="action" value="insertUser" class="btn btn-light text-danger">Registrarse</button>
-        </form>
-      </div>
-    </div>
-  </div>
+      <!-- Control de sesión: actualizar datos, cerrar sesión, login, registro -->
+        <div id="regis" class="col-md-4 p-1 d-flex justify-content-end">
+                <!-- Botón para ver el carrito del usuario -->
+                <form action="index.php?action=login" method="POST" class="me-2">
+                    <button type="submit" class="btn btn-light text-danger h-100 ">
+                    Iniciar Sesion
+                </form>
+                  <form action="index.php?action=registro" method="POST" class="me-2">
+                    <button type="submit" class="btn btn-light text-danger h-100 ">Registrase</button>
+                </form>
+        </div>
 
-  <!-- Offcanvas menú lateral -->
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral" aria-labelledby="menuLateralLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="menuLateralLabel">Módulos</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
-    </div>
-    <div class="offcanvas-body">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          <form action="index.php?action=InverBoard" method="post" class="mb-0">
-            <button type="submit" value="InverBoard" class="btn btn-link text-danger p-0">Inicio</button>
-          </form>
-        </li>
-        <li class="list-group-item"><a href="#" class="text-decoration-none">Dashboard</a></li>
-        <li class="list-group-item"><a href="#" class="text-decoration-none">Usuarios</a></li>
-        <li class="list-group-item"><a href="#" class="text-decoration-none">Reportes</a></li>
-        <li class="list-group-item"><a href="#" class="text-decoration-none">Configuración</a></li>
-        <!-- Agrega aquí más módulos si quieres -->
-      </ul>
+  
     </div>
   </div>
+  
 
   <!-- JS de Bootstrap -->
-  <script src="/inver_magnus/Bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/Bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
-</html>
+<!-- esto es para la actualizacion de datos de las personas logueadas -->
 
+                
+</html>

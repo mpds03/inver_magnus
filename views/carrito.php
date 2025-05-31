@@ -53,6 +53,7 @@
         </div>
         <?php else: ?>
             <p>No hay productos en el carrito.</p>
+            <a href="index.php?action=InverBoard" class="btn btn-secondary">Volver</a>
         <?php endif; ?>
     </div>
 </body>

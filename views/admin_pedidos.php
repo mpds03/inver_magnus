@@ -92,7 +92,7 @@
         <?php endforeach; ?>
         </tbody>
     </table>
-    <a href="index.php?action=AdminVista" class="btn btn-secondary">Volver al panel</a>
+    <a href="index.php?action=InverBoard" class="btn btn-secondary">Volver al panel</a>
 </div>
 </body>
 </html>
