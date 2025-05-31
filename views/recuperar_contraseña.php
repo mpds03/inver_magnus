@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,7 +13,10 @@
             <label for="email">Correo electrónico:</label>
             <input type="email" name="email" class="form-control" required>
         </div>
-        <button type="submit" class="btn btn-danger mt-3">Enviar código</button>
+        <div class="d-flex justify-content-start">
+            <a href="index.php?action=login" class="btn btn-outline-danger mt-3">Cancelar</a>
+            <button type="submit" class="btn btn-danger mt-3 ml-2">Enviar código</button>
+        </div>
     </form>
 </div>
 </body>
