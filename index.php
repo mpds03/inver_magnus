@@ -199,8 +199,8 @@ switch ($action) {
         $detalles = $facturaData['detalles'];
 
         include './views/factura.php';
-        break;
-
+        break; 
+        
     // --- PEDIDOS ---
     case 'adminPedidos':
         $PedidosController->listarPedidos();
@@ -259,6 +259,27 @@ switch ($action) {
             $ProductoController->guardarComentario($codigo, $numero_documento, $comentario);
             header("Location: index.php?action=productinfo&codigo=$codigo");
             exit;
+    // --- RECUPERACION DE CONTRASEÑA ---
+    case 'recuperarContraseña':
+        include './views/recuperar_contraseña.php';
+        break;
+    case 'enviarCodigoRecuperacion':
+        $clientecontroller->enviarCodigoRecuperacion();
+        break;
+    case 'verificarCodigo':
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $clientecontroller->verificarCodigo();
+        } else {
+            include './views/verificar_codigo.php';
+        }
+        break;
+    case 'cambiarContraseña':
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $clientecontroller->cambiarContraseña();
+        } else {
+            include './views/cambiar_contraseña.php';
+        }
+        break;
 
     //NO TOCAR:
     default:
