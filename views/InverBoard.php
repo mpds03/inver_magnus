@@ -30,75 +30,110 @@
 
 
 <div class="container-fluid" id="cajamadre">
-    <div class="row">
-        <!-- Barra lateral izquierda: menú y categorías -->
-        <div class="col-md-3 p-1">
-            <div class="d-flex">
-                <nav class="navbar-expand">
-                    <ul class="navbar-nav">
-                        <!-- Botón de inicio -->
-                        <form action="index.php?action=InverBoard" method="post" enctype="multipart/form-data">
-                            <a href=""><button type="submit" value="InverBoard" class="btn btn-light text-danger h-100 ">Inicio</button></a>
-                        </form>
-                        <li class="nav-item dropdown">
-                            <!-- Menú dinámico de categorías -->
-                            <form method="get" action="index.php?action=verCategoria">
-                                <input type="hidden" name="action" value="verCategoria">
-                                <select name="IdCategoria" class="form-select ms-1 w-75" onchange="this.form.submit()">
-                                    <option value="">Categorías</option>
-                                    <option value="1">Cuidado del hogar</option>
-                                    <option value="2">Cocina</option>
-                                    <option value="3">Accesorios para electrodomesticos</option>
-                                    <option value="4">Cuidado personal</option>
-                                </select>
-                            </form>
-                            <!-- Fin menú dinámico de categorías -->
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+     <div class="container-fluid" id="cajamadre">
+        <div class="row align-items-center">
+            <!-- Botón Hamburguesa y Categorías -->
+            <div class="col-md-3 d-flex align-items-center gap-2">
+                <!-- Botón Hamburguesa para abrir Offcanvas -->
+                <button class="btn btn-light me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral" aria-controls="menuLateral" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
 
-        <!-- Barra de búsqueda de productos -->
-        <div class="col-md-5 p-1">
-            <div class="row">
+                <!-- Categorías -->
+                <form method="get" action="index.php?action=verCategoria">
+                  <input type="hidden" name="action" value="verCategoria" />
+                  <select name="IdCategoria" class="form-select w-75" onchange="this.form.submit()">
+                    <option value="">Categorías</option>
+                    <option value="1">Cuidado del hogar</option>
+                    <option value="2">Cocina</option>
+                    <option value="3">Accesorios para electrodomésticos</option>
+                    <option value="4">Cuidado personal</option>
+                  </select>
+                </form>
+            </div>
+
+            <!-- Barra de búsqueda -->
+            <div class="col-md-5 p-1">
                 <form action="index.php?action=barraBusqueda" method="get" class="d-flex">
-                    <input type="hidden" name="action" value="barraBusqueda">
-                    <input class="form-control mx-5 me-2" name="nombre" type="text" placeholder="Buscar Productos">
-                    <button class="btn btn-outline-light me-5" type="submit">Buscar</button>
+                  <input type="hidden" name="action" value="barraBusqueda" />
+                  <input class="form-control mx-5 me-2" name="nombre" type="text" placeholder="Buscar Productos" />
+                  <button class="btn btn-outline-light me-5" type="submit">Buscar</button>
                 </form>
             </div>
-        </div>
 
-        <!-- Control de sesión: actualizar datos, cerrar sesión, login, registro -->
-        <div id="regis" class="col-md-4 p-1 d-flex justify-content-end">
-            <?php if (isset($_SESSION['rol']) && ($_SESSION['rol'] === 0 || $_SESSION['rol'] === 1)): ?>
-                <!-- Botón para actualizar datos del usuario -->
-                <form action="index.php" method="GET" class="me-2">
-                    <input type="hidden" name="action" value="searchClienteXNumDocum">
-                    <input type="hidden" name="numero_documento" value="<?= $numero_documento ?>">
-                    <button type="submit" class="btn btn-light text-danger h-100">
-                        Actualizar Datos
-                    </button>
+            <?php
+            // Determinar si el usuario está logeado
+            $logeado = isset($_SESSION['cliente']);
+            ?>
+            <?php if (!$logeado): ?>
+            <div id="regis" class="col-md-4 p-1 d-flex justify-content-end">
+                <!-- Botón para ver el carrito del usuario -->
+                <form action="index.php?action=login" method="GET" class="me-2">
+                    <button type="submit" name="action" value="login" class="btn btn-light text-black h-100">Iniciar Sesion</button>
                 </form>
-                <!-- Botón para cerrar sesión -->
-                <form action="index.php?action=logout" method="POST">
-                    <button type="submit" class="btn btn-light text-danger h-100 ">
-                        Cerrar sesión (<?= $_SESSION['rol'] === 1 ? 'Admin' : 'Usuario' ?>)
-                    </button>
+                <form action="index.php?action=insertUser" method="GET" class="">
+                    <button type="submit" name="action" value="insertUser" class="btn btn-light text-danger h-100 ">Registrase</button>
                 </form>
-            <?php else: ?>
-                <!-- Botón para iniciar sesión -->
-                <form action="index.php?action=login" method="GET">
-                    <button type="submit" name="action" value="login" class="btn btn-light h-100">Iniciar sesión</button>
-                </form>
-                <!-- Botón para registrarse -->
-                <form action="index.php?action=insertUser" method="GET">
-                    <button type="submit" name="action" value="insertUser" class="btn btn-light ms-1 text-danger h-100">Registrarse</button>
-                </form>
+            </div>
             <?php endif; ?>
+
+          <!-- Control de sesión: actualizar datos, cerrar sesión, login, registro -->
+            <div id="regis" class="col-md-4 p-1 d-flex justify-content-end">
+                <?php if (isset($_SESSION['rol']) && ($_SESSION['rol'] === 0 || $_SESSION['rol'] === 1)): ?>
+                    <!-- Botón para ver el carrito del usuario -->
+                    <form action="index.php?action=verCarrito" method="POST" class="me-2">
+                        <button type="submit" class="btn btn-light text-danger h-100 ">
+                            Carrito (<?= $_SESSION['rol'] === 1 ? 'Admin' : 'Usuario' ?>)
+                        </button>
+                    </form>
+                <?php endif; ?>
+            </div>
+
+      <!-- Offcanvas menú lateral -->
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral" aria-labelledby="menuLateralLabel">
+        <div class="offcanvas-header">
+          <?php if (isset($_SESSION['rol']) && ($_SESSION['rol'] === 1)): ?>
+          <h5 class="offcanvas-title" id="menuLateralLabel">Administrador</h5>
+          <?php elseif (isset($_SESSION['rol']) && ($_SESSION['rol'] === 0)): ?>
+          <h5 class="offcanvas-title" id="menuLateralLabel">Usuario</h5>
+          <?php else: ?>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+          <?php endif; ?>
         </div>
-        <!-- Fin de control de sesión -->
+        <div class="offcanvas-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <form action="index.php?action=InverBoard" method="post" class="mb-0">
+                <button type="submit" value="InverBoard" class="btn btn-light ">Inicio</button>
+              </form>
+            </li>
+            <?php if (isset($_SESSION['rol']) && ($_SESSION['rol'] === 0 || $_SESSION['rol'] === 1)): ?>
+            <li class="list-group-item"><form action="index.php" method="GET" >
+                        <input type="hidden" name="action" value="searchClienteXNumDocum">
+                        <input type="hidden" name="numero_documento" value="<?= $numero_documento ?>">
+                        <button type="submit" class="btn btn-light  h-100">Actualizar Datos</button></form></li>
+                        
+    
+            <li class="list-group-item"><form action="index.php?action=logout" method="post" class="mb-0">
+                <button type="submit" value="logout" class="btn btn-light ">Cerrar Sesion</button>
+              </form></li>
+            <?php endif; ?>
+
+            <?php if (isset($_SESSION['rol']) && ($_SESSION['rol'] === 1)): ?>
+            <li class="list-group-item"><form action="index.php?action=listUsers" method="post" class="mb-0">
+                <button type="submit" value="listUsers" class="btn btn-light ">Usuarios</button>
+              </form></li>
+            <li class="list-group-item"><form action="index.php?action=adminPedidos" method="post" class="mb-0">
+                <button type="submit" value="adminPedidos" class="btn btn-light ">Ver Pedidos</button>
+              </form></li>
+            <li class="list-group-item"><form action="index.php?action=listProducto" method="post" class="mb-0">
+                <button type="submit" value="InverBoard" class="btn btn-light ">Productos</button>
+              </form></li>
+            <?php endif; ?>
+            <!-- Agrega aquí más módulos si quieres -->
+          </ul>
+        </div>
+      </div>
 
             <!-- Columna central: productos destacados y cards -->
             <div class="col-md-5 p-1" id="cajamadre">
