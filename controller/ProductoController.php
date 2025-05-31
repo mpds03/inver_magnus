@@ -86,5 +86,15 @@ class ProductoController{
         return $this->ProductoModel->getProductoByCategoria($IdCategoria);
     }
 
+    public function obtenerComentarios($codigo) {
+        require_once './model/ComentarioModel.php';
+        $comentarioModel = new ComentarioModel($this->db);
+        return $comentarioModel->obtenerComentariosPorProducto($codigo);
+    }
     
+    public function guardarComentario($codigo, $numero_documento, $comentario) {
+        require_once './model/ComentarioModel.php';
+        $comentarioModel = new ComentarioModel($this->db);
+        $comentarioModel->insertarComentario($codigo, $numero_documento, $comentario);
+    }
 }

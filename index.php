@@ -121,6 +121,9 @@ switch ($action) {
     case 'productinfo':
         $Productos = $ProductoController->ProductoByCodigo();
         $Categorias = $CategoriaController->listCategoria();
+        // Obtener comentarios del producto
+        $codigo = $_GET['codigo'];
+        $Comentarios = $ProductoController->obtenerComentarios($codigo);
         include './views/productinfo.php';
         break;
 
@@ -242,6 +245,20 @@ switch ($action) {
         }
         header('Location: index.php?action=adminPedidos');
         exit;
+
+        case 'comentarProducto':
+            session_start();
+            if (!isset($_SESSION['cliente'])) {
+                header("Location: index.php?action=login");
+                exit;
+            }
+            $numero_documento = $_SESSION['cliente']['numero_documento'];
+            $codigo = $_POST['codigo'];
+            $comentario = $_POST['comentario'];
+            // Aquí deberías guardar el comentario en la base de datos
+            $ProductoController->guardarComentario($codigo, $numero_documento, $comentario);
+            header("Location: index.php?action=productinfo&codigo=$codigo");
+            exit;
 
     //NO TOCAR:
     default:
