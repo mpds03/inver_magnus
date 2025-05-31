@@ -1,14 +1,6 @@
 <?php
 session_start();
-
-// Verificar si está logueado
-if (!isset($_SESSION['cliente'])) {
-    header("Location: index.php?action=login");
-    exit;
-}
-
-$nombre = htmlspecialchars($_SESSION['cliente']['nombres']);
-
+$nombre = isset($_SESSION['cliente']) ? htmlspecialchars($_SESSION['cliente']['nombres']) : '';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -31,7 +23,7 @@ $nombre = htmlspecialchars($_SESSION['cliente']['nombres']);
                 <div class="d-flex">
                     <nav class="navbar-expand">
                         <ul class="navbar-nav">
-                              <form action="index.php?action=InverBoard" method="post" enctype="multipart/form-data">
+                            <form action="index.php?action=InverBoard" method="post" enctype="multipart/form-data">
                                 <a href=""><button type="submit" value="InverBoard" class="btn btn-light text-danger h-100 ">Inicio</button></a>
                             </form>
                             <li class="nav-item dropdown">
@@ -54,7 +46,7 @@ $nombre = htmlspecialchars($_SESSION['cliente']['nombres']);
 
             <div class="col-md-5 p-1">
                 <div class="row">
-                     <form action="index.php?action=barraBusqueda" method="get" class="d-flex" >
+                    <form action="index.php?action=barraBusqueda" method="get" class="d-flex">
                         <input type="hidden" name="action" value="barraBusqueda">
                         <input class="form-control mx-5 me-2" name="nombre" type="text" placeholder="Buscar Productos">
                         <button class="btn btn-outline-light me-5" type="submit">Buscar</button>
@@ -62,24 +54,24 @@ $nombre = htmlspecialchars($_SESSION['cliente']['nombres']);
                 </div>
             </div>
 
-           <!--iniciar sesion, registrarse o cerrar sesión-->
-<div id="regis" class="col-md-4 p-1 d-flex justify-content-end">
-    <?php if (isset($_SESSION['rol']) && ($_SESSION['rol'] === 0 || $_SESSION['rol'] === 1)): ?>
-        <form action="index.php?action=logout" method="POST">
-            <button type="submit" class="btn btn-light text-danger h-100">
-                Cerrar sesión (<?= $_SESSION['rol'] === 1 ? 'Admin' : 'Usuario' ?>)
-            </button>
-        </form>
-    <?php else: ?>
-        <form action="index.php?action=login" method="GET">
-            <button type="submit" name="action" value="login" class="btn btn-light h-100">Iniciar sesión</button>
-        </form>
-        <form action="index.php?action=insertUser" method="GET">
-            <button type="submit" name="action" value="insertUser" class="btn btn-light ms-1 text-danger h-100">Registrarse</button>
-        </form>
-    <?php endif; ?>
-</div>
-<!--fin de control de sesión-->
+            <!--iniciar sesion, registrarse o cerrar sesión-->
+            <div id="regis" class="col-md-4 p-1 d-flex justify-content-end">
+                <?php if (isset($_SESSION['rol']) && ($_SESSION['rol'] === 0 || $_SESSION['rol'] === 1)): ?>
+                    <form action="index.php?action=logout" method="POST">
+                        <button type="submit" class="btn btn-light text-danger h-100">
+                            Cerrar sesión (<?= $_SESSION['rol'] === 1 ? 'Admin' : 'Usuario' ?>)
+                        </button>
+                    </form>
+                <?php else: ?>
+                    <form action="index.php?action=login" method="GET">
+                        <button type="submit" name="action" value="login" class="btn btn-light h-100">Iniciar sesión</button>
+                    </form>
+                    <form action="index.php?action=insertUser" method="GET">
+                        <button type="submit" name="action" value="insertUser" class="btn btn-light ms-1 text-danger h-100">Registrarse</button>
+                    </form>
+                <?php endif; ?>
+            </div>
+            <!--fin de control de sesión-->
 
         </div>
 
@@ -92,7 +84,8 @@ $nombre = htmlspecialchars($_SESSION['cliente']['nombres']);
                 <!--cajita del lado izquierdo-->
                 <div class="col-md-6 p-4 bg-light rounded shadow"><!--"Section"-->
                     <?php foreach ($Productos as $producto): ?>
-                        <p class="text-uppercase fw-bold text-center text-secondary"><?php echo $producto['categoria_nombre']; ?></p></p><!--toca seguir modificando pero aja-->
+                        <p class="text-uppercase fw-bold text-center text-secondary"><?php echo $producto['categoria_nombre']; ?></p>
+                        </p><!--toca seguir modificando pero aja-->
 
                         <h2 class="text-center"><?php echo $producto['nombre']; ?></h2>
                         <img src="photo/<?= $producto['foto'] ?>" alt="Imagen producto" class="img-fluid d-block mx-auto">
@@ -109,22 +102,22 @@ $nombre = htmlspecialchars($_SESSION['cliente']['nombres']);
 
                         <!-- Botnes compra directa y añadir al carrito -->
                         <div class="text-center mt-4">
-    <!-- Formulario de compra directa -->
-    <form action="index.php?action=compraDirecta" method="post" class="d-inline">
-        <input type="hidden" name="codigo" value="<?= $producto['codigo'] ?>">
-        <input type="hidden" name="precio" value="<?= $producto['precio'] ?>">
-        <input type="number" name="cantidad" value="1" min="1" max="<?= $producto['cantidad'] ?>" class="form-control d-inline w-auto" style="width:80px;display:inline-block;" required>
-        <input type="text" name="direccion" placeholder="Dirección de envío" class="form-control d-inline w-auto" style="width:180px;display:inline-block;" required>
-        <button type="submit" class="btn btn-danger">Comprar ahora</button>
-    </form>
-    <!-- Formulario para añadir al carrito -->
-    <form action="index.php?action=agregarCarrito" method="post" class="d-inline ms-2">
-        <input type="hidden" name="codigo" value="<?= $producto['codigo'] ?>">
-        <input type="hidden" name="precioUnitario" value="<?= $producto['precio'] ?>">
-        <input type="number" name="cantidad" value="1" min="1" max="<?= $producto['cantidad'] ?>" class="form-control d-inline w-auto" style="width:80px;display:inline-block;" required>
-        <button type="submit" class="btn btn-outline-danger">Añadir al carrito</button>
-    </form>
-</div>
+                            <!-- Formulario de compra directa -->
+                            <form action="index.php?action=compraDirecta" method="post" class="d-inline">
+                                <input type="hidden" name="codigo" value="<?= $producto['codigo'] ?>">
+                                <input type="hidden" name="precio" value="<?= $producto['precio'] ?>">
+                                <input type="number" name="cantidad" value="1" min="1" max="<?= $producto['cantidad'] ?>" class="form-control d-inline w-auto" required>
+                                <input type="text" name="direccion" placeholder="Dirección de envío" class="form-control d-inline w-auto mb-2" style="width:180px;display:inline-block;" required>
+                                <button type="submit" class="btn btn-danger mb-2">Comprar ahora</button>
+                            </form><br>
+                            <!-- Formulario para añadir al carrito -->
+                            <form action="index.php?action=agregarCarrito" method="post" class="d-inline ms-2">
+                                <input type="hidden" name="codigo" value="<?= $producto['codigo'] ?>">
+                                <input type="hidden" name="precioUnitario" value="<?= $producto['precio'] ?>">
+                                <input type="number" name="cantidad" value="1" min="1" max="<?= $producto['cantidad'] ?>" class="form-control d-inline w-auto mb-2" required><br>
+                                <button type="submit" class="btn btn-danger">Añadir al carrito</button>
+                            </form>
+                        </div>
 
                 </div>
 
@@ -146,22 +139,36 @@ $nombre = htmlspecialchars($_SESSION['cliente']['nombres']);
                 <!--Estrellas-->
 
                 <!--Comentarios de usuarios-->
-                <div class="mb-3">
-                    <label for="formularioreseña" class="form-label">Correo electrónico: </label>
-                    <input type="text" class="form-control" placeholder="ejemplocorreo@gmail.com">
-                </div>
-                <div class="mb-3">
-                    <textarea class="form-control" placeholder="Escribe tu opinión" required></textarea>
-                </div>
-                <div>
-                    <button id="botonenviar" type="submit" class="btn btn-danger">Enviar</button>
-                </div>
-
-                <div id="commentsection" class="mt-3">
-                    <p>Comentarios:</p>
-                    <ul id="commentlist"></ul>
-                </div>
+                <?php if (isset($_SESSION['cliente'])): ?>
+                    <form action="index.php?action=comentarProducto" method="post">
+                        <input type="hidden" name="codigo" value="<?= $producto['codigo'] ?>">
+                        <div class="mb-3">
+                            <label for="comentario" class="form-label">Tu comentario</label>
+                            <textarea name="comentario" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-danger">Enviar comentario</button>
+                    </form>
+                <?php else: ?>
+                    <div class="alert alert-warning">Debes <a href="index.php?action=login">Iniciar sesión</a> para comentar
+                    </div>
+                <?php endif; ?>
                 <!--Comentarios de usuarios-->
+
+                <!-- Mostrar comentarios existentes -->
+                <div class="mt-4">
+                    <h6>Comentarios de otros usuarios:</h6>
+                    <?php if (!empty($Comentarios)): ?>
+                        <?php foreach ($Comentarios as $comentario): ?>
+                            <div class="border rounded p-2 mb-2">
+                                <strong><?= htmlspecialchars($comentario['nombres']) ?></strong>
+                                <span class="text-muted" style="font-size:0.9em;"><?= htmlspecialchars($comentario['fecha']) ?></span>
+                                <p class="mb-0"><?= htmlspecialchars($comentario['comentario']) ?></p>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p class="text-muted">Aún no hay comentarios para este producto.</p>
+                    <?php endif; ?>
+                </div>
 
                 </div>
                 <!--Hola, cajita del lado derecho-->

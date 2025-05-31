@@ -41,8 +41,8 @@
                                             </form>
  
                                             <!-- Enlace a recuperación de contraseña -->
-                                            <p class="mb-0 mt-4 text-center">
-                                                <button class="btn btn-link">¿Olvidó su contraseña?</button>
+                                           <p class="mb-0 mt-4 text-center">
+                                                 <a href="index.php?action=recuperarContraseña" class="btn btn-link">¿Olvidó su contraseña?</a>
                                             </p>
  
                                         </div>
