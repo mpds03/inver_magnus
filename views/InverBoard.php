@@ -7,10 +7,9 @@
     <title>Inicio</title>
     <!-- Icono y estilos -->
     <link rel="shortcut icon" href="images/logo.jpeg" type="image/x-icon">
-    <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/inverboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -209,7 +208,7 @@
         <!-- Botones de administración de productos y usuarios -->
         <div class="container my-4">
     <div class="row">
-        <!-- Productos -->
+        <!-- Productos 
         <div class="col-12 col-md-6 mb-4">
             <label class="fw-bold mb-2">Productos</label>
             <div class="d-grid gap-2">
@@ -226,8 +225,8 @@
                     <button class="btn btn-danger w-100" type="submit" name="action" value="deleteProducto">Eliminar Productos</button>
                 </form>
             </div>
-        </div>
-        <!-- Usuarios -->
+        </div>   AAAAAAAAA-->
+        <!-- Usuarios 
         <div class="col-12 col-md-6 mb-4">
             <label class="fw-bold mb-2">Usuarios</label>
             <div class="d-grid gap-2">
@@ -253,7 +252,7 @@
                     <button class="btn btn-danger w-100" type="submit" name="action" value="AdminVista">Admin</button>
                 </form>
             </div>
-        </div>
+        </div>AAAAAAAA-->
     </div>
 </div>
     </div> <!-- CARDS -->
