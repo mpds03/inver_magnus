@@ -145,6 +145,7 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 mt-3 gx-4 gy-4 justify-content-center">
             <?php if (!empty($Productos) && is_array($Productos)): ?>
                 <?php foreach ($Productos as $producto): ?>
+                    <?php if ($producto['estado'] == 1): // Solo mostrar productos habilitados ?>
                     <div class="col mb-4 d-flex align-items-stretch">
                         <div class="card h-100 text-center w-100">
                             <img src="photo/<?= $producto['foto'] ?>" class="card-img-top estructura" alt="Imagen del producto">
@@ -156,6 +157,7 @@
                             </div>
                         </div>
                     </div>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             <?php else: ?>
                 <p class="text-center">Producto actualizado con exito</p>

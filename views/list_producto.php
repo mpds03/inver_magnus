@@ -34,36 +34,44 @@
                 <th>Cantidad Del producto</th>
                 <th>Precio</th>
                 <th>Editar</th>
-                <th>Eliminar</th>
+                <th>Estado</th>
                 
             </tr>
         </thead>
         <tbody>
             <?php foreach ($Productos as $Producto): ?>
-                <tr>
-            <td><?=$Producto['codigo'];?></td>
-            <td><?=$Producto['nombre'];?></td>
-            <td><?=$Producto['categoria_nombre'];?></td>
-            <td><?=$Producto['descripcion'];?></td>
-            <td><img src="photo/<?=$Producto['foto'];?>" width="100" alt="Foto"></td>
-            <td><?=$Producto['cantidad'];?></td>
-            <td><?=$Producto['precio'];?></td>
-            <td><!--Editar producto-->
-                <form action="index.php?action=buscarProducto" method="get">
-                    <input type="hidden" name="action" value="buscarProducto">
-                    <input type="hidden" name="codigo" value="<?=$Producto['codigo'];?>">
-                    <input type="submit" class="btn btn-secondary" value="Actualizar">
-                </form>
-            </td>
-            <td><!--Eliminar producto-->
-                <form action="index.php?action=eliminarProducto" method="get">
-                    <input type="hidden" name="action" value="eliminarProducto">
-                    <input type="hidden" name="codigo" value="<?=$Producto['codigo'];?>">
-                    <input type="submit" class="btn btn-danger" value="Eliminar">
-                </form>
-            </td>
-            
-            </tr>
+                <tr<?php if ($Producto['estado'] == 0): ?> style="opacity:0.6;"<?php endif; ?>>
+                    <td><?=$Producto['codigo'];?></td>
+                    <td><?=$Producto['nombre'];?></td>
+                    <td><?=$Producto['categoria_nombre'];?></td>
+                    <td>
+                        <?=$Producto['descripcion'];?>
+                        <?php if ($Producto['estado'] == 0): ?>
+                            <div class="text-danger small mt-1"><strong>Producto deshabilitado</strong></div>
+                        <?php endif; ?>
+                    </td>
+                    <td><img src="photo/<?=$Producto['foto'];?>" width="100" alt="Foto"></td>
+                    <td><?=$Producto['cantidad'];?></td>
+                    <td><?=$Producto['precio'];?></td>
+                    <td>
+                        <form action="index.php?action=buscarProducto" method="get">
+                            <input type="hidden" name="action" value="buscarProducto">
+                            <input type="hidden" name="codigo" value="<?=$Producto['codigo'];?>">
+                            <input type="submit" class="btn btn-secondary" value="Actualizar">
+                        </form>
+                    </td>
+                    <td>
+                        <form action="index.php?action=cambiarEstadoProducto" method="post">
+                            <input type="hidden" name="codigo" value="<?=$Producto['codigo'];?>">
+                            <input type="hidden" name="estado" value="<?= $Producto['estado'] == 1 ? 0 : 1 ?>">
+                            <?php if ($Producto['estado'] == 1): ?>
+                                <button type="submit" class="btn btn-outline-danger">Deshabilitar</button>
+                            <?php else: ?>
+                                <button type="submit" class="btn btn-outline-success">Habilitar</button>
+                            <?php endif; ?>
+                        </form>
+                    </td>
+                </tr>
             <?php endforeach; ?>
         </tbody>
     </table>

@@ -51,8 +51,13 @@ switch ($action) {
     case 'actualizarProducto':
         $Productos = $ProductoController->Actualizar();
         $Productos = $ProductoController->listProducto();
-        include './views/InverBoard.php';
+        include './views/list_producto.php';
         break;
+
+    case 'cambiarEstadoProducto':
+        $ProductoController->cambiarEstadoProducto();
+        header('Location: index.php?action=listProducto');
+        exit;
 
     case 'deleteProducto':
         $Productos = $ProductoController->ProductoByCodigo();

@@ -22,7 +22,7 @@
         $apellidos = htmlspecialchars($_SESSION['cliente']['apellidos']);
         $numero_documento = htmlspecialchars($_SESSION['cliente']['numero_documento']);
     ?>
-        <div class="container-fluid bg-danger text-light text-center p-3">
+        <div class="container-fluid bg-danger text-light text-center p-1">
             <h4>Bienvenid@, <?php echo $nombre, " ", $apellidos; ?> 👋</h4>
         </div>
     <?php endif; ?>
@@ -169,6 +169,7 @@
             <!-- Verifica si hay productos para mostrar -->
             <?php if (!empty($Productos) && is_array($Productos)): ?>
                 <?php foreach ($Productos as $producto): ?>
+                    <?php if ($producto['estado'] == 1): // Solo mostrar productos habilitados ?>
                     <div class="col">
                         <div class="card h-100 text-center">
                             <!-- Imagen del producto -->
@@ -176,13 +177,13 @@
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $producto['nombre']; ?></h5>
                                 <p class="card-text text-muted"><?php echo $producto['categoria_nombre']; ?></p>
-                                
                                 <h4 class="card-text">$<?= number_format($producto['precio'], 0, '', '.') ?></h4>
                                 <!-- Botón para ver más información del producto -->
                                 <a href="index.php?action=productinfo&codigo=<?= $producto['codigo'] ?>" class="btn btn-danger">Mirar</a>
                             </div>
                         </div>
                     </div>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             <?php else: ?>
                 <p class="text-center">Producto actualizado con exito</p>
@@ -206,8 +207,7 @@
         <!-- Fin footer -->
 
         <!-- Botones de administración de productos y usuarios -->
-        <div class="container my-4">
-    <div class="row">
+       
         <!-- Productos 
         <div class="col-12 col-md-6 mb-4">
             <label class="fw-bold mb-2">Productos</label>

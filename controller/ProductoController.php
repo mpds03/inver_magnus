@@ -66,12 +66,16 @@ class ProductoController
         }
     }
 
-    public function Eliminar()
+    // Cambiar estado (habilitar/deshabilitar) producto
+    public function cambiarEstadoProducto()
     {
-        $codigo = $_GET['codigo'] ?? '';
-        $datos = $this->ProductoModel->Eliminar($codigo);
-        return $this->ProductoModel->Eliminar($codigo);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $codigo = $_POST['codigo'];
+            $estado = $_POST['estado'];
+            $this->ProductoModel->cambiarEstado($codigo, $estado);
+        }
     }
+
     //PRUEBA DE MUESTRA DE PRODUCTOS CREADOS:
     public function getProducto()
     {

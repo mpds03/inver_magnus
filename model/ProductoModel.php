@@ -39,6 +39,13 @@ class ProductoModel{
         return $stmt->execute([$IdCategoria,$descripcion,$precio,$foto,$nombre, $cantidad, $codigo]);
     }
 
+    // Cambiar estado (habilitar/deshabilitar) producto
+    public function cambiarEstado($codigo, $estado){
+        $query = "UPDATE " . $this->table . " SET estado=? WHERE codigo=?";
+        $stmt = $this->conn->prepare($query);
+        return $stmt->execute([$estado, $codigo]);
+    }
+
     public function Eliminar($codigo){
         $query= "DELETE FROM ". $this->table. " Where codigo=?";
         $stmt= $this->conn->prepare($query);
