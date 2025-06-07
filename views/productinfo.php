@@ -49,7 +49,7 @@
 
         <!-- Barra de búsqueda -->
         <div class="col-md-5 p-1">
-            <form action="index.php?action=barraBusqueda" method="get" class="d-flex">
+            <form action="index.php?action=barraBusqueda" method="get" class="d-flex p-1">
               <input type="hidden" name="action" value="barraBusqueda" />
               <input class="form-control mx-5 me-2" name="nombre" type="text" placeholder="Buscar Productos" />
               <button class="btn btn-outline-light me-5" type="submit">Buscar</button>
