@@ -174,7 +174,7 @@
     <div class="alert alert-success text-center">¡Compra hecha con éxito!</div>
 <?php endif; ?>
         <!-- Cards de productos (conexión a la base de datos) -->
-        <div class="row row-cols-1 row-cols-md-5 mt-3">
+        <div class="row row-cols-1 row-cols-md-5 mt-3 g-4">
             
             <!-- Verifica si hay productos para mostrar -->
             <?php if (!empty($Productos) && is_array($Productos)): ?>
