@@ -26,7 +26,7 @@
 
 
 <div class="container-fluid" id="cajamadre">
-     <div class="container-fluid" id="cajamadre">
+     
         <div class="row align-items-center">
             <!-- Botón Hamburguesa y Categorías -->
             <div class="col-md-3 d-flex align-items-center gap-2">
@@ -264,7 +264,7 @@
             </div>
         </div>AAAAAAAA-->
     </div>
-</div>
+
     </div> <!-- CARDS -->
 
     </div> <!-- fin de row de caja madre-->
