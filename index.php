@@ -210,6 +210,11 @@ switch ($action) {
     case 'adminPedidos':
         $PedidosController->listarPedidos();
         break;
+
+    case 'pedidosCliente':
+        $PedidosController->listarPedidosCliente();
+        break;
+        
     case 'actualizarEstadoFactura':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = $_POST['IdFactura'];

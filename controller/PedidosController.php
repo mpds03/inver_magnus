@@ -35,4 +35,25 @@ class PedidosController {
 
         include './views/admin_pedidos.php';
     }
+
+    public function listarPedidosCliente() {
+        // Supón que el número de documento del cliente está en $_SESSION['numero_documento']
+        if (!isset($_SESSION['numero_documento'])) {
+            header('Location: index.php?action=login');
+            exit;
+        }
+        $numero_documento = $_SESSION['numero_documento'];
+
+        // Facturas del cliente
+        $stmt = $this->db->prepare("SELECT * FROM factura WHERE numero_documento = ? ORDER BY fecha DESC");
+        $stmt->execute([$numero_documento]);
+        $facturas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Compras directas del cliente
+        $stmt2 = $this->db->prepare("SELECT * FROM compra WHERE numero_documento = ? ORDER BY IdCompra DESC");
+        $stmt2->execute([$numero_documento]);
+        $comprasDirectas = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+
+        include './views/pedidos_cliente.php';
+    }
 }
