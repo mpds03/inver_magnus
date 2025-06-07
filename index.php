@@ -4,19 +4,17 @@ require_once './controller/ProductoController.php';
 require_once './controller/clientecontroller.php';
 require_once './controller/TipDocumController.php';
 require_once './controller/categoriacontroller.php';
-require_once './controller/CompraDirectaController.php';
-require_once './controller/CarritoController.php'; // <-- NUEVO
-require_once './controller/FacturaController.php'; // <-- NUEVO
-require_once './controller/PedidosController.php';
+require_once './controller/CarritoController.php'; 
+require_once './controller/FacturaController.php'; 
+
 
 $ProductoController = new ProductoController(); //Insertar, Actualizar, Eliminar, Listar productos
 $CategoriaController = new CategoriaController();
 $clientecontroller = new clientecontroller();
 $TipDocumController = new TipDocumController();
-$CompraDirectaController = new CompraDirectaController();
-$CarritoController = new CarritoController(); // <-- NUEVO
-$FacturaController = new FacturaController(); // <-- NUEVO
-$PedidosController = new PedidosController();
+$CarritoController = new CarritoController(); 
+$FacturaController = new FacturaController(); 
+
 
 $action = $_GET['action'] ?? 'InverBoard';
 
@@ -163,11 +161,7 @@ switch ($action) {
         include './views/InverBoard.php';
         break;
 
-    // --- COMPRA DIRECTA ---
-    case 'compraDirecta':
-        // Muestra el formulario o procesa la compra directa
-        $CompraDirectaController->comprar();
-        break;
+    
 
     // --- CARRITO DE COMPRAS ---
     case 'verCarrito':
@@ -206,14 +200,7 @@ switch ($action) {
         include './views/factura.php';
         break;
 
-    // --- PEDIDOS ---
-    case 'adminPedidos':
-        $PedidosController->listarPedidos();
-        break;
-
-    case 'pedidosCliente':
-        $PedidosController->listarPedidosCliente();
-        break;
+    
         
     case 'actualizarEstadoFactura':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -7,7 +7,7 @@
     <title>Factura</title>
     <link rel="shortcut icon" href="images/icon.ico" type="image/x-icon">
     <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/inicio.css">
+    <link rel="stylesheet" href="css/inverboard.css">
 </head>
 <body>
 

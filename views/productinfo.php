@@ -160,16 +160,8 @@
                             </div>
                         </div>
 
-                        <!-- Botnes compra directa y añadir al carrito -->
+                        <!-- Añadir al carrito -->
                         <div class="text-center mt-4">
-                            <!-- Formulario de compra directa -->
-                            <form action="index.php?action=compraDirecta" method="post" class="d-inline">
-                                <input type="hidden" name="codigo" value="<?= $producto['codigo'] ?>">
-                                <input type="hidden" name="precio" value="<?= $producto['precio'] ?>">
-                                <input type="number" name="cantidad" value="1" min="1" max="<?= $producto['cantidad'] ?>" class="form-control d-inline w-auto" required>
-                                <input type="text" name="direccion" placeholder="Dirección de envío" class="form-control d-inline w-auto mb-2" style="width:180px;display:inline-block;" required>
-                                <button type="submit" class="btn btn-danger mb-2">Comprar ahora</button>
-                            </form><br>
                             <!-- Formulario para añadir al carrito -->
                             <form action="index.php?action=agregarCarrito" method="post" class="d-inline ms-2">
                                 <input type="hidden" name="codigo" value="<?= $producto['codigo'] ?>">
@@ -178,7 +170,6 @@
                                 <button type="submit" class="btn btn-danger">Añadir al carrito</button>
                             </form>
                         </div>
-
                 </div>
 
                 <!--Hola, cajita del lado derecho-->
