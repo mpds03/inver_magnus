@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -23,11 +22,7 @@
         $nombre = htmlspecialchars($_SESSION['cliente']['nombres']);
         $apellidos = htmlspecialchars($_SESSION['cliente']['apellidos']);
         $numero_documento = htmlspecialchars($_SESSION['cliente']['numero_documento']);
-    ?>
-        <div class="container-fluid bg-danger text-light text-center p-1">
-            <h4>Bienvenid@, <?php echo $nombre, " ", $apellidos; ?> 👋</h4>
-        </div>
-    <?php endif; ?>
+    endif; ?>
 
 
 <div class="container-fluid" id="cajamadre">
@@ -78,12 +73,19 @@
         <?php endif; ?>
 
       <!-- Control de sesión: actualizar datos, cerrar sesión, login, registro -->
-        <div id="regis" class="col-md-4 p-1 d-flex justify-content-end">
+        <div id="regis" class="col-md-4 p-1 d-flex justify-content-end align-items-center">
             <?php if (isset($_SESSION['rol']) && ($_SESSION['rol'] === 0 || $_SESSION['rol'] === 1)): ?>
+                <div class="d-flex flex-column align-items-end me-3">
+                    <span class="text-light fw-bold" style="font-size: 1rem;">Bienvenid@</span>
+                    <span class="text-light fw-bold" style="font-size: 1rem;">
+                        <?= htmlspecialchars($_SESSION['cliente']['nombres']) . " " . htmlspecialchars($_SESSION['cliente']['apellidos']); ?> 
+                    </span>
+                </div>
                 <!-- Botón para ver el carrito del usuario -->
-                <form action="index.php?action=verCarrito" method="POST" class="me-2">
-                    <button type="submit" class="btn btn-light text-danger h-100 ">
-                        Carrito (<?= $_SESSION['rol'] === 1 ? 'Admin' : 'Usuario' ?>)
+                <form action="index.php?action=verCarrito" method="POST" class="me-2 mb-0">
+                    <button type="submit" class="btn btn-light text-danger h-100">
+                        <i class="fas fa-shopping-cart"></i>
+                        Carrito
                     </button>
                 </form>
             <?php endif; ?>

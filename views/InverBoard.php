@@ -86,7 +86,7 @@
                     <form action="index.php?action=verCarrito" method="POST" class="me-2 mb-0">
                         <button type="submit" class="btn btn-light text-danger h-100">
                             <i class="fas fa-shopping-cart"></i>
-                           
+                           Carrito
                         </button>
                     </form>
                 <?php endif; ?>
