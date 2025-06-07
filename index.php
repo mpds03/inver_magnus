@@ -213,16 +213,7 @@ switch ($action) {
         header('Location: index.php?action=adminPedidos');
         exit;
 
-    case 'actualizarEstadoCompra':
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = $_POST['IdCompra'];
-            $nuevo_estado = $_POST['nuevo_estado'];
-            require_once './model/CompraDirectaModel.php';
-            $compraModel = new CompraDirectaModel((new Database())->getConnection());
-            $compraModel->actualizarEstado($id, $nuevo_estado);
-        }
-        header('Location: index.php?action=adminPedidos');
-        exit;
+    
     case 'eliminarFactura':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = $_POST['IdFactura'];
@@ -233,15 +224,6 @@ switch ($action) {
         header('Location: index.php?action=adminPedidos');
         exit;
 
-    case 'eliminarCompra':
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = $_POST['IdCompra'];
-            require_once './model/CompraDirectaModel.php';
-            $compraModel = new CompraDirectaModel((new Database())->getConnection());
-            $compraModel->eliminarCompra($id);
-        }
-        header('Location: index.php?action=adminPedidos');
-        exit;
 
     case 'comentarProducto':
         session_start();
