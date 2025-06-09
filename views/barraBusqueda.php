@@ -151,7 +151,7 @@
                     <?php if ($producto['estado'] == 1): // Solo mostrar productos habilitados ?>
                     <div class="col mb-4 d-flex align-items-stretch">
                         <div class="card h-100 text-center w-100">
-                            <img src="photo/<?= $producto['foto'] ?>" class="card-img-top estructura" alt="Imagen del producto">
+                            <img src="photo/<?= $producto['foto'] ?>" class="card-img-top estructuras" alt="Imagen del producto">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $producto['nombre']; ?></h5>
                                 <p class="card-text text-muted"><?php echo $producto['categoria_nombre']; ?></p>

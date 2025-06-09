@@ -49,8 +49,6 @@ body {
 
 /* Ajusta las imágenes de las cards para que no se deformen ni se corten */
 .card-img-top.estructuras {
-    width: 100%;
-    height: 180px;         /* Ajusta este valor según el alto que prefieras */
     object-fit: contain;   /* Cambia a 'cover' si prefieres que se recorte y llene el espacio */
     background: #fff;      /* Fondo blanco para imágenes más pequeñas */
     padding: 10px;         /* Opcional: agrega espacio interno */
