@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="h-100">
 
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <?php
     // Iniciar sesión y mostrar bienvenida si el usuario está logueado
@@ -168,7 +168,7 @@
         </div>
     </div>
     <!-- Footer con botones de redes sociales -->
-    <div class="container-fluid footer bg-secondary">
+    <div class="container-fluid footer bg-secondary mt-auto">
         <div class="row">
             <div class="col-12 p-3 mt-2 text-center">
                 <button class="btn btn-outline-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
