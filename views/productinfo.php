@@ -164,14 +164,20 @@
 
                         <!-- Añadir al carrito -->
                         <div class="text-center mt-4">
-                            <!-- Formulario para añadir al carrito -->
-                            <form action="index.php?action=agregarCarrito" method="post" class="d-inline ms-2">
-                                <input type="hidden" name="codigo" value="<?= $producto['codigo'] ?>">
-                                <input type="hidden" name="precioUnitario" value="<?= $producto['precio'] ?>">
-                                <input type="number" name="cantidad" value="1" min="1" max="<?= $producto['cantidad'] ?>" class="form-control d-inline w-auto mb-2" required><br>
-                                <button type="submit" class="btn btn-danger">Añadir al carrito</button>
-                            </form>
-                        </div>
+    <!-- Mostrar mensaje y deshabilitar botón si el producto está agotado -->
+    <?php if ($producto['cantidad'] == 0 || $producto['estado'] == 0): ?>
+        <div class="alert alert-danger fw-bold">¡Producto AGOTADO!</div>
+        <button class="btn btn-secondary" disabled>Agotado</button>
+    <?php else: ?>
+        <!-- Formulario para añadir al carrito -->
+        <form action="index.php?action=agregarCarrito" method="post" class="d-inline ms-2">
+            <input type="hidden" name="codigo" value="<?= $producto['codigo'] ?>">
+            <input type="hidden" name="precioUnitario" value="<?= $producto['precio'] ?>">
+            <input type="number" name="cantidad" value="1" min="1" max="<?= $producto['cantidad'] ?>" class="form-control d-inline w-auto mb-2" required><br>
+            <button type="submit" class="btn btn-danger">Añadir al carrito</button>
+        </form>
+    <?php endif; ?>
+</div>
                 </div>
 
                 <!--Hola, cajita del lado derecho-->
