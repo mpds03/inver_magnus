@@ -202,7 +202,7 @@
         </div><!--fin del div de row de cards-->
 
         <!-- Footer con botones de redes sociales -->
-        <div class="container-fluid footer bg-secondary">
+        <div class="container-fluid footer bg-secondary mt-5">
             <div class="row">
                 <div class="col-12 p-3 mt-2 text-center">
                     <button class="btn btn-outline-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
