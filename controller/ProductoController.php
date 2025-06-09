@@ -108,4 +108,10 @@ class ProductoController
         $comentarioModel = new ComentarioModel($this->db);
         $comentarioModel->insertarComentario($codigo, $numero_documento, $comentario);
     }
+
+    public function getTopVendidos($limite = 3) {
+        require_once './model/ProductoModel.php';
+        $productoModel = new ProductoModel($this->db);
+        return $productoModel->getTopVendidos($limite);
+    }
 }

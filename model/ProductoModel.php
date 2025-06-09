@@ -92,4 +92,18 @@ class ProductoModel{
         $stmt->execute([$IdCategoria]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+        public function getTopVendidos($limite = 3) {
+        $query = "SELECT p.*, c.nombre AS categoria_nombre, 
+                         SUM(df.cantidad) AS total_vendidos
+                  FROM producto p
+                  LEFT JOIN detalle_factura df ON p.codigo = df.codigo
+                  LEFT JOIN categoria c ON p.IdCategoria = c.IdCategoria
+                  GROUP BY p.codigo
+                  ORDER BY total_vendidos DESC
+                  LIMIT ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(1, (int)$limite, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     }

@@ -161,9 +161,21 @@
                 <!-- Lista de productos más vendidos (botones) -->
                 <div class="position-relative" id="bati-container">
                     <div id="bati" class="d-flex flex-row align-items-center">
-                        <button class="btn btn-light text-danger my-5 ">Licuadoras</button>
-                        <button class="btn btn-light text-danger my-5">Batidora de mano</button>
-                        <button class="btn btn-light text-danger my-5">Plachas</button>
+                        <?php if (!empty($topProductos)): ?>
+                            <?php foreach ($topProductos as $top): ?>
+                                <form action="index.php" method="get" class="me-2">
+                                    <input type="hidden" name="action" value="productinfo">
+                                    <input type="hidden" name="codigo" value="<?= htmlspecialchars($top['codigo']) ?>">
+                                    <button type="submit" class="btn btn-light text-danger my-5">
+                                        <?= htmlspecialchars($top['nombre']) ?>
+                                    </button>
+                                </form>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <button class="btn btn-light text-danger my-5">TOP</button>
+                            <button class="btn btn-light text-danger my-5">TOP</button>
+                            <button class="btn btn-light text-danger my-5">TOP</button>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <!-- Fin lista de productos más vendidos -->

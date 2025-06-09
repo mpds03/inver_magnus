@@ -262,6 +262,8 @@ switch ($action) {
 
     //NO TOCAR:
     default:
+        // Obtener productos más vendidos
+        $topProductos = $ProductoController->getTopVendidos(3);
         $Productos = $ProductoController->listProducto();
         include './views/InverBoard.php';
         break;
