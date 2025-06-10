@@ -48,17 +48,18 @@
                             <input type="text" name="apellidos" class="form-style" value="<?= $cliente['apellidos']; ?>" placeholder="Apellidos" required>
                             <i class="input-icon uil uil-user"></i>
                           </div>
-                          <div class="form-group">
-                            <input type="number" name="telefono" class="form-style" value="<?= $cliente['telefono']; ?>" placeholder="Teléfono" required>
-                            <i class="input-icon uil uil-phone"></i>
-                          </div>
-                          <div class="form-group">
+                          
+                         <div class="form-group">
                             <input type="password" name="contraseña" class="form-style" value="<?= $cliente['contraseña']; ?>" placeholder="Contraseña" required>
                             <i class="input-icon uil uil-lock-alt"></i>
-                          </div>
+                          </div> 
                           <div class="form-group">
                             <input type="email" name="email" class="form-style" value="<?= $cliente['email']; ?>" placeholder="Correo electrónico" required>
                             <i class="input-icon uil uil-at"></i>
+                          </div>
+                          <div class="form-group">
+                            <input type="text" name="direccion" class="form-style" value="<?= $cliente['direccion']; ?>" placeholder="Dirección de residencia" required>
+                            <i class="input-icon uil uil-home"></i>
                           </div>
                           <input type="submit" class="btn btn-outline-danger" value="Guardar">
                         <?php endif; ?>

@@ -8,10 +8,10 @@ class ClienteModel{
             $this->conn =$db;
         }
 
-        public function insertUser($numero_documento, $IdDocum  , $nombres, $apellidos, $telefono, $contraseña, $email){
-            $query = "INSERT INTO " . $this->table . "(numero_documento, IdDocum, nombres, apellidos, telefono, contraseña, email ) VALUES (?,?,?,?,?,?,?)";
+        public function insertUser($numero_documento, $IdDocum, $nombres, $apellidos, $direccion, $contraseña, $email){
+            $query = "INSERT INTO " . $this->table . "(numero_documento, IdDocum, nombres, apellidos, direccion, contraseña, email ) VALUES (?,?,?,?,?,?,?)";
             $stmt = $this->conn->prepare($query);
-            $stmt->execute([$numero_documento, $IdDocum, $nombres, $apellidos, $telefono, $contraseña, $email]);
+            $stmt->execute([$numero_documento, $IdDocum, $nombres, $apellidos, $direccion, $contraseña, $email]);
         }
 
         public function getUsers()
@@ -27,12 +27,13 @@ class ClienteModel{
         $stmt->execute(['%' .$numero_documento . '%']);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function actualizar($IdDocum, $nombres, $apellidos, $telefono, $contraseña, $email,$numero_documento )
+    
+    public function actualizar($IdDocum, $nombres, $apellidos, $direccion, $contraseña, $email, $numero_documento )
     {
         $query = "UPDATE " . $this->table . " SET IdDocum=?, nombres=?, apellidos=?, 
-        telefono=?, contraseña=?, email=? WHERE numero_documento=?";
+        direccion=?, contraseña=?, email=? WHERE numero_documento=?";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute([$IdDocum, $nombres, $apellidos, $telefono, $contraseña, $email, $numero_documento ]);
+        $stmt->execute([$IdDocum, $nombres, $apellidos, $direccion, $contraseña, $email, $numero_documento ]);
     }
 
     public function eliminar($numero_documento){

@@ -20,7 +20,7 @@ class clientecontroller {
             $IdDocum = $_POST['IdDocum'];
             $nombres = $_POST['nombres'];
             $apellidos = $_POST['apellidos'];
-            $telefono = $_POST['telefono'];
+            $direccion = $_POST['direccion'];
             $contraseña = $_POST['contraseña'];
             $email = $_POST['email'];
 
@@ -39,6 +39,7 @@ class clientecontroller {
             echo "<script>alert('El registro civil debe tener exactamente 10 dígitos.'); window.history.back();</script>";
             exit;
         }
+        
         break;
             case '3': // CE
             if (!preg_match('/^[A-Za-z0-9]{6,12}$/', $numero_documento)) {
@@ -52,10 +53,10 @@ class clientecontroller {
 }
 
         //validacion de 10 numeros en telefono
-        if (!preg_match('/^\d{10}$/', $telefono)) {
-            echo "<script>alert('El número de teléfono debe tener exactamente 10 dígitos.'); window.history.back();</script>";
-        exit;
-        }
+        // if (!preg_match('/^\d{10}$/', $telefono)) {
+        //     echo "<script>alert('El número de teléfono debe tener exactamente 10 dígitos.'); window.history.back();</script>";
+        // exit;
+        // }
 
          // Validación de contraseña segura
         if (!$this->validarContraseña($contraseña)) {
@@ -72,7 +73,7 @@ class clientecontroller {
                 $IdDocum, 
                 $nombres, 
                 $apellidos, 
-                $telefono, 
+                $direccion, 
                 $contraseñaHash, 
                 $email
             );
@@ -106,7 +107,7 @@ class clientecontroller {
             $IdDocum = $_POST['IdDocum'];
             $nombres = $_POST['nombres'];
             $apellidos = $_POST['apellidos'];
-            $telefono = $_POST['telefono'];
+            $direccion = $_POST['direccion'];
             $contraseña = $_POST['contraseña'];
             $email = $_POST['email'];
             $numero_documento = $_POST['numero_documento'];
@@ -137,8 +138,14 @@ class clientecontroller {
             }
 
             // Validación de teléfono
-            if (!preg_match('/^\d{10}$/', $telefono)) {
-                echo "<script>alert('El número de teléfono debe tener exactamente 10 dígitos.'); window.history.back();</script>";
+            // if (!preg_match('/^\d{10}$/', $telefono)) {
+            //     echo "<script>alert('El número de teléfono debe tener exactamente 10 dígitos.'); window.history.back();</script>";
+            //     exit;
+            // }
+
+            // Validación de dirección
+            if (empty($direccion) || strlen($direccion) < 5) {
+                echo "<script>alert('La dirección de residencia es obligatoria y debe tener al menos 5 caracteres.'); window.history.back();</script>";
                 exit;
             }
 
@@ -151,7 +158,17 @@ class clientecontroller {
             // Encriptar la contraseña antes de actualizar
             $contraseñaHash = password_hash($contraseña, PASSWORD_BCRYPT);
 
-            $this->ClienteModel->actualizar($IdDocum, $nombres, $apellidos, $telefono, $contraseñaHash, $email, $numero_documento);
+            $this->ClienteModel->actualizar($IdDocum, $nombres, $apellidos, $direccion, $contraseñaHash, $email, $numero_documento);
+
+            // ACTUALIZAR LA SESIÓN CON LOS NUEVOS DATOS
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+            $_SESSION['cliente']['nombres'] = $nombres;
+            $_SESSION['cliente']['apellidos'] = $apellidos;
+            $_SESSION['cliente']['direccion'] = $direccion;
+            $_SESSION['cliente']['email'] = $email;
+            // Si tienes más campos que cambian, agrégalos aquí
 
             echo "<script>alert('Usuario actualizado correctamente'); window.location.href='index.php?action=InverBoard';</script>";
             exit;
@@ -272,6 +289,4 @@ public function cambiarContraseña() {
 }
 
 }
-
-?>
 
