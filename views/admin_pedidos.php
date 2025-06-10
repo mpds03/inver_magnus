@@ -6,11 +6,12 @@
     <meta charset="UTF-8">
     <title>Pedidos de Clientes</title>
     <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/inicio.css">
 </head>
 <body>
 <div class="container mt-5">
     <h1 class="text-center">Pedidos</h1>
-    <h2>Pedidos realizados (Carrito)</h2>
+    
     <form method="get" action="index.php" class="mb-4 d-flex justify-content-end">
         <input type="hidden" name="action" value="adminPedidos">
         <input type="text" name="buscar_documento" class="form-control w-auto me-2" placeholder="Buscar por documento" value="<?= isset($_GET['buscar_documento']) ? htmlspecialchars($_GET['buscar_documento']) : '' ?>">
@@ -79,5 +80,6 @@
     
     <a href="index.php?action=InverBoard" class="btn btn-secondary">Volver al panel</a>
 </div>
+<script src="/Bootstrap/js/bootstrap.bundle.min.js"></script><!--NYAAA-->
 </body>
 </html>

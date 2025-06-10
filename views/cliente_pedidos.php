@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Mis Pedidos</title>
     <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/inicio.css">
 </head>
 <body>
 <div class="container mt-5">
@@ -54,5 +55,6 @@
 
     <a href="index.php?action=InverBoard" class="btn btn-danger">Volver al panel</a>
 </div>
+<script src="/Bootstrap/js/bootstrap.bundle.min.js"></script><!--NYAAA-->
 </body>
 </html>
