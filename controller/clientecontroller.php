@@ -234,12 +234,12 @@ public function enviarCodigoRecuperacion() {
                 $mail->Port = 587;
 
                 // Remitente y destinatario
-                $mail->setFrom('kendruick.o2o@gmail.com', 'recuperacion_php');
+                $mail->setFrom('kendruick.o2o@gmail.com', 'Inver Magnus');
                 $mail->addAddress($email);
 
                 // Contenido
                 $mail->isHTML(true);
-                $mail->Subject = 'Código de recuperación';
+                $mail->Subject = 'Codigo de recuperacion';
                 $mail->Body    = "Tu código de recuperación es: <b>$codigo</b>";
 
                 $mail->send();

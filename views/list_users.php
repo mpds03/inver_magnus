@@ -32,7 +32,7 @@
                     <th>Tipo de Documento</th>
                     <th>Nombres</th>
                     <th>Apellidos</th>
-                    <th>Teléfono</th>
+                    <th>Dirección</th>
                     <th>Contraseña</th>
                     <th>Correo electrónico</th>
                     <th>Actualizar</th>
@@ -46,7 +46,7 @@
                         <td><?= $cliente['tipo_doc_nombre']; ?></td>
                         <td><?= $cliente['nombres']; ?></td>
                         <td><?= $cliente['apellidos']; ?></td>
-                        <td><?= $cliente['telefono']; ?></td>
+                        <td><?= $cliente['direccion']; ?></td>
                         <td><?= $cliente['contraseña']; ?></td>
                         <td><?= $cliente['email']; ?></td>
                         <td><!--Actualizar usuario-->
