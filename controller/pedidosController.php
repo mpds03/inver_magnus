@@ -24,6 +24,18 @@ class PedidosController {
         $stmt->execute($params);
         $facturas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+        // Obtener detalles de cada factura con nombre de producto
+        foreach ($facturas as &$factura) {
+            $stmt2 = $this->db->prepare("
+                SELECT d.*, p.nombre 
+                FROM detalle_factura d
+                JOIN producto p ON d.codigo = p.codigo
+                WHERE d.IdFactura = ?
+            ");
+            $stmt2->execute([$factura['IdFactura']]);
+            $factura['detalles'] = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+        }
+
         include './views/admin_pedidos.php';
     }
 
@@ -35,10 +47,22 @@ class PedidosController {
         }
         $numero_documento = $_SESSION['cliente']['numero_documento'];
 
-        // Solo facturas del cliente
+        // Obtener facturas del cliente
         $stmt = $this->db->prepare("SELECT * FROM factura WHERE numero_documento = ? ORDER BY fecha DESC");
         $stmt->execute([$numero_documento]);
         $facturas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Obtener detalles de cada factura
+        foreach ($facturas as &$factura) {
+            $stmt2 = $this->db->prepare("
+                SELECT d.*, p.nombre 
+                FROM detalle_factura d
+                JOIN producto p ON d.codigo = p.codigo
+                WHERE d.IdFactura = ?
+            ");
+            $stmt2->execute([$factura['IdFactura']]);
+            $factura['detalles'] = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+        }
 
         include './views/cliente_pedidos.php';
     }

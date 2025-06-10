@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,29 +8,51 @@
 <body>
 <div class="container mt-5">
     <h1 class="text-center">Mis Pedidos</h1>
-    <h2>Pedidos realizados (Carrito)</h2>
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>ID Factura</th>
-                <th>Fecha</th>
-                <th>Total</th>
-                <th>Estado</th>
+                <th colspan="8" class="text-center">Historial de pedidos realizados</th>
             </tr>
         </thead>
         <tbody>
         <?php foreach ($facturas as $f): ?>
-            <tr>
-                <td><?= $f['IdFactura'] ?></td>
-                <td><?= $f['fecha'] ?></td>
-                <td><?= $f['total'] ?></td>
-                <td><?= $f['estado'] ?? 'Pendiente' ?></td>
+            <tr class="table-primary">
+                <td colspan="8">
+                    <strong>Factura N°:</strong> <?= $f['IdFactura'] ?> |
+                    <strong>Fecha:</strong> <?= $f['fecha'] ?> |
+                    <strong>Total:</strong> <?= $f['total'] ?> |
+                    <strong>Estado:</strong> <?= $f['estado'] ?? 'Pendiente' ?>
+                </td>
             </tr>
+            <tr>
+                <th>Nombre Producto</th>
+                <th>Código</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Total Detalle</th>
+                <th colspan="3"></th>
+            </tr>
+            <?php if (!empty($f['detalles'])): ?>
+                <?php foreach ($f['detalles'] as $detalle): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($detalle['nombre']) ?></td>
+                        <td><?= $detalle['codigo'] ?></td>
+                        <td><?= $detalle['cantidad'] ?></td>
+                        <td><?= number_format($detalle['precio_unitario'], 0, ',', '.') ?></td>
+                        <td><?= number_format($detalle['total_detalle'], 0, ',', '.') ?></td>
+                        <td colspan="3"></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="8">Sin productos</td>
+                </tr>
+            <?php endif; ?>
         <?php endforeach; ?>
         </tbody>
     </table>
 
-    <a href="index.php?action=InverBoard" class="btn btn-secondary">Volver al panel</a>
+    <a href="index.php?action=InverBoard" class="btn btn-danger">Volver al panel</a>
 </div>
 </body>
 </html>
