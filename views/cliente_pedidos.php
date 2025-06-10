@@ -31,25 +31,6 @@
         </tbody>
     </table>
 
-    <h2>Pedidos de Compra Directa</h2>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>ID Compra</th>
-                <th>Dirección</th>
-                <th>Estado</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($comprasDirectas as $c): ?>
-            <tr>
-                <td><?= $c['IdCompra'] ?></td>
-                <td><?= $c['direccion'] ?></td>
-                <td><?= $c['estado'] ?? 'Pendiente' ?></td>
-            </tr>
-        <?php endforeach; ?>
-        </tbody>
-    </table>
     <a href="index.php?action=InverBoard" class="btn btn-secondary">Volver al panel</a>
 </div>
 </body>

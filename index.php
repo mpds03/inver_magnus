@@ -6,6 +6,7 @@ require_once './controller/TipDocumController.php';
 require_once './controller/categoriacontroller.php';
 require_once './controller/CarritoController.php'; 
 require_once './controller/FacturaController.php'; 
+require_once './controller/pedidosController.php';
 
 
 $ProductoController = new ProductoController(); //Insertar, Actualizar, Eliminar, Listar productos
@@ -13,7 +14,8 @@ $CategoriaController = new CategoriaController();
 $clientecontroller = new clientecontroller();
 $TipDocumController = new TipDocumController();
 $CarritoController = new CarritoController(); 
-$FacturaController = new FacturaController(); 
+$FacturaController = new FacturaController();
+$PedidosController = new PedidosController(); 
 
 
 $action = $_GET['action'] ?? 'InverBoard';
@@ -224,6 +226,13 @@ switch ($action) {
         header('Location: index.php?action=adminPedidos');
         exit;
 
+    case 'adminPedidos':
+        $PedidosController->listarPedidos();
+        break;
+
+    case 'pedidosCliente':
+        $PedidosController->listarPedidosCliente();
+        break;
 
     case 'comentarProducto':
         session_start();

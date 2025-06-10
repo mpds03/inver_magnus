@@ -55,43 +55,7 @@
         </tbody>
     </table>
 
-    <h2>Pedidos de Compra Directa</h2>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>ID Compra</th>
-                <th>Cliente</th>
-                <th>Dirección</th>
-                <th>Estado</th>
-                <th>Acción</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($comprasDirectas as $c): ?>
-            <tr>
-                <td><?= $c['IdCompra'] ?></td>
-                <td><?= $c['numero_documento'] ?></td>
-                <td><?= $c['direccion'] ?></td>
-                <td><?= $c['estado'] ?? 'Pendiente' ?></td>
-                <td>
-                    <form method="post" action="index.php?action=actualizarEstadoCompra" style="display:inline;">
-                        <input type="hidden" name="IdCompra" value="<?= $c['IdCompra'] ?>">
-                        <select name="nuevo_estado" class="form-select form-select-sm d-inline w-auto">
-                            <option <?= ($c['estado'] ?? '') == 'Pendiente' ? 'selected' : '' ?>>Pendiente</option>
-                            <option <?= ($c['estado'] ?? '') == 'Enviado' ? 'selected' : '' ?>>Enviado</option>
-                            <option <?= ($c['estado'] ?? '') == 'Entregado' ? 'selected' : '' ?>>Entregado</option>
-                        </select>
-                        <button type="submit" class="btn btn-danger btn-sm">Actualizar</button>
-                    </form>
-                    <form method="post" action="index.php?action=eliminarCompra" style="display:inline;" onsubmit="return confirm('¿Seguro que deseas eliminar este pedido?');">
-                        <input type="hidden" name="IdCompra" value="<?= $c['IdCompra'] ?>">
-                        <button type="submit" class="btn btn-outline-danger btn-sm ms-1">Eliminar</button>
-                    </form>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-        </tbody>
-    </table>
+    
     <a href="index.php?action=InverBoard" class="btn btn-secondary">Volver al panel</a>
 </div>
 </body>
