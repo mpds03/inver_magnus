@@ -17,7 +17,7 @@
         </thead>
         <tbody>
         <?php foreach ($facturas as $f): ?>
-            <tr class="table-primary">
+            <tr class="table-secondary">
                 <td colspan="8">
                     <strong>Factura N°:</strong> <?= $f['IdFactura'] ?> |
                     <strong>Fecha:</strong> <?= $f['fecha'] ?> |
