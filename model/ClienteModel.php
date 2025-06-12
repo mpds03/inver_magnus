@@ -69,6 +69,16 @@ class ClienteModel{
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$hash, $email]);
     }
+
+
+
+
+    // no se si sirve    
+    public function actualizarRol($numero_documento, $rol) {
+    $query = "UPDATE " . $this->table . " SET rol=? WHERE numero_documento=?";
+    $stmt = $this->conn->prepare($query);
+    return $stmt->execute([$rol, $numero_documento]);
+}
 }
 // parte hecha del video 
 ?>
