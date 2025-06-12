@@ -168,8 +168,8 @@
     <?php if ($producto['cantidad'] == 0 || $producto['estado'] == 0): ?>
         <div class="alert alert-danger fw-bold">¡Producto AGOTADO!</div>
         <button class="btn btn-secondary" disabled>Agotado</button>
-    <?php else: ?>
-        <!-- Formulario para añadir al carrito -->
+    <?php elseif (isset($_SESSION['cliente'])): ?>
+        <!-- Formulario para añadir al carrito solo si hay sesión -->
         <form action="index.php?action=agregarCarrito" method="post" class="d-inline ms-2">
             <input type="hidden" name="codigo" value="<?= $producto['codigo'] ?>">
             <input type="hidden" name="precioUnitario" value="<?= $producto['precio'] ?>">

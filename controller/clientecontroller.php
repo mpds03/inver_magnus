@@ -79,7 +79,7 @@ class clientecontroller {
             );
         session_start();
         $_SESSION['correo_usuario'] = $email;
-        header("Location: index.php?action=dashboard");
+        header("Location: index.php?action=InverBoard");
         }
     }
 
