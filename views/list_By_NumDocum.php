@@ -23,7 +23,7 @@
                 <th>Tipo de Documento</th>
                 <th>Nombres</th>
                 <th>Apellidos</th>
-                <th>Teléfono</th>
+                <th>Direccion</th>
                 <th>contraseña</th>
                 <th>email</th>
             </tr>
@@ -35,7 +35,7 @@
                 <td><?= $cliente['IdDocum']; ?></td>
                 <td><?= $cliente['nombres']; ?></td>
                 <td><?= $cliente['apellidos']; ?></td>
-                <td><?= $cliente['telefono']; ?></td>
+                <td><?= $cliente['direccion']; ?></td>
                 <td><?= $cliente['contraseña']; ?></td>
                 <td><?= $cliente['email']; ?></td>
             </tr>

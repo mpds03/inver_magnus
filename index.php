@@ -269,6 +269,16 @@ switch ($action) {
         }
         break;
 
+    case 'cambiarRolUsuario':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $numero_documento = $_POST['numero_documento'];
+            $nuevo_rol = $_POST['nuevo_rol'];
+            $clientecontroller->cambiarRol($numero_documento, $nuevo_rol);
+        }
+        $clientes = $clientecontroller->listUsers();
+        include './views/list_users.php';
+        break;
+
     //NO TOCAR:
     default:
         // Obtener productos más vendidos

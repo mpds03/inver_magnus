@@ -37,6 +37,7 @@
                     <th>Correo electrónico</th>
                     <th>Actualizar</th>
                     <th>Eliminar</th>
+                    <th>Rol</th>
                 </tr>
             </thead>
             <tbody>
@@ -63,9 +64,16 @@
                                 <input type="submit" value="eliminar" class="btn btn-danger">
                             </form>
                         </td><!--Eliminar usuario-->
-                        <form action=""></form>
-                        <td></td>
-
+                        <td>
+                            <form action="index.php?action=cambiarRolUsuario" method="post" class="d-flex gap-1">
+                                <input type="hidden" name="numero_documento" value="<?= $cliente['numero_documento']; ?>">
+                                <select name="nuevo_rol" class="form-select form-select-sm">
+                                    <option value="0" <?= $cliente['rol'] == 0 ? 'selected' : '' ?>>Usuario</option>
+                                    <option value="1" <?= $cliente['rol'] == 1 ? 'selected' : '' ?>>Admin</option>
+                                </select>
+                                <button type="submit" class="btn btn-sm btn-primary">Cambiar</button>
+                            </form>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

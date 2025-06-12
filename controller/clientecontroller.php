@@ -287,6 +287,9 @@ public function cambiarContraseña() {
         echo "<script>alert('Contraseña actualizada.'); window.location.href='index.php?action=login';</script>";
     }
 }
+public function cambiarRol($numero_documento, $nuevo_rol) {
+    $this->ClienteModel->actualizarRol($numero_documento, $nuevo_rol);
+}
 
 }
 
