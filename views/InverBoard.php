@@ -120,10 +120,7 @@
                 <li class="list-group-item"><form action="index.php?action=pedidosCliente" method="post" class="mb-0"><button type="submit" value="logout" class="btn btn-light">Mis pedidos</button></form></li>
     <!--aqui poner boton factura para el cliente y pedidos -->
 
-            <li class="list-group-item"><form action="index.php?action=logout" method="post" class="mb-0">
-                <button type="submit" value="logout" class="btn btn-light ">Cerrar Sesion</button>
-              </form></li>
-              
+          
 
             <?php endif; ?>
 
@@ -137,8 +134,12 @@
             <li class="list-group-item"><form action="index.php?action=listProducto" method="post" class="mb-0">
                 <button type="submit" value="InverBoard" class="btn btn-light ">Productos</button>
               </form></li>
-
             <?php endif; ?>
+            <?php if (isset($_SESSION['rol']) && ($_SESSION['rol'] === 0 || $_SESSION['rol'] === 1)): ?>
+            <li class="list-group-item"><form action="index.php?action=logout" method="post" class="mb-0">
+                <button type="submit" value="logout" class="btn btn-light ">Cerrar Sesion</button>
+              </form></li>
+               <?php endif; ?>
             <!-- Agrega aquí más módulos si quieres -->
           </ul>
         </div>
