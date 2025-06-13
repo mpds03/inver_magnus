@@ -10,12 +10,13 @@
 </head>
 <body>
 <div class="container mt-5">
-    <h1 class="text-center">Pedidos</h1>
+    <h1 class="text-center">Pedidos de clientes</h1>
     
-    <form method="get" action="index.php" class="mb-4 d-flex justify-content-end">
+    <form method="get" action="index.php" class="mb-4 d-flex justify-content-center">
         <input type="hidden" name="action" value="adminPedidos">
         <input type="text" name="buscar_documento" class="form-control w-auto me-2" placeholder="Buscar por documento" value="<?= isset($_GET['buscar_documento']) ? htmlspecialchars($_GET['buscar_documento']) : '' ?>">
-        <button type="submit" class="btn btn-primary">Buscar</button>
+        <button type="submit" class="btn btn-danger me-2">Buscar</button>
+        <a href="index.php?action=InverBoard" class="btn btn-secondary">Volver al inicio</a>
     </form>
     <table class="table table-bordered">
         <thead>
@@ -30,6 +31,7 @@
                     <strong>Factura N°:</strong> <?= $f['IdFactura'] ?> |
                     <strong>Fecha:</strong> <?= $f['fecha'] ?> |
                     <strong>Cliente:</strong> <?= $f['numero_documento'] ?> |
+                    <strong>Dirección:</strong> <?= htmlspecialchars($f['direccion'] ?? 'No registrada') ?> |
                     <strong>Total:</strong> <?= $f['total'] ?> |
                     <strong>Estado:</strong> <?= $f['estado'] ?? 'Pendiente' ?>
                     <span class="float-end">
@@ -78,7 +80,7 @@
     </table>
 
     
-    <a href="index.php?action=InverBoard" class="btn btn-secondary">Volver al panel</a>
+    
 </div>
 <script src="/Bootstrap/js/bootstrap.bundle.min.js"></script><!--NYAAA-->
 </body>

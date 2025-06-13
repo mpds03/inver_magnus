@@ -9,6 +9,10 @@
 <body>
 <div class="container mt-5">
     <h1 class="text-center">Mis Pedidos</h1>
+    <div class=" d-flex justify-content-center mb-4">
+    <a href="index.php?action=InverBoard" class="btn btn-danger">Volver al inicio</a>
+    </div>
+
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -16,6 +20,7 @@
             </tr>
         </thead>
         <tbody>
+            
         <?php foreach ($facturas as $f): ?>
             <tr class="table-secondary">
                 <td colspan="8">
@@ -23,6 +28,7 @@
                     <strong>Fecha:</strong> <?= $f['fecha'] ?> |
                     <strong>Total:</strong> <?= $f['total'] ?> |
                     <strong>Estado:</strong> <?= $f['estado'] ?? 'Pendiente' ?>
+                    <strong>Dirección de entrega:</strong> <?= htmlspecialchars($f['direccion'] ?? 'No registrada') ?>
                 </td>
             </tr>
             <tr>
@@ -53,7 +59,7 @@
         </tbody>
     </table>
 
-    <a href="index.php?action=InverBoard" class="btn btn-danger">Volver al panel</a>
+    
 </div>
 <script src="/Bootstrap/js/bootstrap.bundle.min.js"></script><!--NYAAA-->
 </body>

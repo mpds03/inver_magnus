@@ -11,8 +11,14 @@ class FacturaModel
     }
     
     public function crearFactura($numero_documento, $total) {
-        $stmt = $this->conn->prepare("INSERT INTO factura (fecha, numero_documento, total) VALUES (CURDATE(), ?, ?)");
-        $stmt->execute([$numero_documento, $total]);
+        // Antes de insertar la factura, obtén la dirección del cliente
+        $stmt = $this->conn->prepare("SELECT direccion FROM cliente WHERE numero_documento = ?");
+        $stmt->execute([$numero_documento]);
+        $direccion = $stmt->fetchColumn();
+
+        // Ahora inserta la factura incluyendo la dirección
+        $stmt = $this->conn->prepare("INSERT INTO factura (numero_documento, fecha, total, estado, direccion) VALUES (?, CURDATE(), ?, 1, ?)");
+        $stmt->execute([$numero_documento, $total, $direccion]);
         return $this->conn->lastInsertId();
     }
     public function agregarDetalle($idFactura, $codigo, $cantidad, $precio_unitario, $total_detalle) {

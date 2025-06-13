@@ -48,7 +48,13 @@ class PedidosController {
         $numero_documento = $_SESSION['cliente']['numero_documento'];
 
         // Obtener facturas del cliente
-        $stmt = $this->db->prepare("SELECT * FROM factura WHERE numero_documento = ? ORDER BY fecha DESC");
+        $stmt = $this->db->prepare("
+            SELECT f.*, e.nombre AS nombre_estado
+            FROM factura f
+            LEFT JOIN estado_factura e ON f.estado = e.id
+            WHERE f.numero_documento = ?
+            ORDER BY f.fecha DESC
+        ");
         $stmt->execute([$numero_documento]);
         $facturas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
