@@ -99,7 +99,24 @@ class clientecontroller {
     public function UserByNumDocum()
     {
         $numero_documento = $_GET['numero_documento'] ?? '';
-        return $this->ClienteModel->getUserByNumDocum($numero_documento);
+        $cliente = $this->ClienteModel->getUserByNumDocum($numero_documento);
+
+        // Si el resultado es un objeto, conviértelo a array
+        if (is_object($cliente)) {
+            $cliente = (array)$cliente;
+        }
+
+        // Si no es array o está vacío, retorna array vacío
+        if (!is_array($cliente) || empty($cliente)) {
+            return [];
+        }
+
+        // Mapear el nombre del tipo de documento si existe IdDocum
+        $cliente['tipo_doc_nombre'] = isset($cliente['IdDocum'])
+            ? $this->ClienteModel->getTipoDocNombre($cliente['IdDocum'])
+            : '';
+
+        return [$cliente];
     }
 
     public function actualizar(){

@@ -20,12 +20,12 @@ class ClienteModel{
         $stmt = $this->conn->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function getUserByNumDocum($numero_documento)
-    {
+    public function getUserByNumDocum($numero_documento) {
         $query = "SELECT * FROM " . $this->table . " WHERE numero_documento LIKE ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute(['%' .$numero_documento . '%']);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $cliente = $stmt->fetch(PDO::FETCH_ASSOC); // Asegura array asociativo
+        return $cliente ? $cliente : [];
     }
     
     public function actualizar($IdDocum, $nombres, $apellidos, $direccion, $contraseña, $email, $numero_documento )

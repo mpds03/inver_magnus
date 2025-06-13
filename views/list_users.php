@@ -72,7 +72,7 @@
                                         <option value="0" <?= $cliente['rol'] == 0 ? 'selected' : '' ?>>Usuario</option>
                                         <option value="1" <?= $cliente['rol'] == 1 ? 'selected' : '' ?>>Admin</option>
                                     </select>
-                                    <button type="submit" class="btn btn-sm btn-primary">Cambiar</button>
+                                    <button type="submit" class="btn btn-sm btn-secondary">Cambiar</button>
                                 </form>
                             </td>
                         </tr>
