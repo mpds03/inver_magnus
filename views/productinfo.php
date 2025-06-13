@@ -9,7 +9,6 @@
     <link rel="shortcut icon" href="images/logo.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/productinfo.css">
-       <link rel="" href="js/productinfo.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 
@@ -25,119 +24,130 @@
     endif; ?>
 
 
-<div class="container-fluid" id="cajamadre">
-    <div class="row">
-        <!-- Botón Hamburguesa y Categorías -->
-        <div class="col-md-3 d-flex align-items-center gap-2">
-            <!-- Botón Hamburguesa para abrir Offcanvas -->
-            <button class="btn btn-light me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral" aria-controls="menuLateral" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
+    <div class="container-fluid" id="cajamadre">
+        <div class="row">
+            <!-- Botón Hamburguesa y Categorías -->
+            <div class="col-md-3 d-flex align-items-center gap-2">
+                <!-- Botón Hamburguesa para abrir Offcanvas -->
+                <button class="btn btn-light me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral" aria-controls="menuLateral" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
 
-            <!-- Categorías -->
-            <form method="get" action="index.php?action=verCategoria">
-              <input type="hidden" name="action" value="verCategoria" />
-              <select name="IdCategoria" class="form-select w-75" onchange="this.form.submit()">
-                <option value="">Categorías</option>
-                <option value="1">Cuidado del hogar</option>
-                <option value="2">Cocina</option>
-                <option value="3">Accesorios para electrodomésticos</option>
-                <option value="4">Cuidado personal</option>
-              </select>
-            </form>
-        </div>
-
-        <!-- Barra de búsqueda -->
-        <div class="col-md-5 p-1">
-            <form action="index.php?action=barraBusqueda" method="get" class="d-flex p-1">
-              <input type="hidden" name="action" value="barraBusqueda" />
-              <input class="form-control mx-5 me-2" name="nombre" type="text" placeholder="Buscar Productos" />
-              <button class="btn btn-outline-light me-5" type="submit">Buscar</button>
-            </form>
-        </div>
-
-        <?php
-        // Determinar si el usuario está logeado
-        $logeado = isset($_SESSION['cliente']);
-        ?>
-        <?php if (!$logeado): ?>
-        <div id="regis" class="col-md-4 p-1 d-flex justify-content-end">
-            <!-- Botón para ver el carrito del usuario -->
-            <form action="index.php?action=login" method="GET" class="me-2">
-                <button type="submit" name="action" value="login" class="btn btn-light text-black h-100">Iniciar Sesion</button>
-            </form>
-            <form action="index.php?action=insertUser" method="GET" class="">
-                <button type="submit" name="action" value="insertUser" class="btn btn-light text-danger h-100 ">Registrase</button>
-            </form>
-        </div>
-        <?php endif; ?>
-
-      <!-- Control de sesión: actualizar datos, cerrar sesión, login, registro -->
-        <div id="regis" class="col-md-4 p-1 d-flex justify-content-end align-items-center">
-            <?php if (isset($_SESSION['rol']) && ($_SESSION['rol'] === 0 || $_SESSION['rol'] === 1)): ?>
-                <div class="d-flex flex-column align-items-end me-3">
-                    <span class="text-light fw-bold" style="font-size: 1rem;">Bienvenid@</span>
-                    <span class="text-light fw-bold" style="font-size: 1rem;">
-                        <?= htmlspecialchars($_SESSION['cliente']['nombres']) . " " . htmlspecialchars($_SESSION['cliente']['apellidos']); ?> 
-                    </span>
-                </div>
-                <!-- Botón para ver el carrito del usuario -->
-                <form action="index.php?action=verCarrito" method="POST" class="me-2 mb-0">
-                    <button type="submit" class="btn btn-light text-danger h-100">
-                        <i class="fas fa-shopping-cart"></i>
-                        Carrito
-                    </button>
+                <!-- Categorías -->
+                <form method="get" action="index.php?action=verCategoria">
+                    <input type="hidden" name="action" value="verCategoria" />
+                    <select name="IdCategoria" class="form-select w-75" onchange="this.form.submit()">
+                        <option value="">Categorías</option>
+                        <option value="1">Cuidado del hogar</option>
+                        <option value="2">Cocina</option>
+                        <option value="3">Accesorios para electrodomésticos</option>
+                        <option value="4">Cuidado personal</option>
+                    </select>
                 </form>
+            </div>
+
+            <!-- Barra de búsqueda -->
+            <div class="col-md-5 p-1">
+                <form action="index.php?action=barraBusqueda" method="get" class="d-flex p-1">
+                    <input type="hidden" name="action" value="barraBusqueda" />
+                    <input class="form-control mx-5 me-2" name="nombre" type="text" placeholder="Buscar Productos" />
+                    <button class="btn btn-outline-light me-5" type="submit">Buscar</button>
+                </form>
+            </div>
+
+            <?php
+            // Determinar si el usuario está logeado
+            $logeado = isset($_SESSION['cliente']);
+            ?>
+            <?php if (!$logeado): ?>
+                <div id="regis" class="col-md-4 p-1 d-flex justify-content-end">
+                    <!-- Botón para ver el carrito del usuario -->
+                    <form action="index.php?action=login" method="GET" class="me-2">
+                        <button type="submit" name="action" value="login" class="btn btn-light text-black h-100">Iniciar Sesion</button>
+                    </form>
+                    <form action="index.php?action=insertUser" method="GET" class="">
+                        <button type="submit" name="action" value="insertUser" class="btn btn-light text-danger h-100 ">Registrase</button>
+                    </form>
+                </div>
             <?php endif; ?>
+
+            <!-- Control de sesión: actualizar datos, cerrar sesión, login, registro -->
+            <div id="regis" class="col-md-4 p-1 d-flex justify-content-end align-items-center">
+                <?php if (isset($_SESSION['rol']) && ($_SESSION['rol'] === 0 || $_SESSION['rol'] === 1)): ?>
+                    <div class="d-flex flex-column align-items-end me-3">
+                        <span class="text-light fw-bold" style="font-size: 1rem;">Bienvenid@</span>
+                        <span class="text-light fw-bold" style="font-size: 1rem;">
+                            <?= htmlspecialchars($_SESSION['cliente']['nombres']) . " " . htmlspecialchars($_SESSION['cliente']['apellidos']); ?>
+                        </span>
+                    </div>
+                    <!-- Botón para ver el carrito del usuario -->
+                    <form action="index.php?action=verCarrito" method="POST" class="me-2 mb-0">
+                        <button type="submit" class="btn btn-light text-danger h-100">
+                            <i class="fas fa-shopping-cart"></i>
+                            Carrito
+                        </button>
+                    </form>
+                <?php endif; ?>
+            </div>
+
+            <!-- Offcanvas menú lateral -->
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral" aria-labelledby="menuLateralLabel">
+                <div class="offcanvas-header">
+                    <?php if (isset($_SESSION['rol']) && ($_SESSION['rol'] === 1)): ?>
+                        <h5 class="offcanvas-title" id="menuLateralLabel">Administrador</h5>
+                    <?php elseif (isset($_SESSION['rol']) && ($_SESSION['rol'] === 0)): ?>
+                        <h5 class="offcanvas-title" id="menuLateralLabel">Usuario</h5>
+                    <?php else: ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+                    <?php endif; ?>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <form action="index.php?action=InverBoard" method="post" class="mb-0">
+                                <button type="submit" value="InverBoard" class="btn btn-light ">Inicio</button>
+                            </form>
+                        </li>
+                        <?php if (isset($_SESSION['rol']) && ($_SESSION['rol'] === 0 || $_SESSION['rol'] === 1)): ?>
+                            <li class="list-group-item">
+                                <form action="index.php" method="GET">
+                                    <input type="hidden" name="action" value="searchClienteXNumDocum">
+                                    <input type="hidden" name="numero_documento" value="<?= $numero_documento ?>">
+                                    <button type="submit" class="btn btn-light  h-100">Actualizar Datos</button>
+                                </form>
+                            </li>
+
+
+                            <li class="list-group-item">
+                                <form action="index.php?action=logout" method="post" class="mb-0">
+                                    <button type="submit" value="logout" class="btn btn-light ">Cerrar Sesion</button>
+                                </form>
+                            </li>
+                        <?php endif; ?>
+
+                        <?php if (isset($_SESSION['rol']) && ($_SESSION['rol'] === 1)): ?>
+                            <li class="list-group-item">
+                                <form action="index.php?action=listUsers" method="post" class="mb-0">
+                                    <button type="submit" value="listUsers" class="btn btn-light ">Usuarios</button>
+                                </form>
+                            </li>
+                            <li class="list-group-item">
+                                <form action="index.php?action=adminPedidos" method="post" class="mb-0">
+                                    <button type="submit" value="adminPedidos" class="btn btn-light ">Ver Pedidos</button>
+                                </form>
+                            </li>
+                            <li class="list-group-item">
+                                <form action="index.php?action=listProducto" method="post" class="mb-0">
+                                    <button type="submit" value="InverBoard" class="btn btn-light ">Productos</button>
+                                </form>
+                            </li>
+                        <?php endif; ?>
+                        <!-- Agrega aquí más módulos si quieres -->
+                    </ul>
+                </div>
+            </div>
         </div>
-
-  <!-- Offcanvas menú lateral -->
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral" aria-labelledby="menuLateralLabel">
-    <div class="offcanvas-header">
-      <?php if (isset($_SESSION['rol']) && ($_SESSION['rol'] === 1)): ?>
-      <h5 class="offcanvas-title" id="menuLateralLabel">Administrador</h5>
-      <?php elseif (isset($_SESSION['rol']) && ($_SESSION['rol'] === 0)): ?>
-      <h5 class="offcanvas-title" id="menuLateralLabel">Usuario</h5>
-      <?php else: ?>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
-      <?php endif; ?>
     </div>
-    <div class="offcanvas-body">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          <form action="index.php?action=InverBoard" method="post" class="mb-0">
-            <button type="submit" value="InverBoard" class="btn btn-light ">Inicio</button>
-          </form>
-        </li>
-        <?php if (isset($_SESSION['rol']) && ($_SESSION['rol'] === 0 || $_SESSION['rol'] === 1)): ?>
-        <li class="list-group-item"><form action="index.php" method="GET" >
-                    <input type="hidden" name="action" value="searchClienteXNumDocum">
-                    <input type="hidden" name="numero_documento" value="<?= $numero_documento ?>">
-                    <button type="submit" class="btn btn-light  h-100">Actualizar Datos</button></form></li>
-                    
-
-        <li class="list-group-item"><form action="index.php?action=logout" method="post" class="mb-0">
-            <button type="submit" value="logout" class="btn btn-light ">Cerrar Sesion</button>
-          </form></li>
-        <?php endif; ?>
-
-        <?php if (isset($_SESSION['rol']) && ($_SESSION['rol'] === 1)): ?>
-        <li class="list-group-item"><form action="index.php?action=listUsers" method="post" class="mb-0">
-            <button type="submit" value="listUsers" class="btn btn-light ">Usuarios</button>
-          </form></li>
-        <li class="list-group-item"><form action="index.php?action=adminPedidos" method="post" class="mb-0">
-            <button type="submit" value="adminPedidos" class="btn btn-light ">Ver Pedidos</button>
-          </form></li>
-        <li class="list-group-item"><form action="index.php?action=listProducto" method="post" class="mb-0">
-            <button type="submit" value="InverBoard" class="btn btn-light ">Productos</button>
-          </form></li>
-        <?php endif; ?>
-        <!-- Agrega aquí más módulos si quieres -->
-      </ul>
-    </div>
-  </div>
- </div>
-  </div>
 
     <div class="container-fluid" id="detallesproducto">
         <!--AQUI VA LOS DETALLES DEL PRODUCTO Y ESO-->
@@ -164,20 +174,20 @@
 
                         <!-- Añadir al carrito -->
                         <div class="text-center mt-4">
-    <!-- Mostrar mensaje y deshabilitar botón si el producto está agotado -->
-    <?php if ($producto['cantidad'] == 0 || $producto['estado'] == 0): ?>
-        <div class="alert alert-danger fw-bold">¡Producto AGOTADO!</div>
-        <button class="btn btn-secondary" disabled>Agotado</button>
-    <?php elseif (isset($_SESSION['cliente'])): ?>
-        <!-- Formulario para añadir al carrito solo si hay sesión -->
-        <form action="index.php?action=agregarCarrito" method="post" class="d-inline ms-2">
-            <input type="hidden" name="codigo" value="<?= $producto['codigo'] ?>">
-            <input type="hidden" name="precioUnitario" value="<?= $producto['precio'] ?>">
-            <input type="number" name="cantidad" value="1" min="1" max="<?= $producto['cantidad'] ?>" class="form-control d-inline w-auto mb-2" required><br>
-            <button type="submit" class="btn btn-danger">Añadir al carrito</button>
-        </form>
-    <?php endif; ?>
-</div>
+                            <!-- Mostrar mensaje y deshabilitar botón si el producto está agotado -->
+                            <?php if ($producto['cantidad'] == 0 || $producto['estado'] == 0): ?>
+                                <div class="alert alert-danger fw-bold">¡Producto AGOTADO!</div>
+                                <button class="btn btn-secondary" disabled>Agotado</button>
+                            <?php elseif (isset($_SESSION['cliente'])): ?>
+                                <!-- Formulario para añadir al carrito solo si hay sesión -->
+                                <form action="index.php?action=agregarCarrito" method="post" class="d-inline ms-2">
+                                    <input type="hidden" name="codigo" value="<?= $producto['codigo'] ?>">
+                                    <input type="hidden" name="precioUnitario" value="<?= $producto['precio'] ?>">
+                                    <input type="number" name="cantidad" value="1" min="1" max="<?= $producto['cantidad'] ?>" class="form-control d-inline w-auto mb-2" required><br>
+                                    <button type="submit" class="btn btn-danger">Añadir al carrito</button>
+                                </form>
+                            <?php endif; ?>
+                        </div>
                 </div>
 
                 <!--Hola, cajita del lado derecho-->
@@ -185,26 +195,27 @@
                     <h1 class="text-start">$<?= number_format($producto['precio'], 0, '', '.') ?></h1>
                 <?php endforeach; ?><!--aca termina el foreach de conexion base de datos-->
                 <h5 class="text-start">Opiniones del producto</h5>
-
-                <!--Estrellas-->
-                <p class="text-start">Calificación:</p>
-                <div class="stars text-start mt-2" id="stars">
-                    <span data-value="1">★</span>
-                    <span data-value="2">★</span>
-                    <span data-value="3">★</span>
-                    <span data-value="4">★</span>
-                    <span data-value="5">★</span>
-                </div>
-                <!--Estrellas-->
+                <!--Estrellas de calificacion-->
+                    <div class="mb-2">
+                            <label class="form-label">Tu calificación:</label>
+                            <div class="stars text-start mt-2" id="stars">
+                                <?php for ($i = 1; $i <= 5; $i++): ?>
+                                    <span data-value="<?= $i ?>" class="star" style="font-size:2rem;cursor:pointer;color:#ccc;">★</span>
+                                <?php endfor; ?>
+                            </div>
+                        </div>
+                <!--Estrellas de calificacion-->
 
                 <!--Comentarios de usuarios-->
                 <?php if (isset($_SESSION['cliente'])): ?>
-                    <form action="index.php?action=comentarProducto" method="post">
+                    <form action="index.php?action=comentarProducto" method="post" id="formComentario">
                         <input type="hidden" name="codigo" value="<?= $producto['codigo'] ?>">
+                        <input type="hidden" name="calificacion" id="calificacion" value="0">
                         <div class="mb-3">
-                            <label for="comentario" class="form-label">Tu comentario</label>
+                            <label for="comentario" class="form-label">Tu comentario:</label>
                             <textarea name="comentario" class="form-control" required></textarea>
                         </div>
+                        
                         <button type="submit" class="btn btn-danger">Enviar comentario</button>
                     </form>
                 <?php else: ?>
@@ -254,6 +265,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/Bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/productinfo.js"></script>
 </body>
 
 </html>
