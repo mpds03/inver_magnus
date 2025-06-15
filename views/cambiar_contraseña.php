@@ -4,6 +4,7 @@
 <head>
     <title>Cambiar Contraseña</title>
     <meta charset="utf-8">
+    <link rel="shortcut icon" href="images/logo.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
