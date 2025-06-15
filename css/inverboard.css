@@ -114,7 +114,8 @@ img {
     border-radius: 10px;   /* Opcional: bordes redondeados */
 }
 
-
+/* Este bloque elimina los márgenes y rellenos laterales que 
+por defecto Bootstrap aplica a .container-fluid y .row*/
 .container-fluid,
 .row {
   padding-left: 0 !important;
