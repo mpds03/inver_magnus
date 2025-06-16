@@ -28,12 +28,12 @@ class ClienteModel{
         return $cliente ? $cliente : [];
     }
     
-    public function actualizar($IdDocum, $nombres, $apellidos, $direccion, $contraseña, $email, $numero_documento )
+    public function actualizarSinContraseña($IdDocum, $nombres, $apellidos, $direccion, $email, $numero_documento )
     {
         $query = "UPDATE " . $this->table . " SET IdDocum=?, nombres=?, apellidos=?, 
-        direccion=?, contraseña=?, email=? WHERE numero_documento=?";
+        direccion=?, email=? WHERE numero_documento=?";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute([$IdDocum, $nombres, $apellidos, $direccion, $contraseña, $email, $numero_documento ]);
+        $stmt->execute([$IdDocum, $nombres, $apellidos, $direccion, $email, $numero_documento ]);
     }
 
     public function eliminar($numero_documento){

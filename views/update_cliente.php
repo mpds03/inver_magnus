@@ -49,11 +49,6 @@
                             <input type="text" name="apellidos" class="form-style" value="<?= $cliente['apellidos']; ?>" placeholder="Apellidos" required>
                             <i class="input-icon uil uil-user"></i>
                           </div>
-                          
-                         <div class="form-group">
-                            <input type="password" name="contraseña" class="form-style" value="<?= $cliente['contraseña']; ?>" placeholder="Contraseña" required>
-                            <i class="input-icon uil uil-lock-alt"></i>
-                          </div> 
                           <div class="form-group">
                             <input type="email" name="email" class="form-style" value="<?= $cliente['email']; ?>" placeholder="Correo electrónico" required>
                             <i class="input-icon uil uil-at"></i>

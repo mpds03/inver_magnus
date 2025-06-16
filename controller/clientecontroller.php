@@ -125,7 +125,6 @@ class clientecontroller {
             $nombres = $_POST['nombres'];
             $apellidos = $_POST['apellidos'];
             $direccion = $_POST['direccion'];
-            $contraseña = $_POST['contraseña'];
             $email = $_POST['email'];
             $numero_documento = $_POST['numero_documento'];
 
@@ -154,28 +153,15 @@ class clientecontroller {
                     exit;
             }
 
-            // Validación de teléfono
-            // if (!preg_match('/^\d{10}$/', $telefono)) {
-            //     echo "<script>alert('El número de teléfono debe tener exactamente 10 dígitos.'); window.history.back();</script>";
-            //     exit;
-            // }
-
             // Validación de dirección
             if (empty($direccion) || strlen($direccion) < 5) {
                 echo "<script>alert('La dirección de residencia es obligatoria y debe tener al menos 5 caracteres.'); window.history.back();</script>";
                 exit;
             }
 
-            // Validación de contraseña segura
-            if (!$this->validarContraseña($contraseña)) {
-                echo "<script>alert('La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un símbolo especial.'); window.history.back();</script>";
-                exit;
-            }
+            // NO se valida ni actualiza la contraseña aquí
 
-            // Encriptar la contraseña antes de actualizar
-            $contraseñaHash = password_hash($contraseña, PASSWORD_BCRYPT);
-
-            $this->ClienteModel->actualizar($IdDocum, $nombres, $apellidos, $direccion, $contraseñaHash, $email, $numero_documento);
+            $this->ClienteModel->actualizarSinContraseña($IdDocum, $nombres, $apellidos, $direccion, $email, $numero_documento);
 
             // ACTUALIZAR LA SESIÓN CON LOS NUEVOS DATOS
             if (session_status() === PHP_SESSION_NONE) {
@@ -185,7 +171,6 @@ class clientecontroller {
             $_SESSION['cliente']['apellidos'] = $apellidos;
             $_SESSION['cliente']['direccion'] = $direccion;
             $_SESSION['cliente']['email'] = $email;
-            // Si tienes más campos que cambian, agrégalos aquí
 
             echo "<script>alert('Usuario actualizado correctamente'); window.location.href='index.php?action=InverBoard';</script>";
             exit;
