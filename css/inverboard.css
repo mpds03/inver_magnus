@@ -4,52 +4,43 @@ body {
     font-size: 10px;
     font-style: bold;
 }
-* {padding: 0;
+* {
+    padding: 0;
     margin: 0;
 }
 
 img {
     max-width: 100%;
     height: auto;
-} /* prueba a ver para que sea responsivo todo y esto es lo de imagenes*/
+}
 
-#cajamadre{
+#cajamadre {
     width: 100%;
-    height: 400px;/*barra roja del inicio*/
+    height: 400px;
     background-color: #db4b4c;
-    }
+}
 
-#regis{
+#regis {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: start;
 }
 
-
-#lic {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: end;
+#titulo1 {
+    font-family: 'Franklin Gothic Medium';
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    font-size: 700%;
 }
 
-#titulo1{ /*se supone que esto es del titulo grande del top productos mas vendidos*/
-  position: flex;
-  font-family: 'Franklin Gothic Medium';
-  justify-content: center;
-  align-items: center;
-  margin-top: 80px;/*esto sirve para hacer que baje mas el texto pero afecta al momento de ser responsivo*/
-  font-size: 700%;
+#bati-container {
+    position:relative;
 }
 
-#bati-container{/*el container de los botones articulos mas vendidos*/
-  position:relative;
-  /*height: 200px;*/ /* Ajusta la altura según sea necesario */
-}
-
-#bati {/*el container dentro del container de los botones articulos mas vendidos*/
-  height: 100px;
+#bati {
+    height: 100px;
     display: flex;
     flex-direction: row;
     justify-content:space-around;
@@ -57,69 +48,143 @@ img {
 }
 
 #licu {
-  position: absolute;
-  height: 28%;
-  left: 65%;
-  bottom: 65%;
-}
-
-#batimano {
-  position: absolute;
-  height: 28%;
-  left: 75%;
-  bottom: 68%;
-}
-
-#plancha {
-  position: absolute;
-  height: 28%;
-  left: 72%;
-  bottom: 50%;
+    position: absolute;
+    height: 28%;
+    left: 65%;
+    bottom: 65%;
 }
 
 .estructura {
-  height: 320px;
-  object-fit: cover;
-}.stars {
-    font-size: 30px;
-    color: rgb(0, 0, 0);
-    cursor: pointer;
-  }
-  
-  .stars span {
-    transition: color 0.3s;
-  }
-  
-  .stars span:hover,
-  .stars span:hover ~ span {
-    color: #db4b4c;
-  }
-  
-  .stars.clicked span {
-    color: #db4b4c;
-  }
-/*estrellas de calificacion*/
-.estructura{
     height: 320px;
     object-fit: cover;
 }
 
+.stars {
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+.stars span {
+    transition: color 0.3s;
+}
+
+.stars span:hover,
+.stars span:hover ~ span {
+    color: #db4b4c;
+}
+
+.stars.clicked span {
+    color: #db4b4c;
+}
+
 /* Ajusta las imágenes de las cards para que no se deformen ni se corten */
 .card-img-top.estructura {
-     /* width: 100%;  */
-    height: 180px;         /* Ajusta este valor según el alto que prefieras */
-    object-fit: contain;   /* Cambia a 'cover' si prefieres que se recorte y llene el espacio */
-    background: #fff;      /* Fondo blanco para imágenes más pequeñas */
-    padding: 10px;         /* Opcional: agrega espacio interno */
-    border-radius: 10px;   /* Opcional: bordes redondeados */
+    height: 180px;
+    object-fit: contain;
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 /* Este bloque elimina los márgenes y rellenos laterales que 
 por defecto Bootstrap aplica a .container-fluid y .row*/
 .container-fluid,
 .row {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* Responsividad: Ajustes para pantallas pequeñas */
+@media (max-width: 991.98px) {
+    #titulo1 {
+        font-size: 300%;
+        margin-top: 30px;
+    }
+    #licu {
+        position: static;
+        height: 80px;
+        display: block;
+        margin: 0 auto;
+    }
+    #bati {
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+    }
+    .row-cols-md-5 > .col {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 575.98px) {
+    #titulo1 {
+        font-size: 180%;
+        margin-top: 10px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .row-cols-md-5 > .col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    #cajamadre {
+        height: 300px;
+    }
+    #bati {
+        flex-direction: column !important;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+        gap: 4px; /* Separación ligera entre botones */
+    }
+    #bati > form,
+    #bati > button {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 2px 0; /* Separación ligera arriba y abajo */
+        padding: 0;
+    }
+    #bati button,
+    #bati .btn {
+        width: 90vw;
+        min-width: 140px;
+        max-width: 300px;
+        margin: 0;
+        box-sizing: border-box;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+    }
+    #bati form {
+        margin: 0;
+        padding: 0;
+    }
+    #licu {
+        position: static;
+        height: 60px;
+        display: block;
+        margin: 0 auto 10px auto;
+    }
+    #regis {
+        /* Mantiene el contenedor general igual */
+    }
+    #regis .d-flex.flex-column.align-items-end {
+        align-items: flex-start !important;
+        text-align: left !important;
+        margin-left: 0 !important;
+        margin-right: auto !important;
+        padding-left: 12px !important; /* Espacio solo a la izquierda */
+    }
+    .col-md-3.d-flex.align-items-center.gap-2 {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+        padding-top: 14px !important;   /* Espacio arriba */
+    }
 }
