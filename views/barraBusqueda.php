@@ -163,7 +163,7 @@
                     <?php endif; ?>
                 <?php endforeach; ?>
             <?php else: ?>
-                <p class="text-center">Producto actualizado con exito</p>
+                <p class="text-center">Producto No Encontrado</p>
             <?php endif; ?>
         </div>
     </div>
