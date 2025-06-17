@@ -232,6 +232,22 @@
                             <div class="border rounded p-2 mb-2">
                                 <strong><?= htmlspecialchars($comentario['nombres']) ?></strong>
                                 <span class="text-muted" style="font-size:0.9em;"><?= htmlspecialchars($comentario['fecha']) ?></span>
+                                <!-- Mostrar estrellas de calificación -->
+                                <div>
+                                    <?php
+                                    $calificacion = isset($comentario['calificacion']) ? (int)$comentario['calificacion'] : 0;
+                                    for ($i = 1; $i <= 5; $i++):
+                                        if ($i <= $calificacion && $calificacion > 0): ?>
+                                            <i class="fas fa-star" style="color:#ffc107;font-size:1.2em;"></i>
+                                        <?php else: ?>
+                                            <i class="far fa-star" style="color:#ffc107;font-size:1.2em;"></i>
+                                        <?php endif;
+                                    endfor;
+                                    ?>
+                                    <?php if ($calificacion > 0): ?>
+                                        <span style="color:#ffc107;font-size:1em;vertical-align:middle;">(<?= $calificacion ?>)</span>
+                                    <?php endif; ?>
+                                </div>
                                 <p class="mb-0"><?= htmlspecialchars($comentario['comentario']) ?></p>
                             </div>
                         <?php endforeach; ?>
