@@ -140,9 +140,6 @@
                             <p>TOP 3 PRODUCTOS <br>
                                 MAS VENDIDOS</p>
                         </div>
-                        <div class="col-md-3 p-1">
-                            <img id="licu" class="img-fluid" src="/photo/licubatiplancha.png" alt="">
-                        </div>
                     </div>
                     <div class="position-relative" id="bati-container">
                         <div id="bati" class="d-flex flex-row align-items-center">

@@ -135,7 +135,7 @@ por defecto Bootstrap aplica a .container-fluid y .row*/
         max-width: 100%;
     }
     #cajamadre {
-        height: 300px;
+        height: 200px; /* Reduce el alto del fondo rojo en móvil */
     }
     #bati {
         flex-direction: column !important;
