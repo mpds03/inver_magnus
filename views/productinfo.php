@@ -195,22 +195,12 @@
                     <h1 class="text-start">$<?= number_format($producto['precio'], 0, '', '.') ?></h1>
                 <?php endforeach; ?><!--aca termina el foreach de conexion base de datos-->
                 <h5 class="text-start">Opiniones del producto</h5>
-                <!--Estrellas de calificacion-->
-                    <div class="mb-2">
-                            <label class="form-label">Tu calificación:</label>
-                            <div class="stars text-start mt-2" id="stars">
-                                <?php for ($i = 1; $i <= 5; $i++): ?>
-                                    <span data-value="<?= $i ?>" class="star" style="font-size:2rem;cursor:pointer;color:#ccc;">★</span>
-                                <?php endfor; ?>
-                            </div>
-                        </div>
-                <!--Estrellas de calificacion-->
 
                 <!--Comentarios de usuarios-->
                 <?php if (isset($_SESSION['cliente'])): ?>
                     <form action="index.php?action=comentarProducto" method="post" id="formComentario">
                         <input type="hidden" name="codigo" value="<?= $producto['codigo'] ?>">
-                        <input type="hidden" name="calificacion" id="calificacion" value="0">
+                        <!-- <input type="hidden" name="calificacion" id="calificacion" value="0"> -->
                         <div class="mb-3">
                             <label for="comentario" class="form-label">Tu comentario:</label>
                             <textarea name="comentario" class="form-control" required></textarea>
@@ -233,21 +223,6 @@
                                 <strong><?= htmlspecialchars($comentario['nombres']) ?></strong>
                                 <span class="text-muted" style="font-size:0.9em;"><?= htmlspecialchars($comentario['fecha']) ?></span>
                                 <!-- Mostrar estrellas de calificación -->
-                                <div>
-                                    <?php
-                                    $calificacion = isset($comentario['calificacion']) ? (int)$comentario['calificacion'] : 0;
-                                    for ($i = 1; $i <= 5; $i++):
-                                        if ($i <= $calificacion && $calificacion > 0): ?>
-                                            <i class="fas fa-star" style="color:#ffc107;font-size:1.2em;"></i>
-                                        <?php else: ?>
-                                            <i class="far fa-star" style="color:#ffc107;font-size:1.2em;"></i>
-                                        <?php endif;
-                                    endfor;
-                                    ?>
-                                    <?php if ($calificacion > 0): ?>
-                                        <span style="color:#ffc107;font-size:1em;vertical-align:middle;">(<?= $calificacion ?>)</span>
-                                    <?php endif; ?>
-                                </div>
                                 <p class="mb-0"><?= htmlspecialchars($comentario['comentario']) ?></p>
                             </div>
                         <?php endforeach; ?>
@@ -280,7 +255,7 @@
     <!--footer-->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/productinfo.js"></script>
+    
 </body>
 
 </html>
