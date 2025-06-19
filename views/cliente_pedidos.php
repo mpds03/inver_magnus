@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Mis Pedidos</title>
+    <link rel="shortcut icon" href="images/logo.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/inicio.css">
 </head>
