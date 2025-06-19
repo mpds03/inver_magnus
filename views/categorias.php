@@ -114,6 +114,11 @@
                     <input type="hidden" name="numero_documento" value="<?= $numero_documento ?>">
                     <button type="submit" class="btn btn-light  h-100">Actualizar Datos</button></form></li>
                     
+            <li class="list-group-item">
+                        <form action="index.php?action=pedidosCliente" method="post" class="mb-0">
+                            <button type="submit" value="logout" class="btn btn-light">Mis pedidos</button>
+                        </form>
+                    </li>
 
         <li class="list-group-item"><form action="index.php?action=logout" method="post" class="mb-0">
             <button type="submit" value="logout" class="btn btn-light ">Cerrar Sesion</button>
