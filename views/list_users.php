@@ -37,7 +37,7 @@
                         <th>Contraseña</th>
                         <th>Correo electrónico</th>
                         <th>Actualizar</th>
-                        <th>Eliminar</th>
+                        
                         <th>Rol</th>
                     </tr>
                 </thead>
@@ -58,14 +58,8 @@
                                     <input type="submit" class="btn btn-secondary" value="Actualizar">
                                 </form>
                             </td><!--Actualizar usuario-->
-                            <td><!--Eliminar usuario-->
-                                <form action="index.php?action=eliminarUser" method="GET">
-                                    <input type="hidden" name="action" value="eliminarUser">
-                                    <input type="hidden" name="numero_documento" value="<?= $cliente['numero_documento']; ?>">
-                                    <input type="submit" value="eliminar" class="btn btn-danger">
-                                </form>
-                            </td><!--Eliminar usuario-->
-                            <td>
+                            
+                            <td><!--Cambiar rol de usuario-->
                                 <form action="index.php?action=cambiarRolUsuario" method="post" class="d-flex gap-1">
                                     <input type="hidden" name="numero_documento" value="<?= $cliente['numero_documento']; ?>">
                                     <select name="nuevo_rol" class="form-select form-select-sm">
@@ -74,7 +68,7 @@
                                     </select>
                                     <button type="submit" class="btn btn-sm btn-secondary">Cambiar</button>
                                 </form>
-                            </td>
+                            </td><!--Cambiar rol de usuario-->
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
